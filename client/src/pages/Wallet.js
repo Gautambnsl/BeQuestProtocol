@@ -1,9 +1,8 @@
-import { Fragment } from "react";
-import logo from "../images/logo.png";
+import logo from "../assests/logo.png";
 
 function Wallet() {
 	return (
-		<Fragment>
+		<>
 			<div className="wallet-main">
 				<div className="wallet-page">
 					<div className="wallet-main-box"></div>
@@ -21,7 +20,7 @@ function Wallet() {
 										height="40px"
 										width="50px"
 									/>
-									<span font-size="18px" font-weight="500" color="#000">
+									<span fontSize="18px" fontWeight="500" color="#000">
 										Metamask
 									</span>
 								</button>
@@ -31,7 +30,7 @@ function Wallet() {
 										height="40px"
 										width="50px"
 									/>
-									<span font-size="18px" font-weight="500" color="#000">
+									<span fontSize="18px" fontWeight="500" color="#000">
 										Wallet&nbsp;Connect
 									</span>
 								</button>
@@ -41,7 +40,7 @@ function Wallet() {
 										height="40px"
 										width="50px"
 									/>
-									<span font-size="18px" font-weight="500" color="#000">
+									<span fontSize="18px" fontWeight="500" color="#000">
 										Ledger
 									</span>
 								</button>
@@ -50,7 +49,7 @@ function Wallet() {
 					</div>
 				</div>
 			</div>
-		</Fragment>
+		</>
 	);
 }
 
