@@ -1,4 +1,5 @@
 import logo from "../assests/logo.png";
+import logoName from "../assests/logo-name.png";
 
 function Wallet() {
 	return (
@@ -9,7 +10,7 @@ function Wallet() {
 					<div className="wallet-main-box">
 						<div className="wallet-logo">
 							<img src={logo} alt="logo" width="80px" />
-							<h1>BeQuest</h1>
+							<img src={logoName} alt="logo-name" />
 						</div>
 						<div className="wallet-box">
 							<h2>Connect a Wallet</h2>
