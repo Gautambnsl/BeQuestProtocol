@@ -8,6 +8,10 @@ function Nav() {
 		navigate("/");
 	};
 
+	const handleWalletNavigate = () => {
+		navigate("/wallet");
+	};
+
 	return (
 		<nav className="home-nav" id="navbar">
 			<div className="home-nav__logo">
@@ -30,11 +34,13 @@ function Nav() {
 				</ul>
 			</div>
 
-			<div className="button home-nav__launch">
+			<div className="button home-nav__launch" onClick={handleWalletNavigate}>
 				<Link to="/wallet">Launch App</Link>
-				<div class="wave"></div>
-				<div class="wave"></div>
-				<div class="wave"></div>
+				<div className="">
+					<div className="wave"></div>
+					<div className="wave"></div>
+					<div className="wave"></div>
+				</div>
 			</div>
 		</nav>
 	);

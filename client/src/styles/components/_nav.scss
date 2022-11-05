@@ -9,7 +9,8 @@
 	margin-block: 1em;
 
 	backdrop-filter: blur(0.5em);
-	background-color: #2b2b2b75;
+	// background-color: #2b2b2b75;
+	background-image: linear-gradient(75deg, #74ebd552, #acb6e580);
 	position: sticky;
 	top: 1em;
 
@@ -28,11 +29,6 @@
 			width: 4rem;
 			cursor: pointer;
 		}
-	}
-
-	a {
-		text-decoration: none;
-		color: ab.$text-primary;
 	}
 
 	&__links {
@@ -55,21 +51,17 @@
 			@include ab.screen-75 {
 				gap: 5em;
 			}
+
+			&__li {
+				a {
+					color: ab.$text-primary;
+				}
+			}
 		}
 	}
 
 	&__launch {
-		text-decoration: underline transparent;
-		// background-image: ab.$button-gradient;
-
-		transition: text-decoration-color 0.3s ease-in-out;
-
-		&:hover {
-			text-decoration-color: ab.$text-primary;
-		}
-
 		a {
-			color: ab.$button-text;
 		}
 	}
 }

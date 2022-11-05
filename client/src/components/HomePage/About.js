@@ -1,6 +1,12 @@
 import Web3Img from "../../assests/Bitcoin-bro.svg";
+import { Link, useNavigate } from "react-router-dom";
 
 function About() {
+	const navigate = useNavigate();
+
+	const handleWalletNavigate = () => {
+		navigate("/wallet");
+	};
 	return (
 		<div className="about">
 			<div className="about-img">
@@ -19,6 +25,15 @@ function About() {
 					BeQuest helps the users to secure their digital assets like
 					cryptocurrencies, NFTs etc.
 				</p>
+
+				<div className=" about-text__launch">
+					<button className="button" onClick={handleWalletNavigate}>
+						<Link to="/wallet">Launch App</Link>
+						<div className="wave"></div>
+						<div className="wave"></div>
+						<div className="wave"></div>
+					</button>
+				</div>
 			</div>
 		</div>
 	);

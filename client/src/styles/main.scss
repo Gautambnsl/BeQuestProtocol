@@ -2,8 +2,14 @@
 @use "./components";
 
 body {
-	background-color: ab.$background-primary;
+	// background-color: ab.$background-primary;
+	background-image: linear-gradient(to right, #243b55, #141e30);
 	font-family: "Poppins", sans-serif;
 
 	color: ab.$text-primary;
+}
+
+a {
+	text-decoration: none;
+	z-index: 1;
 }
