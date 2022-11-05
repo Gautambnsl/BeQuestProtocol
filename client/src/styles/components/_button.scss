@@ -1,0 +1,8 @@
+@use "../abstracts" as ab;
+
+.button {
+	outline: 2px solid lightblue;
+	padding-inline: 0.6em;
+	padding-block: 0.3em;
+	border-radius: 0.8em;
+}

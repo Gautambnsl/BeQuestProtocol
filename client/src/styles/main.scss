@@ -1,2 +1,7 @@
 @use "./abstracts" as ab;
 @use "./components";
+
+body {
+	background-color: ab.$background-primary;
+	font-family: "Poppins", sans-serif;
+}
