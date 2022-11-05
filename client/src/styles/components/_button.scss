@@ -5,4 +5,15 @@
 	padding-block: 0.3em;
 	border-radius: 0.8em;
 	font-weight: 500;
+	cursor: pointer;
+
+	background-color: ab.$button-primary;
+
+	// &:hover {
+	// 	background-image: ab.$button-gradietn-hover;
+	// }
+
+	// &:active {
+	// 	background-image: ab.$button-gradietn-active;
+	// }
 }

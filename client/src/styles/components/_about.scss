@@ -1,0 +1,53 @@
+@use "../abstracts" as ab;
+
+.about {
+	width: min(90%, 80rem);
+	margin-inline: auto;
+	margin-block: 1em;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+
+	@include ab.screen-40 {
+		margin-block: 4em;
+		flex-direction: row-reverse;
+		align-items: center;
+	}
+
+	&-img {
+		flex: 50%;
+
+		img {
+			width: 100%;
+
+			@include ab.screen-40 {
+				margin-left: auto;
+				max-width: 30rem;
+			}
+		}
+	}
+
+	&-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6em;
+
+		@include ab.screen-40 {
+			flex: 50%;
+		}
+
+		&__head {
+			font-size: clamp(2.5rem, 3.5vw, 4rem);
+			background-image: linear-gradient(120deg, #00f260, #0575e6);
+			background-clip: text;
+			color: transparent;
+		}
+
+		&__p {
+			// color: ab.$text-secondary;
+			color: #ffefd6;
+			font-size: clamp(1rem, 1.2vw, 1.3rem);
+		}
+	}
+}

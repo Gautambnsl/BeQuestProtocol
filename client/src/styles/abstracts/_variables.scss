@@ -2,5 +2,19 @@ $background-primary: #171717;
 $background-secondary: #2b2b2b;
 
 $text-primary: #ededed;
-$button-gradient: linear-gradient(120deg, #ca965c, #d7a86e);
+$text-secondary: #e8e4e1;
 $button-text: #fff;
+
+$button-gradient: linear-gradient(120deg, #ca965c, #d7a86e);
+$button-gradietn-hover: linear-gradient(
+	120deg,
+	lighten(#ca965c, 5),
+	lighten(#d7a86e, 5)
+);
+$button-gradietn-active: linear-gradient(
+	120deg,
+	darken(#ca965c, 5),
+	darken(#d7a86e, 5)
+);
+
+$button-primary: hsl(269, 74%, 55%);

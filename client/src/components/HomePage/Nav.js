@@ -9,7 +9,7 @@ function Nav() {
 	};
 
 	return (
-		<nav className="home-nav">
+		<nav className="home-nav" id="navbar">
 			<div className="home-nav__logo">
 				<img onClick={handleLogoClick} src={Logo} alt="" />
 			</div>
@@ -32,6 +32,9 @@ function Nav() {
 
 			<div className="button home-nav__launch">
 				<Link to="/wallet">Launch App</Link>
+				<div class="wave"></div>
+				<div class="wave"></div>
+				<div class="wave"></div>
 			</div>
 		</nav>
 	);
