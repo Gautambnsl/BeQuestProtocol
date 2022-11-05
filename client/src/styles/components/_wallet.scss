@@ -28,7 +28,7 @@
 .img1{
 	width: 3.5rem;
 	@include ab.screen-40 {
-			width: 6rem;
+			width: 5rem;
 	
 	}
 }
@@ -36,7 +36,7 @@
 .img2{
 	width: 16rem;
 	@include ab.screen-40 {
-			width: 27rem;
+			width: 28rem;
 	}
 }
 
