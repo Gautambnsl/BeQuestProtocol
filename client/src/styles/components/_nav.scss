@@ -1,17 +1,21 @@
 @use "../abstracts" as ab;
 
 .home-nav {
-	width: min(90%, 60rem);
+	width: min(90%, 80rem);
 	margin-inline: auto;
-	margin-top: 1em;
-	padding-inline: 0.4em;
-
-	background-color: ab.$background-secondary;
+	margin-top: 0.5em;
 	border-radius: 0.8em;
+	background-color: ab.$background-secondary;
+	padding-inline: 0.6em;
+	margin-top: 1em;
 
 	display: flex;
 	align-items: center;
 	font-size: 1.2rem;
+
+	@include ab.screen-40 {
+		padding-inline: 0.8em;
+	}
 
 	&__logo {
 		img {
@@ -32,11 +36,34 @@
 			margin: 0;
 			padding: 0;
 			list-style-type: none;
+			font-weight: 500;
+			font-size: 1.3rem;
+			gap: 3em;
 
-			display: flex;
-			gap: 1em;
+			display: none;
 
-			// display: none;
+			@include ab.screen-40 {
+				display: flex;
+			}
+
+			@include ab.screen-75 {
+				gap: 5em;
+			}
+		}
+	}
+
+	&__launch {
+		text-decoration: underline transparent;
+		background-image: ab.$button-gradient;
+
+		transition: text-decoration-color 0.3s ease-in-out;
+
+		&:hover {
+			text-decoration-color: ab.$text-primary;
+		}
+
+		a {
+			color: ab.$button-text;
 		}
 	}
 }
