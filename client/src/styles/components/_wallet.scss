@@ -1,64 +1,20 @@
+@use "../abstracts" as ab;
+
+
 .wallet-main {
 	width: 100vw;
 	height: 100vh;
-	position: relative;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+    background-image: linear-gradient(to right, #243B55, #141E30); 
 }
+
 .wallet-page {
 	align-items: center;
-	inset: 0px;
 	display: flex;
-	flex-flow: column wrap;
-	height: auto;
+	flex-direction: column;
 	justify-content: center;
-	overflow: hidden;
-	padding: 0px;
-	position: absolute;
-	background: #141E30;  /* fallback for old browsers */
-	background-repeat: no-repeat;
-    background-image: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-	// &::after {
-	// 	content: "";
-	// 	position: absolute;
-	// 	top: -35%;
-	// 	right: -15%;
-	// 	width: 50%;
-	// 	min-width: 812px;
-	// 	height: auto;
-	// 	background: rgb(134, 124, 55);
-	// 	border-radius: 100%;
-	// 	aspect-ratio: 1 / 1;
-	// 	filter: blur(5pc);
-	// }
-
-	// &::before {
-	// 	content: "";
-	// 	position: absolute;
-	// 	top: 5%;
-	// 	left: -5%;
-	// 	width: 40%;
-	// 	min-width: 812px;
-	// 	height: auto;
-	// 	background: rgb(246, 228, 255);
-	// 	border-radius: 100%;
-	// 	aspect-ratio: 1 / 1;
-	// 	filter: blur(5pc);
-	// }
-}
-
-.wallet-main-box {
-	align-items: center;
-	align-self: center;
-	background: transparent;
-	// inset: auto;
-	display: flex;
-	flex-flow: column wrap;
-	justify-content: flex-start;
-	position: relative;
-	z-index: 1;
-	gap: 0px;
-	flex: 1 1 auto;
 }
 .wallet-logo {
 	display: flex;
@@ -66,62 +22,75 @@
 	justify-content: center;
 	margin: 2rem;
 	gap: 0.5rem;
-	h1 {
-		font-family: Strawford, Helvetica, sans-serif;
-		font-weight: 600;
-		letter-spacing: 1px;
-		font-size: 3.1rem;
+	
+}
+
+.img1{
+	width: 4rem;
+	@include ab.screen-40 {
+			width: 7rem;
+	
+	}
+}
+
+.img2{
+	width: 18rem;
+	@include ab.screen-40 {
+			width: 30rem;
+		
 	}
 }
 .wallet-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	align-self: center;
-    background: #eacda3;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #d6ae7b, #eacda3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #d6ae7b, #eacda3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #eacda3;  
+    background: linear-gradient(to right, #d6ae7b, #eacda3); 
 	border-radius: 32px;
-	display: flex;
-	flex-flow: column wrap;
-	height: auto;
-	justify-content: center;
-	margin: 0px;
-	max-width: 480px;
-	overflow-wrap: anywhere;
-	padding: 20px;
-	position: relative;
-	text-align: initial;
-	width: auto;
-	z-index: auto;
-	gap: 0px;
-
+	max-width: 20rem;	
+	padding: 0.5rem;
 	h2 {
 		color: rgb(0, 0, 0);
 		font-family: Strawford, Helvetica, sans-serif;
-		font-size: 32px;
+		font-size: 30px;
 		font-weight: 500;
 		margin: 30px 0px;
-		padding: 0px;
 		text-align: center;
 		text-transform: none;
+	
 	}
-}
+@include ab.screen-40 {
+	max-width:40rem;
+	padding: 1.5rem;
 
-.wallet-box-button {
-	// padding-top: 2rem;
 }
-
+}
 .wallet-button {
+	width: 17rem;
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	padding: 0.5rem 13rem 0.5rem 2rem;
+	padding: 0.1rem 13rem 0.1rem 2rem;
 	border: none;
 	outline: none;
 	background: none;
 	gap: 1rem;
+	
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+
+	@include ab.screen-40 {		
+    width: 25rem;
 	margin-top: 1.5rem;
 	margin-bottom: 1.5rem;
+	padding: 0.5rem 13rem 0.5rem 2rem;
+	}
+
+	img{
+		height: 42px;
+		width: 50px;
+	}
 
 	span {
 		font-size: large;
@@ -132,7 +101,12 @@
 		border-radius: 12rem;
 		color: white;
 		cursor: pointer;
+		@include ab.screen-40 {
+			
+		}
+		
 	}
 }
+
 
 
