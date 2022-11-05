@@ -26,20 +26,21 @@
 }
 
 .img1{
-	width: 4rem;
+	width: 3.5rem;
 	@include ab.screen-40 {
-			width: 7rem;
+			width: 6rem;
 	
 	}
 }
 
 .img2{
-	width: 18rem;
+	width: 16rem;
 	@include ab.screen-40 {
-			width: 30rem;
-		
+			width: 27rem;
 	}
 }
+
+
 .wallet-box {
 	display: flex;
 	flex-direction: column;
@@ -66,6 +67,18 @@
 	padding: 1.5rem;
 
 }
+}
+
+
+
+.wallet-box-button{
+	padding-bottom: 1rem;
+	@include ab.screen-40 {
+		
+		padding-bottom: 0rem;
+	
+	}	
+	
 }
 .wallet-button {
 	width: 17rem;
