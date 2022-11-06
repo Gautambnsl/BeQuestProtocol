@@ -6,12 +6,12 @@
 	border-radius: 0.8em;
 
 	padding-inline: 0.6em;
-	margin-block: 1em;
 
-	backdrop-filter: blur(0.5em);
-	// background-color: #2b2b2b75;
-	background-image: linear-gradient(75deg, #74ebd552, #acb6e580);
-	position: sticky;
+	backdrop-filter: blur(0.2em);
+	background-image: linear-gradient(75deg, #d3cce35e, #e9e4f05b);
+	position: fixed;
+	left: 5%;
+	right: 5%;
 	top: 1em;
 
 	transition: transform 0.3s ease-in;
@@ -19,6 +19,7 @@
 	display: flex;
 	align-items: center;
 	font-size: 1.2rem;
+	z-index: 1;
 
 	@include ab.screen-40 {
 		padding-inline: 0.8em;
@@ -46,6 +47,7 @@
 
 			@include ab.screen-40 {
 				display: flex;
+				align-items: center;
 			}
 
 			@include ab.screen-75 {
@@ -55,13 +57,16 @@
 			&__li {
 				a {
 					color: ab.$text-primary;
+					text-decoration: underline transparent;
+
+					transition: color 0.2s ease-in, text-decoration-color 0.2s ease-in;
+
+					&:hover {
+						color: ab.$text-golden;
+						text-decoration-color: ab.$text-golden;
+					}
 				}
 			}
-		}
-	}
-
-	&__launch {
-		a {
 		}
 	}
 }

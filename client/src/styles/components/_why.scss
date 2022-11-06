@@ -1,0 +1,38 @@
+@use "../abstracts" as ab;
+
+.why-parent {
+	margin-block: 5em 0;
+	padding-block: 8em;
+	background-image: linear-gradient(
+		45deg,
+		ab.$background-secondary,
+		ab.$background-primary
+	);
+	border-radius: 2em;
+}
+
+.why {
+	width: min(90%, 80rem);
+	margin-inline: auto;
+
+	color: ab.$text-primary;
+	display: flex;
+	flex-direction: column;
+	gap: 0.4em;
+
+	&-head {
+		font-size: clamp(2.5rem, 4vw, 4rem);
+
+		span {
+			background-image: ab.$bequest-gradient;
+			background-clip: text;
+			color: transparent;
+		}
+	}
+
+	&-p {
+		font-weight: 500;
+		font-size: clamp(1.2rem, 2vw, 1.4rem);
+		color: #e8e8e8;
+	}
+}

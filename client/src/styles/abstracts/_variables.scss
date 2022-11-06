@@ -1,21 +1,10 @@
-$background-primary: #171717;
-$background-secondary: #2b2b2b;
+$background-primary: #f79ad3;
+$background-secondary: #c86fc9;
 
 $text-primary: #ededed;
 $text-secondary: #e8e4e1;
 $text-golden: #ffefd6;
+$text-card: #303c5e;
 $button-text: #fff;
 
-$button-gradient: linear-gradient(120deg, #ca965c, #d7a86e);
-$button-gradietn-hover: linear-gradient(
-	120deg,
-	lighten(#ca965c, 5),
-	lighten(#d7a86e, 5)
-);
-$button-gradietn-active: linear-gradient(
-	120deg,
-	darken(#ca965c, 5),
-	darken(#d7a86e, 5)
-);
-
-$button-primary: hsl(269, 74%, 55%);
+$bequest-gradient: linear-gradient(to right, #e7a977, #ebbe9b);

@@ -1,57 +1,63 @@
 @use "../abstracts" as ab;
 
 .about {
-	width: min(90%, 80rem);
+	margin-top: 2em;
+	width: min(95%, 80rem);
 	margin-inline: auto;
-	margin-block: 1em;
+	border-radius: 0.8em;
+	padding-block: 1em 2em;
 
-	display: flex;
-	flex-direction: column;
-	gap: 1em;
+	background-color: rgba(8, 6, 11, 0.479);
+	backdrop-filter: blur(0.8em);
 
-	@include ab.screen-40 {
-		margin-block: 4em;
-		flex-direction: row-reverse;
-		align-items: center;
+	img {
+		width: clamp(22rem, 80vw, 30rem);
+		margin-inline: auto;
 	}
 
-	&-img {
-		flex: 50%;
-
-		img {
-			width: 100%;
-
-			@include ab.screen-40 {
-				margin-left: auto;
-				max-width: 30rem;
-			}
-		}
-	}
-
-	&-text {
+	&-card {
 		display: flex;
 		flex-direction: column;
-		gap: 0.6em;
+		gap: 2em;
+		padding-inline: 1em;
 
 		@include ab.screen-40 {
-			flex: 50%;
+			flex-direction: row;
+			gap: 1em;
+			justify-content: center;
+			padding-inline: 0;
 		}
 
-		&__head {
-			font-size: clamp(2.5rem, 3.5vw, 4rem);
-			background-image: linear-gradient(120deg, #00f260, #0575e6);
-			background-clip: text;
-			color: transparent;
-		}
+		&-item {
+			background-image: linear-gradient(45deg, #fd746c, #ff9068);
+			border-radius: 0.6em;
+			padding-inline: 0.6em;
+			padding-block: 1em;
 
-		&__p {
-			color: ab.$text-golden;
-			font-size: clamp(1rem, 1.1vw, 1.2rem);
-		}
+			display: flex;
+			flex-direction: column;
+			gap: 0.4em;
 
-		&__launch {
-			margin-block: 0.5em;
-			font-size: clamp(1.5rem, 2vw, 2rem);
+			@include ab.screen-40 {
+				width: min(47%, 30rem);
+				padding-inline: 3em;
+				padding-block: 3em;
+			}
+
+			&:nth-child(2) {
+				background-image: linear-gradient(45deg, #eacda3, #d6ae7b);
+			}
+
+			&__head {
+				font-size: 2rem;
+				color: #311d3f;
+			}
+
+			&__p {
+				color: ab.$text-card;
+				font-size: 1.1rem;
+				font-weight: 500;
+			}
 		}
 	}
 }

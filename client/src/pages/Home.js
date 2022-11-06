@@ -1,29 +1,30 @@
-import About from "../components/HomePage/About";
+import Intro from "../components/HomePage/Intro";
 import Nav from "../components/HomePage/Nav";
-import { useEffect } from "react";
+import Sponsors from "../components/HomePage/Sponsors";
+import About from "../components/HomePage/About";
+import Why from "../components/HomePage/Why";
+import Plans from "../components/HomePage/Plans";
 
 function Home() {
-	useEffect(() => {
-		var prevScrollpos = window.pageYOffset;
-
-		window.onscroll = function () {
-			var currentScrollPos = window.pageYOffset;
-			if (prevScrollpos > currentScrollPos) {
-				document.getElementById("navbar").style.transform = "translateY(0)";
-			} else {
-				document.getElementById("navbar").style.transform = "translateY(-6rem)";
-			}
-			prevScrollpos = currentScrollPos;
-		};
-	});
-
 	return (
 		<>
 			<Nav />
 
-			<main>
+			<div className="main">
+				<div className="intro-parent">
+					<Intro />
+
+					<Sponsors />
+				</div>
+
 				<About />
-			</main>
+
+				<div className="why-parent">
+					<Why />
+				</div>
+
+				<Plans />
+			</div>
 		</>
 	);
 }

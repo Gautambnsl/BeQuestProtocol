@@ -2,14 +2,17 @@
 @use "./components";
 
 body {
-	// background-color: ab.$background-primary;
-	background-image: linear-gradient(to right, #243b55, #141e30);
+	background-image: linear-gradient(to right, #5e5368, #000000);
 	font-family: "Poppins", sans-serif;
 
-	color: ab.$text-primary;
+	// color: ab.$text-primary;
 }
 
 a {
 	text-decoration: none;
-	z-index: 1;
+}
+
+main {
+	outline: 2px solid coral;
+	margin: 0;
 }
