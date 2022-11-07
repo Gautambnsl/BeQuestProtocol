@@ -7,19 +7,19 @@ function Sponsors() {
 	return (
 		<div className="sponsors">
 			<div className="sponsors-logo">
-				<img src={logo1} alt="" />
-				<span className="sponsors-logo__seperator"> </span>
 				<img src={logo2} alt="" />
+				<span className="sponsors-logo__seperator"> </span>
+				<img src={logo1} alt="" />
 			</div>
 
 			<div className="sponsors-text">
 				<p className="sponsors-text__p">
+				* CHAINLINK AUTOMATION : ASSET TRANSFERING USING CHAINLINK KEEPER
+				</p>
+				<p className="sponsors-text__p">
 				* POLYGON CHAIN'S DIGITAL ASSETS SUPPORTED : USDC, DAI, NFTs ETC.
 				</p>
 
-				<p className="sponsors-text__p">
-				* CHAINLINK AUTOMATION : ASSET TRANSFERING USING CHAINLINK KEEPER
-				</p>
 			</div>
 		</div>
 	);
