@@ -2,7 +2,6 @@
 
 .intro-parent {
 	background-image: linear-gradient(to bottom left, #1c152d, #2a0845);
-	// background-image: linear-gradient(to right, #243b55, #141e30);
 	padding-block: 8em 4em;
 
 	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 97%);
@@ -10,7 +9,6 @@
 	@include ab.screen-40 {
 		padding-block: 12em 8em;
 		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 93%);
-		// min-height: 100vh;
 	}
 }
 
