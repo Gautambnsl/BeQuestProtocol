@@ -6,20 +6,20 @@ function Why() {
 			</h2>
 
 			<p className="why-p">
-				IN REAL LIFE YOU HAVE ASSETS LIKE HOME. THEY CAN'T GET LOST OR EVEN
-				AFTER A PERSON DIES THERI ASSETS TRANSFER TO THEIR NEXT HIER OR
-				INHERITOR RIGHT? YEAH..! SO WHY NOT THE SAME WITH DIGITAL ASSETS LIKE
-				COIN, TOKEN, NFT WHICH EVEN WORTH SO MUCH. MOST TIMES WHEN A PERSON DIES
-				OR MISPLACES HIS PRIVATE KEY, HIS CRYPTOCURRENCIES ARE LOST FOREVER ON
-				THE BLOCKCHAIN AND OVER $10 BILLION WORTH OF BITCOIN ALONE HAS BEEN LOST
-				DUE TO THIS.
+				in real life you have assets like home. they can't get lost or even
+				after a person dies theri assets transfer to their next hier or
+				inheritor right? yeah..! so why not the same with digital assets like
+				coin, token, nft which even worth so much. most times when a person dies
+				or misplaces his private key, his cryptocurrencies are lost forever on
+				the blockchain and over $10 billion worth of bitcoin alone has been lost
+				due to this.
 			</p>
 
 			<p className="why-p">
-				BEQUEST ALLOWS YOU TO TRANSFER YOUR ASSETS TO YOUR HEIR IN A
-				DECENTRALIZED MANNER. YOU SIGN THE LEGACY BY PROVIDING NEXT INHERITOR
-				DETAILS LIKE WALLET ADDRESS AND SET A TIME ON WHICH YOU WANT TO EXCUTE
-				YOUR LEGACY REQUEST.
+				bequest allows you to transfer your assets to your heir in a
+				decentralized manner. you sign the legacy by providing next inheritor
+				details like wallet address and set a time on which you want to excute
+				your legacy request.
 			</p>
 		</div>
 	);

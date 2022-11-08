@@ -8,30 +8,34 @@ function About() {
 			<div className="about-card">
 				<div className="about-card-item">
 					<h2 className="about-card-item__head">About BeQuest Protocol</h2>
+					<div className="about-car-item__text">
+						<p className="about-card-item__text-p">
+							bequest came into existence with the purpose of protecting the
+							digital assets from loss of private key or death.
+						</p>
 
-					<p className="about-card-item__p">
-					BEQUEST CAME INTO EXISTENCE WITH THE PURPOSE OF PROTECTING THE DIGITAL ASSETS FROM LOSS OF PRIVATE KEY OR DEATH.
-					</p>
-
-					<p className="about-card-item__p">
-					THE ASSETS WILL ALWAYS BE IN THE OWNER'S ADDRESS AND WILL BE TRANSFERED TO THEIR HEIR ACCORDING TO THEIR LEGACY OR WILL.
-					</p>
-					
+						<p className="about-card-item__text-p">
+							the assets will always be in the owner's address and will be
+							transfered to their heir according to their legacy or will.
+						</p>
+					</div>
 				</div>
 				<div className="about-card-item">
 					<h2 className="about-card-item__head">
 						Fully Decentralized : Web3 Solution
 					</h2>
-					<p className="about-card-item__p">
-					USER DON'T HAVE TO SHARE THEIR PRECIOUS PRIVATE KEY TO ANYONE.
-					</p>
-					<p className="about-card-item__p">
-					JUST APROVE ASSET  AND SIGN YOUR LEGACY IN BEQUEST PROTOCOL'S SMART CONTRACT 					</p>
-					<p className="about-card-item__p">
-					SMART CONTRACT WILL EXECUTE YOUR LEGACY REQUEST ACCORDINGLY.
-					</p>
-					
-				</div>{" "}
+
+					<div className="about-car-item__text">
+						<p className="about-card-item__text-p">
+							user don't have to share their precious private key to anyone.
+							just aprove asset and sign your legacy in bequest protocol's smart
+							contract.
+						</p>
+						<p className="about-card-item__text-p">
+							smart contract will execute your legacy request accordingly.
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

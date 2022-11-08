@@ -1,10 +1,36 @@
-$background-primary: #f79ad3;
-$background-secondary: #c86fc9;
+$background-primary: #171717;
+$background-secondary: #212121;
 
 $text-primary: #ededed;
-$text-secondary: #e8e4e1;
+$text-secondary: #e8e8e8;
 $text-golden: #ffefd6;
+
+$text-card-head: #1f1d36;
 $text-card: #303c5e;
+
+$text-planning-head: #e61d8c;
 $button-text: #fff;
 
-$bequest-gradient: linear-gradient(to right, #e7a977, #ebbe9b);
+$button-primary: #8937e1;
+$button-secondary: #fee9d7;
+
+$input-focus: #b762c0;
+$active: #ecc489;
+
+$error: #ff3d3d;
+$warning: #ffd369;
+$success: #4e9f3d;
+
+$bequest-gradient: linear-gradient(to right, #eacda3, #d6ae7b);
+
+$button-gradient: linear-gradient(
+	315deg,
+	rgba(101, 0, 94, 1) 3%,
+	rgba(60, 132, 206, 1) 38%,
+	rgba(255, 25, 25, 1) 98%
+);
+
+$card-gradient1: linear-gradient(45deg, #ff928b, #ffac81);
+$card-gradient2: linear-gradient(45deg, #eacda3, #d6ae7b);
+
+$planning-card: linear-gradient(45deg, #ffd8cb, #f9d29d);

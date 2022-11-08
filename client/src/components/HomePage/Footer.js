@@ -9,22 +9,6 @@ const Footer = () => {
 						Company<span>logo</span>
 					</h3>
 
-					<p class="footer-links">
-						<a href="#" class="link-1">
-							Home
-						</a>
-
-						<a href="#">Blog</a>
-
-						<a href="#">Pricing</a>
-
-						<a href="#">About</a>
-
-						<a href="#">Faq</a>
-
-						<a href="#">Contact</a>
-					</p>
-
 					<p class="footer-company-name">Company Name © 2015</p>
 				</div>
 
@@ -52,8 +36,9 @@ const Footer = () => {
 				<div class="footer-right">
 					<p class="footer-company-about">
 						<span>About the company</span>
-						Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
-						euismod convallis velit, eu auctor lacus vehicula sit amet.
+						BeQuest came into existence with the purpose of protecting the
+						digital assets. BeQuest helps the users to secure their digital
+						assets like cryptocurrencies, NFTs etc.
 					</p>
 
 					<div class="footer-icons">

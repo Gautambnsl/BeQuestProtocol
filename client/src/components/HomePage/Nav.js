@@ -50,13 +50,8 @@ function Nav() {
 				</ul>
 			</div>
 
-			<div className="button home-nav__launch" onClick={handleWalletNavigate}>
+			<div className="button home-nav__launch">
 				<Link to="/wallet">Launch App</Link>
-				<div className="">
-					<div className="wave"></div>
-					<div className="wave"></div>
-					<div className="wave"></div>
-				</div>
 			</div>
 		</nav>
 	);

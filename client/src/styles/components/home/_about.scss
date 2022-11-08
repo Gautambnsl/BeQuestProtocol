@@ -1,0 +1,72 @@
+@use "../../abstracts" as ab;
+
+.about {
+	margin-top: 2em;
+	width: min(95%, 80rem);
+	margin-inline: auto;
+	border-radius: 0.8em;
+	padding-block: 1em 4em;
+
+	background-color: ab.$background-secondary;
+
+	text-transform: capitalize;
+
+	img {
+		width: clamp(22rem, 80vw, 30rem);
+		margin-inline: auto;
+		margin-bottom: -1.8em;
+	}
+
+	&-card {
+		display: flex;
+		flex-direction: column;
+		gap: 2em;
+		padding-inline: 1em;
+
+		@include ab.screen-40 {
+			flex-direction: row;
+			gap: 1em;
+			justify-content: center;
+			padding-inline: 0;
+		}
+
+		&-item {
+			background-image: ab.$card-gradient1;
+			border-radius: 0.6em;
+			padding-inline: 0.6em;
+			padding-block: 1em;
+
+			display: flex;
+			flex-direction: column;
+			gap: 0.4em;
+
+			@include ab.screen-40 {
+				width: min(47%, 30rem);
+				padding-inline: 1.2em;
+				padding-block: 1.5em;
+			}
+
+			@include ab.screen-50 {
+				padding-inline: 2.3em;
+				padding-block: 3em;
+			}
+
+			&:nth-child(2) {
+				background-image: ab.$card-gradient2;
+			}
+
+			&__head {
+				font-size: clamp(1.8rem, 3vw, 2.2rem);
+				color: ab.$text-card-head;
+			}
+
+			&__text {
+				&-p {
+					color: ab.$text-card;
+					font-size: clamp(1rem, 2.8vw, 1.1rem);
+					font-weight: 500;
+				}
+			}
+		}
+	}
+}
