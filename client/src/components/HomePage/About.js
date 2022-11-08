@@ -7,35 +7,30 @@ function About() {
 
 			<div className="about-card">
 				<div className="about-card-item">
-					<h2 className="about-card-item__head">About BeQuest</h2>
+					<h2 className="about-card-item__head">About BeQuest Protocol</h2>
 
 					<p className="about-card-item__p">
-						BeQuest came into existence with the purpose of protecting the
-						digital assets. BeQuest helps the users to secure their digital
-						assets like cryptocurrencies, NFTs etc. The assets will always be in
-						the owner's address and will be transferred to their heir(s)
-						according to their legacy or will.
+					BEQUEST CAME INTO EXISTENCE WITH THE PURPOSE OF PROTECTING THE DIGITAL ASSETS FROM LOSS OF PRIVATE KEY OR DEATH.
 					</p>
 
 					<p className="about-card-item__p">
-						You Can Die But Your Assets Can't, So why not BeQuest!
+					THE ASSETS WILL ALWAYS BE IN THE OWNER'S ADDRESS AND WILL BE TRANSFERED TO THEIR HEIR ACCORDING TO THEIR LEGACY OR WILL.
 					</p>
+					
 				</div>
 				<div className="about-card-item">
 					<h2 className="about-card-item__head">
-						Real Web3 Solution Of a Real Web3 Problem!
+						Fully Decentralized : Web3 Solution
 					</h2>
-
 					<p className="about-card-item__p">
-						IRL You have assets like Home. They can't get Lost Or even After a
-						person dies they transfer to their next Gin Right? Yeah..! So why
-						not the same with Digital Assets like Coin, Token, NFT Which even
-						worth so much.
+					USER DON'T HAVE TO SHARE THEIR PRECIOUS PRIVATE KEY TO ANYONE.
 					</p>
-
 					<p className="about-card-item__p">
-						BeQuest Protocol is Perfect Solution for this.
+					JUST APROVE ASSET  AND SIGN YOUR LEGACY IN BEQUEST PROTOCOL'S SMART CONTRACT 					</p>
+					<p className="about-card-item__p">
+					SMART CONTRACT WILL EXECUTE YOUR LEGACY REQUEST ACCORDINGLY.
 					</p>
+					
 				</div>{" "}
 			</div>
 		</div>

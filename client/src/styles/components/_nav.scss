@@ -4,7 +4,7 @@
 	width: min(90%, 80rem);
 	margin-inline: auto;
 	border-radius: 0.8em;
-
+	
 	padding-inline: 0.6em;
 
 	backdrop-filter: blur(0.2em);
@@ -56,7 +56,8 @@
 
 			&__li {
 				a {
-					color: ab.$text-primary;
+					color: black;
+					
 					text-decoration: underline transparent;
 
 					transition: color 0.2s ease-in, text-decoration-color 0.2s ease-in;

@@ -1,12 +1,15 @@
 @use "../abstracts" as ab;
 
 .plans {
-	background-image: linear-gradient(to bottom right, #5f0a87, #a4508b);
+	// background-image: linear-gradient(to bottom right, #5f0a87, #a4508b);
+	background: linear-gradient(to right, #d387ab, #e899dc);
+
 	position: relative;
 	top: -2em;
 	z-index: -1;
 
 	padding-block: 8em 5em;
+	border-radius: 2em;
 
 	&-card {
 		width: min(90%, 70rem);
@@ -31,8 +34,7 @@
 			border-radius: 0.8em;
 			padding-inline: 0.8em;
 			padding-block: 1.4em;
-
-			background-image: linear-gradient(to top right, #ff928b, #ffac81);
+			background-image: linear-gradient(to top right, #b0f3f1, #ffcfdf);
 
 			@include ab.screen-40 {
 				transform: rotate(10deg);
@@ -56,26 +58,22 @@
 			}
 
 			img {
-				max-width: 23rem;
+				max-width: 20rem;
 				margin-inline: auto;
 			}
 
 			&-head {
 				color: #e61d8c;
-				font-size: clamp(1.5rem, 3vw, 2rem);
+				font-size: clamp(1.3rem, 2.6vw, 1.8rem);
 			}
 
 			&-ul {
 				margin: 0;
 				padding-inline: 2em 0;
 
-				@include ab.screen-75 {
-					padding-inline: 3em 0;
-				}
-
 				&__li {
 					font-weight: 500;
-					font-size: clamp(1rem, 2vw, 1.2rem);
+					font-size: clamp(1rem, 1.6vw, 1.1rem);
 					color: #222831;
 				}
 			}

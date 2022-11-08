@@ -6,19 +6,20 @@ function Why() {
 			</h2>
 
 			<p className="why-p">
-				Most times when a person dies or misplaces his private key, his
-				cryptocurrencies are lost forever on the Blockchain and over $10 billion
-				worth of bitcoin alone has been lost due to this.
+				IN REAL LIFE YOU HAVE ASSETS LIKE HOME. THEY CAN'T GET LOST OR EVEN
+				AFTER A PERSON DIES THERI ASSETS TRANSFER TO THEIR NEXT HIER OR
+				INHERITOR RIGHT? YEAH..! SO WHY NOT THE SAME WITH DIGITAL ASSETS LIKE
+				COIN, TOKEN, NFT WHICH EVEN WORTH SO MUCH. MOST TIMES WHEN A PERSON DIES
+				OR MISPLACES HIS PRIVATE KEY, HIS CRYPTOCURRENCIES ARE LOST FOREVER ON
+				THE BLOCKCHAIN AND OVER $10 BILLION WORTH OF BITCOIN ALONE HAS BEEN LOST
+				DUE TO THIS.
 			</p>
 
 			<p className="why-p">
-				Bequest allows you to transfer your assets to your heir in a
-				decentralized manner. User register and provide their next of kin
-				details (address) User also sets a checkIn interval(how frequent they
-				want to check in which when elapses without checking in, the token gets
-				transferred) User selects tokens to be inherited (and allow the Bequest
-				smart contract to spend their token If User does not check in before
-				checkInterval has passed, the tokens are transferred to the next of kin.
+				BEQUEST ALLOWS YOU TO TRANSFER YOUR ASSETS TO YOUR HEIR IN A
+				DECENTRALIZED MANNER. YOU SIGN THE LEGACY BY PROVIDING NEXT INHERITOR
+				DETAILS LIKE WALLET ADDRESS AND SET A TIME ON WHICH YOU WANT TO EXCUTE
+				YOUR LEGACY REQUEST.
 			</p>
 		</div>
 	);

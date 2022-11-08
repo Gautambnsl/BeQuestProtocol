@@ -1,7 +1,7 @@
 @use "../abstracts" as ab;
 
 .intro-parent {
-	background-image: linear-gradient(to bottom left, #1c152d, #2a0845);
+	// background-image: linear-gradient(to bottom left, #1c152d, #2a0845);
 	padding-block: 8em 4em;
 
 	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 97%);
@@ -49,13 +49,19 @@
 
 		&__head {
 			font-size: clamp(2.5rem, 3.5vw, 4rem);
-			background-image: linear-gradient(120deg, #00f260, #0575e6);
+			// background-image: linear-gradient(120deg, #00f260, #0575e6);
+			background: linear-gradient(
+				to right,
+				#eacda3,
+				#d6ae7b
+			); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 			background-clip: text;
 			color: transparent;
 		}
 
 		&__p {
-			color: ab.$text-golden;
+			color: #fff7e9;
 			font-size: clamp(1rem, 1.1vw, 1.2rem);
 		}
 
