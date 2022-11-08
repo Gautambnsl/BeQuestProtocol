@@ -8,7 +8,7 @@
 	// 	ab.$background-secondary,
 	// 	ab.$background-primary
 	// );
-	    // background-image: radial-gradient(circle farthest-side, #baae8e, #ad9249);
+	// background-image: radial-gradient(circle farthest-side, #baae8e, #ad9249);
 
 	border-radius: 2em;
 }
@@ -23,7 +23,7 @@
 	gap: 0.4em;
 
 	&-head {
-		font-size: clamp(2.5rem, 4vw, 4rem);
+		font-size: clamp(2rem, 3.5vw, 3.2rem);
 
 		span {
 			background-image: ab.$bequest-gradient;
@@ -34,7 +34,7 @@
 
 	&-p {
 		font-weight: 500;
-		font-size: clamp(1.2rem, 2vw, 1.4rem);
+		font-size: clamp(1rem, 1.6vw, 1.2rem);
 		color: #e8e8e8;
 	}
 }
