@@ -4,6 +4,8 @@ import Sponsors from "../components/HomePage/Sponsors";
 import About from "../components/HomePage/About";
 import Why from "../components/HomePage/Why";
 import Plans from "../components/HomePage/Plans";
+import Footer from "../components/HomePage/Footer";
+import Contributors from "../components/HomePage/Contributors.js";
 
 function Home() {
 	return (
@@ -24,6 +26,8 @@ function Home() {
 				</div>
 
 				<Plans />
+				<Contributors />
+				<Footer />
 			</div>
 		</>
 	);
