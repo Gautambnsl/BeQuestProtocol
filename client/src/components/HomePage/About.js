@@ -1,12 +1,27 @@
 import BeQuestLogo from "../../assests/final-logo.png";
+import { useRef, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 function About() {
+	const { ref, inView, entry } = useInView({
+		threshold: 0.3,
+	});
+	const leftCardRef = useRef();
+	const rightCardRef = useRef();
+
+	useEffect(() => {
+		if (inView) {
+			leftCardRef.current.classList.add("left");
+			rightCardRef.current.classList.add("right");
+		}
+	}, [inView]);
+
 	return (
-		<div className="about" id="about">
+		<div ref={ref} className="about" id="about">
 			<img src={BeQuestLogo} alt="BeQuest" />
 
 			<div className="about-card">
-				<div className="about-card-item">
+				<div className="about-card-item" ref={leftCardRef}>
 					<h2 className="about-card-item__head">About BeQuest Protocol</h2>
 					<div className="about-car-item__text">
 						<p className="about-card-item__text-p">
@@ -20,7 +35,8 @@ function About() {
 						</p>
 					</div>
 				</div>
-				<div className="about-card-item">
+
+				<div className="about-card-item item-right" ref={rightCardRef}>
 					<h2 className="about-card-item__head">
 						Fully Decentralized : Web3 Solution
 					</h2>

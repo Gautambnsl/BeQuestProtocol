@@ -1,11 +1,27 @@
 import CurrentFeature from "../../assests/Yacht-bro.svg";
 import FuturePlan from "../../assests/Code-typing-bro.svg";
+import { useRef, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 function Plans() {
+	const { ref, inView, entry } = useInView({
+		threshold: 0.3,
+	});
+
+	const leftCardRef = useRef();
+	const rightCardRef = useRef();
+
+	useEffect(() => {
+		if (inView) {
+			leftCardRef.current.classList.add("left");
+			rightCardRef.current.classList.add("right");
+		}
+	}, [inView]);
+
 	return (
-		<div className="plans" id="plans">
+		<div className="plans" id="plans" ref={ref}>
 			<div className="plans-card">
-				<div className="plans-card__item">
+				<div className="plans-card__item left-item" ref={leftCardRef}>
 					<img src={CurrentFeature} alt="" />
 
 					<div className="plans-card__item-info">
@@ -32,7 +48,7 @@ function Plans() {
 					</div>
 				</div>
 
-				<div className="plans-card__item">
+				<div className="plans-card__item" ref={rightCardRef}>
 					<img src={FuturePlan} alt="" />
 
 					<div className="plans-card__item-info">

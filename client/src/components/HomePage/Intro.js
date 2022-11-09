@@ -1,5 +1,6 @@
 import Web3Img from "../../assests/Bitcoin-bro.svg";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Intro() {
 	const navigate = useNavigate();
@@ -9,11 +10,21 @@ function Intro() {
 	};
 	return (
 		<div className="intro">
-			<div className="intro-img">
+			<motion.div
+				initial={{ opacity: 0, scale: 0.5 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ duration: 0.8 }}
+				className="intro-img"
+			>
 				<img src={Web3Img} alt="" />
-			</div>
+			</motion.div>
 
-			<div className="intro-text">
+			<motion.div
+				initial={{ y: "30em" }}
+				animate={{ y: 0 }}
+				transition={{ duration: 0.8 }}
+				className="intro-text"
+			>
 				<h1 className="intro-text__head bequest-gradient">
 					Bequest your legacy now
 				</h1>
@@ -33,7 +44,7 @@ function Intro() {
 						<Link to="/wallet">Launch App</Link>
 					</button>
 				</div>
-			</div>
+			</motion.div>
 		</div>
 	);
 }

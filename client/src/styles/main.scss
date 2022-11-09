@@ -7,6 +7,10 @@ body {
 	color: ab.$text-primary;
 }
 
+#root {
+	overflow-x: hidden;
+}
+
 .bequest-gradient {
 	background-image: ab.$bequest-gradient;
 	background-clip: text;
