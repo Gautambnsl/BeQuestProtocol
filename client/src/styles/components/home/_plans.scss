@@ -36,6 +36,7 @@
 			padding-inline: 0.8em;
 			padding-block: 1.4em;
 			background-image: ab.$planning-card;
+			box-shadow: ab.$box-shadow;
 
 			@include ab.screen-50 {
 				transform: rotate(10deg);

@@ -7,31 +7,35 @@ import Anshul from "../../assests/anshul.jpg";
 const Contributors = () => {
 	return (
 		<div className="contributors">
-			<img src={ContributorsLogo} alt="" />
+			<h1 className="contributors-head">Contributors</h1>
 
-			<div className="contributors-list">
-				<div className="contributors-list__profile">
-					<img src={Krishan} alt="" />
+			<div>
+				<img src={ContributorsLogo} alt="" />
 
-					<h3 className="contributors-list__profile-name">Krishan Kant</h3>
-				</div>
+				<div className="contributors-list">
+					<div className="contributors-list__profile">
+						<img src={Krishan} alt="" />
 
-				<div className="contributors-list__profile">
-					<img src={Rohan} alt="" />
+						<h3 className="contributors-list__profile-name">Krishan Kant</h3>
+					</div>
 
-					<h3 className="contributors-list__profile-name">rohan verma</h3>
-				</div>
+					<div className="contributors-list__profile">
+						<img src={Rohan} alt="" />
 
-				<div className="contributors-list__profile">
-					<img src={Gautam} alt="" />
+						<h3 className="contributors-list__profile-name">rohan verma</h3>
+					</div>
 
-					<h3 className="contributors-list__profile-name">Gautam Bansal</h3>
-				</div>
+					<div className="contributors-list__profile">
+						<img src={Gautam} alt="" />
 
-				<div className="contributors-list__profile">
-					<img src={Anshul} alt="" />
+						<h3 className="contributors-list__profile-name">Gautam Bansal</h3>
+					</div>
 
-					<h3 className="contributors-list__profile-name">Anshul Vats</h3>
+					<div className="contributors-list__profile">
+						<img src={Anshul} alt="" />
+
+						<h3 className="contributors-list__profile-name">Anshul Vats</h3>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -4,10 +4,11 @@ import Wallet from "./pages/Wallet";
 
 import Dashboard from "./pages/Dashboard";
 
-import Will from "./pages/Will";
 import CreateWill from "./pages/CreateWill";
 import ShowWill from "./pages/ShowWill";
+import StopWill from "./pages/StopWill";
 import Beneficiary from "./pages/Beneficiary";
+
 import NotFound from "./pages/NotFound";
 
 function Path() {
@@ -17,13 +18,12 @@ function Path() {
 				<Route path="/" element={<Home />} />
 				<Route path="/wallet" element={<Wallet />} />
 
-				<Route path="/dashboard" element={<Dashboard />} />
-
-				<Route path="/will" element={<Will />}>
-					<Route index element={<Navigate to="show-will" />} />
+				<Route path="/dashboard" element={<Dashboard />}>
+					<Route index element={<Navigate to="create-will" />} />
 
 					<Route path="create-will" element={<CreateWill />} />
 					<Route path="show-will" element={<ShowWill />} />
+					<Route path="stop-will" element={<StopWill />} />
 					<Route path="beneficiary" element={<Beneficiary />} />
 				</Route>
 				<Route path="/*" element={<NotFound />} />
