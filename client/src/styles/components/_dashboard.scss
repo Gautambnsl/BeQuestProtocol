@@ -1,0 +1,168 @@
+@use "../abstracts" as ab;
+
+.dashboard {
+	min-height: 50vh;
+
+	&-nav {
+		width: min(90%, 80rem);
+		margin-inline: auto;
+		margin-block: 1em;
+		padding-block: 1em;
+		display: flex;
+		align-items: center;
+		flex-direction: row-reverse;
+
+		@include ab.screen-50 {
+			flex-direction: row;
+		}
+
+		padding-inline: clamp(1em, 2vw, 1.8em);
+		padding-block: 1em;
+
+		border-radius: 0.8em;
+
+		backdrop-filter: blur(0.2em);
+		background-color: rgba(ab.$background-secondary, 0.5);
+		position: sticky;
+		top: 1em;
+
+		img {
+			width: clamp(14rem, 30vw, 18rem);
+		}
+
+		&__links {
+			margin-right: auto;
+
+			@include ab.screen-50 {
+				margin-right: 0;
+				margin-left: auto;
+			}
+
+			&-toggle {
+				position: relative;
+
+				@include ab.screen-50 {
+					display: none;
+				}
+
+				&:has(#toggle:checked) + ul {
+					clip-path: circle(150% at left center);
+				}
+
+				label {
+					span {
+						display: block;
+						background-image: linear-gradient(45deg, #5f0a87, #a4508b);
+						width: 1.6rem;
+						height: 0.25rem;
+						border-radius: 0.4em;
+						position: absolute;
+						top: 0;
+
+						transition: translate 0.3s ease-in;
+
+						&:nth-child(2) {
+							width: 1.2rem;
+							top: 0.5em;
+
+							transition: all 0.3s ease-in;
+						}
+
+						&:nth-child(3) {
+							width: 2rem;
+							top: -0.5em;
+
+							transition: all 0.3s ease-in;
+						}
+					}
+				}
+
+				input {
+					display: none;
+
+					&:checked ~ label span {
+						&:first-child {
+							translate: -50vw;
+						}
+
+						&:nth-child(2) {
+							width: 2rem;
+							rotate: 130deg;
+							translate: 0 -0.5rem;
+						}
+
+						&:nth-child(3) {
+							width: 2rem;
+							rotate: 50deg;
+							translate: 0 0.7rem;
+						}
+					}
+				}
+			}
+
+			&-ul {
+				list-style-type: none;
+				backdrop-filter: blur(0.2em);
+				background-color: rgba(ab.$background-secondary, 0.9);
+
+				margin: 0;
+				padding-inline: 0;
+				padding-block: 3em;
+				border-radius: 0.8em;
+
+				position: absolute;
+				top: 120%;
+				left: 0;
+				right: 0;
+
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 2em;
+
+				clip-path: circle(0 at left center);
+
+				transition: clip-path 0.5s ease-in;
+
+				&.open {
+					clip-path: circle(150% at left center);
+				}
+
+				@include ab.screen-50 {
+					clip-path: inset(0);
+					padding: 0;
+					position: static;
+					background-color: transparent;
+					backdrop-filter: blur(0);
+					flex-direction: row;
+					gap: clamp(1.6em, 3vw, 2.4em);
+				}
+
+				li {
+					font-size: clamp(1.1rem, 3vw, 1.2rem);
+
+					a {
+						text-decoration: underline transparent;
+						transition: color 0.2s ease-in, text-decoration-color 0.2s ease-in;
+						color: ab.$text-golden;
+
+						&:hover {
+							color: ab.$input-focus;
+						}
+
+						&.active {
+							text-decoration-color: ab.$text-planning-head;
+							color: ab.$text-planning-head;
+						}
+					}
+
+					&:last-child {
+						a {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+}
