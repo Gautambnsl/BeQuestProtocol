@@ -1,7 +1,7 @@
 @use "../../abstracts" as ab;
 
 .token {
-	backdrop-filter: blur(0.2em);
+	// backdrop-filter: blur(0.2em);
 	background-color: rgba(ab.$background-token, 0.3);
 	border-radius: 0.6em;
 	padding-inline: 0.8em;
@@ -14,7 +14,6 @@
 	gap: 0.6em;
 
 	min-width: 10rem;
-	// z-index: -1;
 
 	@include ab.screen-50 {
 		min-width: 0;
