@@ -1,0 +1,73 @@
+@use "../../abstracts" as ab;
+
+.create-will {
+	&__toggle {
+		cursor: pointer;
+		user-select: none;
+		color: ab.$text-golden;
+		text-decoration: underline;
+		font-size: clamp(1.3rem, 4vw, 1.6rem);
+
+		transition: color 0.3s ease-in;
+
+		&.show {
+			color: ab.$text-planning-head;
+		}
+	}
+
+	&__token {
+		margin-block: 1em;
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+
+		@include ab.screen-50 {
+			flex-direction: row-reverse;
+		}
+
+		&-list {
+			background-color: ab.$background-secondary;
+			min-height: 6rem;
+			overflow-y: hidden;
+			overflow-x: scroll;
+			display: flex;
+
+			gap: 0.6em;
+
+			border-radius: 0.6em;
+			padding-block: 1.4em;
+			padding-inline: 1em;
+			// z-index: -1;
+
+			&.flex {
+				align-items: center;
+				justify-content: center;
+			}
+
+			@include ab.screen-50 {
+				width: min(40%, 30rem);
+				flex-wrap: wrap;
+				max-height: 75vh;
+				overflow-y: scroll;
+				overflow-x: hidden;
+
+				justify-content: center;
+				// padding-inline: 1.5em;
+			}
+
+			@include ab.screen-68 {
+				width: min(45%, 30rem);
+			}
+
+			& > p {
+				font-size: 1.2rem;
+			}
+		}
+
+		&-input {
+			margin-right: auto;
+			width: 100%;
+			background-color: lightsalmon;
+		}
+	}
+}

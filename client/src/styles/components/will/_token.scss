@@ -1,0 +1,71 @@
+@use "../../abstracts" as ab;
+
+.token {
+	backdrop-filter: blur(0.2em);
+	background-color: rgba(ab.$background-token, 0.3);
+	border-radius: 0.6em;
+	padding-inline: 0.8em;
+	padding-block: 0.4em;
+	cursor: pointer;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.6em;
+
+	min-width: 10rem;
+	// z-index: -1;
+
+	@include ab.screen-50 {
+		min-width: 0;
+		width: 100%;
+	}
+
+	@include ab.screen-68 {
+		width: 48%;
+	}
+
+	&-logo {
+		border-radius: 50%;
+		aspect-ratio: 1/1;
+		width: 7rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: ab.$background-secondary;
+
+		p {
+			text-align: center;
+			font-size: 1rem;
+			word-break: break-all;
+		}
+	}
+
+	&-info {
+		text-align: center;
+
+		&__balance {
+			color: ab.$text-planning-head;
+			text-decoration: underline transparent;
+
+			transition: text-decoration-color 0.3s ease-in;
+		}
+
+		&__name {
+			color: ab.$text-golden;
+			text-decoration: underline transparent;
+
+			transition: text-decoration-color 0.3s ease-in;
+		}
+	}
+
+	&:hover &-info {
+		&__balance {
+			text-decoration-color: ab.$text-planning-head;
+		}
+
+		&__name {
+			text-decoration-color: ab.$text-golden;
+		}
+	}
+}
