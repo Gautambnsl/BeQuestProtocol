@@ -1,6 +1,6 @@
 import ContributorsLogo from "../../assests/contributors.svg";
 import Rohan from "../../assests/rohan.png";
-import Krishan from "../../assests/krishan.png";
+import Krishan from "../../assests/krishan.jpeg";
 import Gautam from "../../assests/gautam.jpg";
 import Anshul from "../../assests/anshul.jpg";
 
