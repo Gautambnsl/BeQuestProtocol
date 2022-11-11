@@ -63,8 +63,35 @@ function CreateWill() {
 				) : (
 					""
 				)}
-
-				<div className="create-will__token-input ">adfadfs</div>
+				<div className="create-will__token-input">
+					adfadfs
+					<form>
+						<input type="text" name="tokenName" placeholder="Token Name" />
+						<input
+							type="text"
+							name="contractAddress"
+							placeholder="Contract Address"
+						/>
+						<input type="number" name="amount" placeholder="Number" />
+						<input
+							type="text"
+							name="benificiaryAddress"
+							placeholder="Benificiary Addresss"
+						/>
+						<input
+							type="text"
+							name="transferDate"
+							placeholder="Transfer Date"
+						/>
+						<textarea
+							name="anyMessage"
+							rows="2"
+							cols="25"
+							placeholder="Message"
+						></textarea>
+						<button>click</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	);
