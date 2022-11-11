@@ -2,6 +2,12 @@ import BeQuestLogo from "../assests/final-logo.png";
 import Metamask from "../assests/metamask.svg";
 import WalletConnect from "../assests/walletconnect.svg";
 import Ledger from "../assests/ledger.svg";
+import { connectWallet } from "../backendConnectors/connectWallet";
+
+
+
+
+
 
 function Wallet() {
 	return (
@@ -16,7 +22,7 @@ function Wallet() {
 				<button className="wallet-collection__item">
 					<img src={Metamask} alt="" />
 
-					<span>Metamask</span>
+					<span onClick={connectWallet}>Metamask</span>
 				</button>
 
 				<button className="wallet-collection__item">

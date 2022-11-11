@@ -1,12 +1,12 @@
 import React from "react";
-
+import logoName from "../../assests/logo-name.png"
 const Footer = () => {
 	return (
 		<div className="footer-main">
 			<footer class="footer-distributed">
 				<div class="footer-left">
 					<h3>
-						Company<span>logo</span>
+						<img src={logoName} alt="" />
 					</h3>
 
 					<p class="footer-company-name">Company Name © 2015</p>
@@ -16,19 +16,19 @@ const Footer = () => {
 					<div>
 						<i class="fa fa-map-marker"></i>
 						<p>
-							<span>444 S. Cedros Ave</span> Solana Beach, California
+							<span> Devpost💖 Hackathon</span>Chainlinkfall2022👨‍💻
 						</p>
 					</div>
 
 					<div>
 						<i class="fa fa-phone"></i>
-						<p>+1.555.555.5555</p>
+						<p>+91 8920304880</p>
 					</div>
 
 					<div>
 						<i class="fa fa-envelope"></i>
 						<p>
-							<a href="mailto:support@company.com">support@company.com</a>
+							<a href="mailto:support@company.com">bansalgautam005@gmail.com</a>
 						</p>
 					</div>
 				</div>
@@ -38,7 +38,7 @@ const Footer = () => {
 						<span>About the company</span>
 						BeQuest came into existence with the purpose of protecting the
 						digital assets. BeQuest helps the users to secure their digital
-						assets like cryptocurrencies, NFTs etc.
+						assets like cryptocurrencies, NFTs etc from Loss Of Private Key Or Death.
 					</p>
 
 					<div class="footer-icons">
