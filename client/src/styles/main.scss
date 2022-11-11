@@ -42,5 +42,5 @@ main {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background-color: #f5f5f5f5;
+	background-color: lighten($color: #555, $amount: 10);
 }

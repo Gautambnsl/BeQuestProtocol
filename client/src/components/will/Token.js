@@ -8,6 +8,7 @@ function Token({ decimal, name, logo, balance, symbol }) {
 		imgRef.current.style.display = "none";
 		tokenRef.current.style.display = "block";
 	};
+
 	return (
 		<div className="token">
 			<div className="token-logo">

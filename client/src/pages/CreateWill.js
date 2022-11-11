@@ -3,7 +3,7 @@ import Token from "../components/will/Token";
 
 function CreateWill() {
 	const [userTokens, setUserTokens] = useState([]);
-	const [showUserTokens, setShowUserTokens] = useState(false);
+	const [showUserTokens, setShowUserTokens] = useState(true);
 
 	useEffect(() => {
 		const userTokenEndpoint = `https://api.covalenthq.com/v1/${process.env.REACT_APP_CHAINID}/address/${process.env.REACT_APP_ADDRESS}/balances_v2/?&key=${process.env.REACT_APP_API_KEY}`;

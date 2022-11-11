@@ -123,7 +123,6 @@
 				clip-path: circle(0 at left center);
 
 				transition: clip-path 0.5s ease-in;
-				z-index: 2;
 
 				&.open {
 					clip-path: circle(150% at left center);
