@@ -4,7 +4,7 @@
 	min-height: 50vh;
 
 	&-nav {
-		width: min(90%, 80rem);
+		width: min(90%, 100rem);
 		margin-inline: auto;
 		margin-block: 1em;
 		padding-block: 1em;
@@ -164,5 +164,12 @@
 				}
 			}
 		}
+	}
+
+	&-content {
+		width: min(90%, 100rem);
+		margin-inline: auto;
+		margin-block: 3em;
+		min-height: 75vh;
 	}
 }

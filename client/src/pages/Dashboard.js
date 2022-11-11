@@ -42,19 +42,31 @@ function Dashboard() {
 
 					<ul className="dashboard-nav__links-ul" ref={navRef}>
 						<li>
-							<NavLink to="/dashboard/create-will" activeClassName="active">
+							<NavLink
+								to="/dashboard/create-will"
+								className={(navData) => (navData.isActive ? "active" : "")}
+								// activeClassName="active"
+							>
 								Create Will
 							</NavLink>
 						</li>
 
 						<li>
-							<NavLink to="/dashboard/edit-will" activeClassName="active">
+							<NavLink
+								to="/dashboard/edit-will"
+								className={(navData) => (navData.isActive ? "active" : "")}
+								// activeClassName="active"
+							>
 								Edit Will
 							</NavLink>
 						</li>
 
 						<li>
-							<NavLink to="/dashboard/beneficiary" activeClassName="active">
+							<NavLink
+								to="/dashboard/beneficiary"
+								className={(navData) => (navData.isActive ? "active" : "")}
+								//  activeClassName="active"
+							>
 								Beneficiary
 							</NavLink>
 						</li>

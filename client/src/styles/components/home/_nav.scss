@@ -4,7 +4,7 @@
 	width: min(90%, 80rem);
 	margin-inline: auto;
 	border-radius: 0.8em;
-	
+
 	padding-inline: 0.6em;
 
 	backdrop-filter: blur(0.2em);
@@ -19,6 +19,7 @@
 	display: flex;
 	align-items: center;
 	font-size: 1.2rem;
+
 	z-index: 1;
 
 	@include ab.screen-40 {
@@ -57,7 +58,7 @@
 			&__li {
 				a {
 					color: ab.$text-secondary;
-					
+
 					text-decoration: underline transparent;
 
 					transition: color 0.2s ease-in, text-decoration-color 0.2s ease-in;
