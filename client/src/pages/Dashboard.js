@@ -45,7 +45,6 @@ function Dashboard() {
 							<NavLink
 								to="/dashboard/create-will"
 								className={(navData) => (navData.isActive ? "active" : "")}
-								// activeClassName="active"
 							>
 								Create Will
 							</NavLink>
@@ -55,7 +54,6 @@ function Dashboard() {
 							<NavLink
 								to="/dashboard/edit-will"
 								className={(navData) => (navData.isActive ? "active" : "")}
-								// activeClassName="active"
 							>
 								Edit Will
 							</NavLink>
@@ -65,7 +63,6 @@ function Dashboard() {
 							<NavLink
 								to="/dashboard/beneficiary"
 								className={(navData) => (navData.isActive ? "active" : "")}
-								//  activeClassName="active"
 							>
 								Beneficiary
 							</NavLink>
