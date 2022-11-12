@@ -3,6 +3,7 @@ import Metamask from "../assests/metamask.svg";
 import WalletConnect from "../assests/walletconnect.svg";
 import Ledger from "../assests/ledger.svg";
 import { connectWallet } from "../backendConnectors/connectWallet";
+import { useNavigate } from "react-router-dom";
 
 
 
