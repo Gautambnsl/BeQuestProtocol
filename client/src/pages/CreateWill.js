@@ -1,4 +1,4 @@
-	import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Token from "../components/will/Token";
 
 function CreateWill() {
@@ -63,8 +63,9 @@ function CreateWill() {
 				) : (
 					""
 				)}
-				<div className="create-will__token-input">
-					adfadfs
+				<div className="create-will__token-input token-input">
+					<h3 className="pacifico token-input__head">Create your own will</h3>
+
 					<form>
 						<input type="text" name="tokenName" placeholder="Token Name" />
 						<input

@@ -1,7 +1,7 @@
 @use "../../abstracts" as ab;
 
 .plans {
-	background-color: ab.$background-secondary;
+	background-color: ab.$background-dark2;
 	position: relative;
 	top: -2em;
 	z-index: -1;
@@ -93,7 +93,7 @@
 				}
 
 				&__head {
-					color: ab.$text-planning-head;
+					color: ab.$text-pink;
 					font-size: clamp(1.3rem, 2.6vw, 2rem);
 				}
 
@@ -113,7 +113,7 @@
 						font-weight: 500;
 						font-size: clamp(1rem, 1.8vw, 1.2rem);
 						color: #222831;
-						color: ab.$background-secondary;
+						color: ab.$background-dark2;
 					}
 				}
 			}

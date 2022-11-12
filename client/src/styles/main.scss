@@ -2,7 +2,7 @@
 @use "./components";
 
 body {
-	background-color: ab.$background-primary;
+	background-color: ab.$background-dark1;
 	font-family: "Poppins", sans-serif;
 	color: ab.$text-primary;
 	position: relative;
@@ -23,6 +23,11 @@ main {
 	margin: 0;
 }
 
+.pacifico {
+	font-family: "Pacifico", cursive;
+}
+
+// scrollbar for webkit browsers
 ::-webkit-scrollbar-track {
 	border-radius: 0.5em;
 	background-color: transparent;

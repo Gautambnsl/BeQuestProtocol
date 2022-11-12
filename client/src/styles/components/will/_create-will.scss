@@ -11,7 +11,7 @@
 		transition: color 0.3s ease-in;
 
 		&.show {
-			color: ab.$text-planning-head;
+			color: ab.$text-pink;
 		}
 	}
 
@@ -22,11 +22,11 @@
 		gap: 1em;
 
 		@include ab.screen-50 {
-			flex-direction: row-reverse;
+			flex-direction: row;
 		}
 
 		&-list {
-			background-color: ab.$background-secondary;
+			background-color: ab.$background-dark2;
 			min-height: 6rem;
 			overflow-y: hidden;
 			overflow-x: scroll;
@@ -37,7 +37,6 @@
 			border-radius: 0.6em;
 			padding-block: 1.4em;
 			padding-inline: 1em;
-			// z-index: -1;
 
 			&.flex {
 				align-items: center;
@@ -62,12 +61,6 @@
 			& > p {
 				font-size: 1.2rem;
 			}
-		}
-
-		&-input {
-			margin-right: auto;
-			width: 100%;
-			background-color: lightsalmon;
 		}
 	}
 }

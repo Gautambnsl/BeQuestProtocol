@@ -4,11 +4,6 @@ import WalletConnect from "../assests/walletconnect.svg";
 import Ledger from "../assests/ledger.svg";
 import { connectWallet } from "../backendConnectors/connectWallet";
 
-
-
-
-
-
 function Wallet() {
 	return (
 		<div className="wallet">
@@ -19,10 +14,10 @@ function Wallet() {
 			<div className="wallet-collection">
 				<h2 className="wallet-collection__head">Connect a Wallet</h2>
 
-				<button className="wallet-collection__item">
+				<button className="wallet-collection__item" onClick={connectWallet}>
 					<img src={Metamask} alt="" />
 
-					<span onClick={connectWallet}>Metamask</span>
+					<span>Metamask</span>
 				</button>
 
 				<button className="wallet-collection__item">
