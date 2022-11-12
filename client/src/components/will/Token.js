@@ -1,6 +1,16 @@
 import { useRef } from "react";
+import { ethers } from "ethers";
+import data from "../../backendConnectors/displayHelpers/displayBalance";
 
-function Token({ decimal, name, logo, balance, symbol }) {
+function Token({
+	decimal,
+	name,
+	logo,
+	balance,
+	symbol,
+	contractAddress,
+	onClick,
+}) {
 	const imgRef = useRef();
 	const tokenRef = useRef();
 
@@ -10,7 +20,7 @@ function Token({ decimal, name, logo, balance, symbol }) {
 	};
 
 	return (
-		<div className="token">
+		<div className="token" onClick={() => onClick(name, contractAddress)}>
 			<div className="token-logo">
 				<img src={logo} alt={name} onError={handleImgErr} ref={imgRef} />
 				<p ref={tokenRef} style={{ display: "none" }}>
@@ -19,7 +29,7 @@ function Token({ decimal, name, logo, balance, symbol }) {
 			</div>
 
 			<div className="token-info">
-				<h4 className="token-info__balance">{balance.slice(0, 5)}</h4>
+				<h4 className="token-info__balance">{data(balance, decimal)}</h4>
 
 				<p className="token-info__name">{name}</p>
 			</div>

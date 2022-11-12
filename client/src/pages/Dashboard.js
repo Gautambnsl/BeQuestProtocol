@@ -46,7 +46,7 @@ function Dashboard() {
 								to="/dashboard/create-will"
 								className={(navData) => (navData.isActive ? "active" : "")}
 							>
-								Create Will
+								Create
 							</NavLink>
 						</li>
 
@@ -55,7 +55,7 @@ function Dashboard() {
 								to="/dashboard/edit-will"
 								className={(navData) => (navData.isActive ? "active" : "")}
 							>
-								Edit Will
+								Edit
 							</NavLink>
 						</li>
 

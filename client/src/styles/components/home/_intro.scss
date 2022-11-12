@@ -10,6 +10,7 @@
 
 .intro {
 	width: min(90%, 80rem);
+
 	margin-inline: auto;
 
 	display: flex;
@@ -23,6 +24,7 @@
 
 	&-img {
 		flex: 50%;
+
 		opacity: 0;
 		scale: 0.3;
 		animation: pop 0.7s ease-in 0.1s forwards;
@@ -49,13 +51,9 @@
 		}
 
 		&__head {
-			font-size: clamp(2.5rem, 3.5vw, 4rem);
-			background: linear-gradient(
-				to right,
-				#eacda3,
-				#d6ae7b
-			); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			background-image: linear-gradient(to right, #eacda3, #d6ae7b);
 
+			font-size: clamp(2.5rem, 3.5vw, 4rem);
 			background-clip: text;
 			color: transparent;
 		}
@@ -67,6 +65,7 @@
 
 		&__launch {
 			margin-block: 0.5em;
+
 			font-size: clamp(1.5rem, 2vw, 1.8rem);
 		}
 	}
