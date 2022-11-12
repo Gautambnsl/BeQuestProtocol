@@ -27,7 +27,7 @@
 	}
 
 	&-collection {
-		background-color: rgba(ab.$background-secondary, 0.6);
+		background-color: rgba(ab.$background-dark2, 0.6);
 		backdrop-filter: blur(1em);
 
 		padding-block: 2em 3em;
@@ -44,7 +44,7 @@
 		&__head {
 			text-align: center;
 			font-size: clamp(1.8rem, 4vw, 2.2rem);
-			color: ab.$text-planning-head;
+			color: ab.$text-pink;
 		}
 
 		&__item {
@@ -60,7 +60,7 @@
 			cursor: pointer;
 
 			&:hover {
-				background-color: rgba(ab.$background-secondary, 0.6);
+				background-color: rgba(ab.$background-dark2, 0.6);
 
 				span {
 					text-decoration-color: ab.$text-golden;

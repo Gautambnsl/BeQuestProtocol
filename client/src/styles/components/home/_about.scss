@@ -7,7 +7,7 @@
 	border-radius: 0.8em;
 	padding-block: 1em 4em;
 
-	background-color: ab.$background-secondary;
+	background-color: ab.$background-dark2;
 
 	text-transform: capitalize;
 
@@ -68,12 +68,12 @@
 
 			&__head {
 				font-size: clamp(1.8rem, 3vw, 2.2rem);
-				color: ab.$text-card-head;
+				color: #1f1d36;
 			}
 
 			&__text {
 				&-p {
-					color: ab.$text-card;
+					color: #303c5e;
 					font-size: clamp(1rem, 2.8vw, 1.1rem);
 					font-weight: 500;
 				}

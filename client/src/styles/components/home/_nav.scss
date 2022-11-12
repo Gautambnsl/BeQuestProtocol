@@ -8,7 +8,7 @@
 	padding-inline: 0.6em;
 
 	backdrop-filter: blur(0.2em);
-	background-color: rgba(ab.$background-secondary, 0.5);
+	background-color: rgba(ab.$background-dark2, 0.5);
 	position: fixed;
 	left: 5%;
 	right: 5%;
@@ -57,7 +57,7 @@
 
 			&__li {
 				a {
-					color: ab.$text-secondary;
+					color: ab.$text-primary;
 
 					text-decoration: underline transparent;
 

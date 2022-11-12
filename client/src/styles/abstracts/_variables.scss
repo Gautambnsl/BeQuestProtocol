@@ -1,27 +1,20 @@
-$background-primary: #171717;
-$background-secondary: #212121;
-$background-token: #413f42;
+// background colors
+$background-dark1: #171717;
+$background-dark2: #212121;
+$background-dark3: #413f42;
 
+// text colors
 $text-primary: #ededed;
-$text-secondary: #e8e8e8;
 $text-golden: #ffefd6;
+$text-pink: #e61d8c;
 
-$text-card-head: #1f1d36;
-$text-card: #303c5e;
-
-$text-planning-head: #e61d8c;
-$button-text: #fff;
-
-$button-primary: #8937e1;
-$button-secondary: #fee9d7;
-
-$input-focus: #b762c0;
 $active: #ecc489;
 
 $error: #ff3d3d;
 $warning: #ffd369;
 $success: #4e9f3d;
 
+// gradients
 $bequest-gradient: linear-gradient(to right, #eacda3, #d6ae7b);
 
 $button-gradient: linear-gradient(
@@ -35,6 +28,15 @@ $card-gradient1: linear-gradient(45deg, #ff928b, #ffac81);
 $card-gradient2: linear-gradient(45deg, #eacda3, #d6ae7b);
 
 $planning-card: linear-gradient(45deg, #ffd8cb, #f9d29d);
+$violet-gradient: linear-gradient(
+	120deg,
+	#552586,
+	#6a359c,
+	#804fb3,
+	#9969c7,
+	#b589d6
+);
 
+// box-shadow
 $box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
 	rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;

@@ -2,7 +2,7 @@
 
 .token {
 	// backdrop-filter: blur(0.2em);
-	background-color: rgba(ab.$background-token, 0.3);
+	background-color: rgba(ab.$background-dark3, 0.3);
 	border-radius: 0.6em;
 	padding-inline: 0.8em;
 	padding-block: 0.4em;
@@ -31,7 +31,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: ab.$background-secondary;
+		background-color: ab.$background-dark2;
 
 		p {
 			text-align: center;
@@ -44,7 +44,7 @@
 		text-align: center;
 
 		&__balance {
-			color: ab.$text-planning-head;
+			color: ab.$text-pink;
 			text-decoration: underline transparent;
 
 			transition: text-decoration-color 0.3s ease-in;
@@ -60,7 +60,7 @@
 
 	&:hover &-info {
 		&__balance {
-			text-decoration-color: ab.$text-planning-head;
+			text-decoration-color: ab.$text-pink;
 		}
 
 		&__name {
