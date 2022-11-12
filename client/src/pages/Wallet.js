@@ -5,17 +5,12 @@ import Ledger from "../assests/ledger.svg";
 import { connectWallet } from "../backendConnectors/connectWallet";
 import { useNavigate } from "react-router-dom";
 
-
-
-
-
-
 function Wallet() {
 	const navigate = useNavigate();
 
-	async function redirctAfterConnect(){
-		if(await connectWallet()){
-			navigate("/dashboard")
+	async function redirctAfterConnect() {
+		if (await connectWallet()) {
+			navigate("/dashboard");
 		}
 	}
 
@@ -28,10 +23,10 @@ function Wallet() {
 			<div className="wallet-collection">
 				<h2 className="wallet-collection__head">Connect a Wallet</h2>
 
-				<button className="wallet-collection__item">
+				<button onClick={redirctAfterConnect} className="wallet-collection__item">
 					<img src={Metamask} alt="" />
 
-					<span onClick={connectWallet}>Metamask</span>
+					<span>Metamask</span>
 				</button>
 
 				<button className="wallet-collection__item">
