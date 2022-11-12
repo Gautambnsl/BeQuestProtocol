@@ -137,19 +137,6 @@
 				padding-inline: 3em;
 			}
 
-			&:nth-child(1) {
-				background-color: transparent;
-				outline: 0.2em solid ab.$button-primary;
-
-				&:hover {
-					background-color: lighten(rgba(ab.$background-dark3, 0.3), 5%);
-				}
-
-				&:active {
-					background-color: darken(rgba(ab.$background-dark3, 0.3), 5%);
-				}
-			}
-
 			&:hover {
 				text-decoration-color: ab.$text-golden;
 				background-color: lighten(ab.$button-primary, 5%);
@@ -161,6 +148,13 @@
 
 			&.disable {
 				cursor: not-allowed;
+
+				background-color: transparent;
+				outline: 0.2em solid ab.$button-primary;
+
+				&:hover {
+					text-decoration-color: transparent;
+				}
 			}
 		}
 	}

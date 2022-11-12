@@ -13,7 +13,7 @@ function CreateWillForm({ tokenDetails }) {
 		setValue,
 	} = useForm({ resolver: yupResolver(createWillSchema) });
 
-	const [enableSubmit, setEnableSubmit] = useState(true);
+	const [enableSubmit, setEnableSubmit] = useState(false);
 
 	useEffect(() => {
 		if (tokenDetails.name && tokenDetails.address) {
@@ -75,7 +75,13 @@ function CreateWillForm({ tokenDetails }) {
 			</div>
 
 			<div className="input-form__button">
-				<button> Approve</button>
+				<button
+					className={`${!enableSubmit ? "" : "disable"}`}
+					disabled={!enableSubmit ? false : true}
+				>
+					{" "}
+					Approve
+				</button>
 				<button
 					className={`${enableSubmit ? "" : "disable"}`}
 					disabled={enableSubmit ? false : true}
