@@ -36,9 +36,7 @@ const Footer = () => {
 				<div class="footer-right">
 					<p class="footer-company-about">
 						<span>About the company</span>
-						BeQuest came into existence with the purpose of protecting the
-						digital assets. BeQuest helps the users to secure their digital
-						assets like cryptocurrencies, NFTs etc from Loss Of Private Key Or Death.
+						BeQuest came into existence with the purpose of protecting digital assets. BeQuest helps the users secure their digital assets like cryptocurrencies, NFTs, etc. from loss of private keys or death.
 					</p>
 
 					<div class="footer-icons">

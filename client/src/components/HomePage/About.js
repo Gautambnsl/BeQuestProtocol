@@ -25,30 +25,26 @@ function About() {
 					<h2 className="about-card-item__head">About BeQuest Protocol</h2>
 					<div className="about-car-item__text">
 						<p className="about-card-item__text-p">
-							bequest came into existence with the purpose of protecting the
-							digital assets from loss of private key or death.
+						BeQuest Protocol was created to protect digital assets in the event of the loss of a private key or death.
 						</p>
 
 						<p className="about-card-item__text-p">
-							the assets will always be in the owner's address and will be
-							transfered to their heir according to their legacy or will.
+						The assets will always be at the owner's address and will be transferred to their beneficiary according to their request.
 						</p>
 					</div>
 				</div>
 
 				<div className="about-card-item item-right" ref={rightCardRef}>
 					<h2 className="about-card-item__head">
-						Fully Decentralized : Web3 Solution
+					Fully Decentralized : Web3 Solution
 					</h2>
 
 					<div className="about-car-item__text">
 						<p className="about-card-item__text-p">
-							user don't have to share their precious private key to anyone.
-							just aprove asset and sign your legacy in bequest protocol's smart
-							contract.
+						The user doesn't have to share their precious private key with anyone. Just approve the asset and sign your request in Bequest Protocol's smart contract.
 						</p>
 						<p className="about-card-item__text-p">
-							smart contract will execute your legacy request accordingly.
+						Your request will be carried out correctly by a smart contract.
 						</p>
 					</div>
 				</div>

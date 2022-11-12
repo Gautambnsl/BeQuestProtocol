@@ -28,6 +28,8 @@ function Nav() {
 		navigate("/wallet");
 	};
 
+	
+
 	return (
 		<nav className="home-nav" ref={navRef}>
 			<div className="home-nav__logo">
@@ -50,7 +52,7 @@ function Nav() {
 				</ul>
 			</div>
 
-			<div className="button home-nav__launch">
+			<div onClick={handleWalletNavigate} className="button home-nav__launch">
 				<Link to="/wallet">Launch App</Link>
 			</div>
 		</nav>

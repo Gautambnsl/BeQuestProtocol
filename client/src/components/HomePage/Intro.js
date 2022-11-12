@@ -19,13 +19,11 @@ function Intro() {
 				</h1>
 
 				<p className="intro-text__p">
-					More Than 20 Billion$ Worth Of Digital Assets, Coins, Tokens , Nfts
-					Are Already Lost Due To Loss Of Private Key Or Deaths.
+				More than $20 billion in digital assets (coins, tokens, and nfts) have already been lost as a result of the loss of private keys or death.
 				</p>
 
 				<p className="intro-text__p">
-					Bequest Protocol Allow The Users To Bequest Their Digital Assets Like
-					Wrapped Coin, Token, Nfts Etc, To Next Hier Or Inheritor.
+				The Bequest Protocol enables users to leave their digital assets, such as wrapped coins, tokens, NFTs, and so on, to their next wallet or beneficiary's address.
 				</p>
 
 				<div className="intro-text__launch">

@@ -33,17 +33,14 @@ function Plans() {
 								etc.
 							</li>
 							<li className="plans-card__item-info__ul-li">
-								user can edit your legacy anytime.
-							</li>
+							Requests can be edited at any time by the user.							</li>
 							<li className="plans-card__item-info__ul-li">
-								support polygon chain. (testnet).
-							</li>
+							Polygon chain (testnet) support							</li>
 							<li className="plans-card__item-info__ul-li">
 								can attach video messages.
 							</li>
 							<li className="plans-card__item-info__ul-li">
-								using chainlink oracle for automation.
-							</li>
+							Oracle Chainlink is being used for automation.							</li>
 						</ul>
 					</div>
 				</div>
@@ -56,19 +53,16 @@ function Plans() {
 
 						<ul className="plans-card__item-info__ul">
 							<li className="plans-card__item-info__ul-li">
-								allowing multiple heirs inheritance.
+								allowing multiple beneficiaries inheritance.
 							</li>
 							<li className="plans-card__item-info__ul-li">
-								compatible with all erc721 nfts like bored ape, cryptokitties,
-								etc.
+							Compatible with all ERC721, nfts such as bored ape, cryptokitties, and others.
 							</li>
 							<li className="plans-card__item-info__ul-li">
-								allowing user define percentage of token to be sent to each
-								heir.
+							allowing the user to define the percentage of tokens to be sent to each beneficiary.
 							</li>
 							<li className="plans-card__item-info__ul-li">
-								extra feature for control of potential crypto scam links and.
-								emails.
+							additional control over potential crypto scam links emails.
 							</li>
 							<li className="plans-card__item-info__ul-li">
 								launch bequest protocol token.

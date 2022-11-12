@@ -21,7 +21,7 @@ function Sponsors() {
 					* chainlink automation : asset transfering using chainlink keeper
 				</p>
 				<p className="sponsors-text__p">
-					* polygon chain's digital assets supported : usdc, dai, nfts etc.
+					* polygon chain's digital assets supported : ERC20 Tokens Like USDT, etc.
 				</p>
 			</div>
 		</div>
