@@ -10,7 +10,7 @@ function Why() {
 			</p>
 
 			<p className="why-p">
-			A bequest allows you to transfer your assets to a beneficiary in decentralised manner. You sign the request by providing beneficiary details such as wallet address and request execution time.
+			Bequest Protocol allows you to transfer your assets to a beneficiary in decentralised manner. You sign the request by providing beneficiary details such as wallet address and request execution time.
 			</p>
 		</div>
 	);

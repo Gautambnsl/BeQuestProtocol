@@ -8,7 +8,7 @@ const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 await provider.send("eth_requestAccounts", []);
 const signer = provider.getSigner();
 console.log("Account:", await signer.getAddress());
-return true;
+return provider;
 }else{
     alert("please install wallet")
 }

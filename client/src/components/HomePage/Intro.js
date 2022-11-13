@@ -23,7 +23,7 @@ function Intro() {
 				</p>
 
 				<p className="intro-text__p">
-				The Bequest Protocol enables users to leave their digital assets, such as wrapped coins, tokens, NFTs, and so on, to their next wallet or beneficiary's address.
+				Bequest Protocol enables users to leave their digital assets, such as wrapped coins, tokens, NFTs, and so on, to their next wallet or beneficiary's address.
 				</p>
 
 				<div className="intro-text__launch">
