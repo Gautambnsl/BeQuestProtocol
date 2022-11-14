@@ -37,6 +37,21 @@
 				justify-content: center;
 			}
 
+			h3 {
+				display: none;
+				text-decoration: underline;
+				color: ab.$text-golden;
+				user-select: none;
+
+				@include ab.screen-50 {
+					display: block;
+				}
+
+				h3.none {
+					display: none;
+				}
+			}
+
 			@include ab.screen-50 {
 				width: min(40%, 30rem);
 				flex-wrap: wrap;
@@ -68,7 +83,7 @@
 			padding-inline: clamp(0.6em, 2vw, 1.2em);
 
 			h3 {
-				background-image: ab.$violet-gradient;
+				background-image: ab.$bequest-gradient;
 
 				font-size: clamp(1.8rem, 4vw, 2.5rem);
 				background-clip: text;

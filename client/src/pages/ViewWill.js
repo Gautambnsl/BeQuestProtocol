@@ -1,5 +1,5 @@
 function EditWill() {
-	return <div>Edit Will Page!!</div>;
+	return <div>View Will Page!!</div>;
 }
 
 export default EditWill;

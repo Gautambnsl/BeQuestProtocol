@@ -63,13 +63,25 @@ function CreateWillForm({ tokenDetails }) {
 				name={"benificaryAddress"}
 			/>
 
-			<Input
-				label={"Transfer Time"}
-				type="date"
-				error={errors.transferDate}
-				register={register}
-				name={"transferDate"}
-			/>
+			<div className="input-form__item input-time">
+				<div className="input-time__select">
+					<label htmlFor="timeUnit">Time Unit</label>
+					<select id="timeUnit" {...register("timeUnit")}>
+						<option value="1">Seconds</option>
+						<option value="60">Minutes</option>
+						<option value="3600">Hours</option>
+						<option value="86400">Days</option>
+					</select>
+				</div>
+
+				<Input
+					label={"Transfer Time"}
+					type="text"
+					error={errors.transferTime}
+					register={register}
+					name={"transferTime"}
+				/>
+			</div>
 
 			<div className="input-form__item">
 				<textarea id="message" {...register("message")} required></textarea>

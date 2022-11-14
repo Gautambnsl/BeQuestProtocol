@@ -33,8 +33,6 @@ function CreateWill() {
 		});
 	};
 
-	console.log(tokenDetails);
-
 	const Tokens = userTokens.map((item, index) => {
 		if (index !== 0)
 			return (
@@ -62,6 +60,12 @@ function CreateWill() {
 							userTokens.length === 0 ? "flex" : ""
 						}`}
 					>
+						<h3
+							title="Click on any token to get its details"
+							className={`${userTokens.length === 0 ? "none" : ""}`}
+						>
+							Select your token
+						</h3>
 						{userTokens.length === 0 ? (
 							<p>You don't have any tokens.</p>
 						) : (
@@ -69,10 +73,8 @@ function CreateWill() {
 						)}
 					</div>
 				}
-				<div className="create-will__token-input token-input">
-					<h3 className="pacifico token-input__head">
-						Create your BeQuest request
-					</h3>
+				<div className="create-will__token-input">
+					<h3 className="pacifico">Create your BeQuest request</h3>
 
 					<CreateWillForm tokenDetails={tokenDetails} />
 				</div>

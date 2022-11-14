@@ -1,7 +1,6 @@
 @use "../../abstracts" as ab;
 
 .input-form {
-	// backdrop-filter: blur(0.2em);
 	background-color: rgba(ab.$background-dark3, 0.3);
 	border-radius: 0.6em;
 
@@ -109,6 +108,49 @@
 		}
 	}
 
+	.input-time {
+		gap: 1.2em;
+
+		@include ab.screen-40 {
+			flex-direction: row;
+			align-items: flex-end;
+			gap: 2em;
+		}
+
+		&__select {
+			display: flex;
+			flex-direction: column;
+			gap: 0.45em;
+
+			label {
+				position: static;
+				color: ab.$text-pink;
+			}
+
+			select {
+				background-color: transparent;
+				border: none;
+				outline: 0.13em solid ab.$text-primary;
+				color: ab.$text-primary;
+				padding-block: 0.2em;
+				padding-inline: 0.6em;
+				border-radius: 1.5em;
+
+				&:focus {
+					outline-color: ab.$active;
+				}
+
+				@include ab.screen-40 {
+					padding-inline: 0.6em 1.6em;
+				}
+
+				option {
+					color: ab.$background-dark1;
+				}
+			}
+		}
+	}
+
 	&__button {
 		display: flex;
 		flex-direction: column;
@@ -124,21 +166,21 @@
 			border: none;
 			font-weight: 500;
 			font-size: 1.1rem;
-			color: ab.$text-golden;
+			color: ab.$text-primary;
 			text-decoration: underline transparent;
 			padding-block: 0.4em;
 			background-color: ab.$button-primary;
 			cursor: pointer;
 			border-radius: 1.5em;
 
-			transition: text-decoration-color 0.3s ease-in;
+			transition: all 0.3s ease-in;
 
 			@include ab.screen-50 {
 				padding-inline: 3em;
 			}
 
 			&:hover {
-				text-decoration-color: ab.$text-golden;
+				text-decoration-color: ab.$text-primary;
 				background-color: lighten(ab.$button-primary, 5%);
 			}
 
@@ -149,8 +191,11 @@
 			&.disable {
 				cursor: not-allowed;
 
+				color: ab.$text-golden;
 				background-color: transparent;
 				outline: 0.2em solid ab.$button-primary;
+
+				transition: all 0.3s ease-in;
 
 				&:hover {
 					text-decoration-color: transparent;
