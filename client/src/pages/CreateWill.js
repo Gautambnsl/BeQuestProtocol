@@ -1,24 +1,28 @@
 import { useState, useEffect } from "react";
 import Token from "../components/will/Token";
 import CreateWillForm from "../components/will/CreateWillForm";
+import { getAddress } from "../backendConnectors/integration";
 
 function CreateWill() {
 	const [userTokens, setUserTokens] = useState([]);
 	const [tokenDetails, setTokenDetails] = useState({
 		name: "",
 		address: "",
-		decimal : "",
+		decimal: "",
 	});
 
 	useEffect(() => {
-		const userTokenEndpoint = `https://api.covalenthq.com/v1/${process.env.REACT_APP_CHAINID}/address/${process.env.REACT_APP_ADDRESS}/balances_v2/?&key=${process.env.REACT_APP_API_KEY}`;
+		getAddress()
+			.then((address) => {
+				const userTokenEndpoint = `https://api.covalenthq.com/v1/${process.env.REACT_APP_CHAINID}/address/${address}/balances_v2/?&key=${process.env.REACT_APP_API_KEY}`;
 
-		console.log(userTokenEndpoint);
-		fetch(userTokenEndpoint)
-			.then((res) => res.json())
-			.then((tokenList) => {
-				console.log(tokenList.data.items);
-				setUserTokens(tokenList.data.items);
+				console.log(userTokenEndpoint);
+				fetch(userTokenEndpoint)
+					.then((res) => res.json())
+					.then((tokenList) => {
+						console.log(tokenList.data.items);
+						setUserTokens(tokenList.data.items);
+					});
 			})
 			.catch((err) => {
 				console.log(err);

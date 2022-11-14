@@ -51,6 +51,7 @@
 		&__balance {
 			color: ab.$text-pink;
 			text-decoration: underline transparent;
+			word-break: break-all;
 
 			transition: text-decoration-color 0.3s ease-in;
 		}

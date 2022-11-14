@@ -3,7 +3,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import createWillSchema from "../../formValidations/createWillSchema";
 import Input from "./Input";
 import { useEffect, useState } from "react";
-import { approve } from "../../backendConnectors/integration";
+import {
+	approveRequest,
+	signRequest,
+} from "../../backendConnectors/integration";
+
 function CreateWillForm({ tokenDetails }) {
 	const {
 		register,
@@ -25,8 +29,44 @@ function CreateWillForm({ tokenDetails }) {
 	const createWill = (willInfo, event) => {
 		event.preventDefault();
 		console.log(willInfo);
-		approve(willInfo.contractAddress,willInfo.amount * tokenDetails.decimal )
 
+		if (!enableSubmit) {
+			approve(willInfo);
+		} else {
+			sign(willInfo);
+		}
+	};
+
+	const approve = async (willInfo) => {
+		const status = await approveRequest(
+			willInfo.contractAddress,
+			willInfo.amount * 10 ** tokenDetails.decimal
+		);
+
+		if (status.status) {
+			setEnableSubmit(true);
+		} else {
+			// error handling
+		}
+	};
+
+	const sign = async (willInfo) => {
+		const time = willInfo.timeUnit * willInfo.transferTime;
+		const status = await signRequest(
+			willInfo.tokenName,
+			time,
+			willInfo.amount * 10 ** tokenDetails.decimal,
+			willInfo.benificaryAddress,
+			willInfo.contractAddress,
+			willInfo.message
+		);
+
+		if (status.status) {
+			reset();
+			setEnableSubmit(false);
+		} else {
+			// error handling
+		}
 	};
 
 	return (
