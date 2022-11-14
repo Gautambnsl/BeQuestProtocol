@@ -38,7 +38,7 @@ function CreateWillForm({ tokenDetails }) {
 			/>
 
 			<Input
-				label={"Contract Address"}
+				label={"Token Contract Address"}
 				type="text"
 				error={errors.contractAddress}
 				register={register}
