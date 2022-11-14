@@ -25,7 +25,7 @@ function CreateWillForm({ tokenDetails }) {
 	const createWill = (willInfo, event) => {
 		event.preventDefault();
 		console.log(willInfo);
-		approve(willInfo.amount * tokenDetails.decimal )
+		approve(willInfo.contractAddress,willInfo.amount * tokenDetails.decimal )
 
 	};
 

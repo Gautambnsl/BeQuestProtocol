@@ -5,16 +5,21 @@ import { connectWallet } from "./connectWallet";
 
 export async function approve(address,amt){
 try{
+
+    console.log(address,"🚀🚀🚀")
+    console.log(amt,"🚀🚀")
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(address, ERC20, signer);
     let tx = await contract.approve(process.env.REACT_APP_BEQUEST_ADDRESS,amt);
     console.log(tx);
-    return tx
+    // return tx
 }catch(err){
-    console.log(err);
-    return err;
+    console.log(err,"aaa");
+    console.log(address)
+    console.log(ethers.utils.getAddress(address))
+    // return err;
 }
 
 }
