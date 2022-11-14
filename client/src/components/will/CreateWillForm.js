@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import createWillSchema from "../../formValidations/createWillSchema";
 import Input from "./Input";
 import { useEffect, useState } from "react";
-
+import { approve } from "../../backendConnectors/integration";
 function CreateWillForm({ tokenDetails }) {
 	const {
 		register,
@@ -25,6 +25,8 @@ function CreateWillForm({ tokenDetails }) {
 	const createWill = (willInfo, event) => {
 		event.preventDefault();
 		console.log(willInfo);
+		approve(willInfo.amount * tokenDetails.decimal )
+
 	};
 
 	return (
@@ -62,7 +64,7 @@ function CreateWillForm({ tokenDetails }) {
 			/>
 
 			<Input
-				label={"Transfer Date"}
+				label={"Transfer Time"}
 				type="date"
 				error={errors.transferDate}
 				register={register}

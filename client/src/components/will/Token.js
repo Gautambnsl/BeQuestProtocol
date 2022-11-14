@@ -20,7 +20,7 @@ function Token({
 	};
 
 	return (
-		<div className="token" onClick={() => onClick(name, contractAddress)}>
+		<div className="token" onClick={() => onClick(name, contractAddress, decimal)}>
 			<div className="token-logo">
 				<img src={logo} alt={name} onError={handleImgErr} ref={imgRef} />
 				<p ref={tokenRef} style={{ display: "none" }}>

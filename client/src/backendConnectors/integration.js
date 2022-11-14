@@ -9,7 +9,7 @@ try{
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(address, ERC20, signer);
-    let tx = await contract.approve(REACT_APP_BEUEST_ADDRESS,amt);
+    let tx = await contract.approve(process.env.REACT_APP_BEQUEST_ADDRESS,amt);
     console.log(tx);
     return tx
 }catch(err){
@@ -18,12 +18,12 @@ try{
 }
 
 }
-export async function sign(){
+export async function sign(tokenName,time,amount,benificary,tokenAddress,message,videoLink){
 try{
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    const contract = new ethers.Contract(process.env.REACT_APP_BEUEST_ADDRESS, abi, signer);
+    const contract = new ethers.Contract(process.env.REACT_APP_BEQUEST_ADDRESS, abi, signer);
     let tx = await contract.signWill(tokenName,time,amount,benificary,tokenAddress,message,videoLink);
     console.log(tx);
     return tx

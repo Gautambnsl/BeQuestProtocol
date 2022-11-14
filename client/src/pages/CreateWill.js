@@ -7,6 +7,7 @@ function CreateWill() {
 	const [tokenDetails, setTokenDetails] = useState({
 		name: "",
 		address: "",
+		decimal : "",
 	});
 
 	useEffect(() => {
@@ -24,10 +25,11 @@ function CreateWill() {
 			});
 	}, []);
 
-	const handleClick = (name, address) => {
+	const handleClick = (name, address, decimal) => {
 		setTokenDetails({
 			name,
 			address,
+			decimal,
 		});
 	};
 
