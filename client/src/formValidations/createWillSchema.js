@@ -6,8 +6,8 @@ function addressValidation(value) {
 }
 
 // current date
-const today = new Date();
-today.setHours(0, 0, 0, 0);
+// const today = new Date();
+// today.setHours(0, 0, 0, 0);
 
 const createWillSchema = yup.object().shape({
 	tokenName: yup
@@ -26,11 +26,12 @@ const createWillSchema = yup.object().shape({
 		.string("Invalid benificary address!")
 		.required("Benificary address can't be empty!")
 		.test("address-test", "Invalid benificary address!", addressValidation),
-	transferDate: yup
-		.date()
-		.typeError("Invalid date!")
-		.required("Transfer date can't be empty!")
-		.min(today, "Transfer date cannot be in the past!"),
+	timeUnit: yup.number().required(),
+	transferTime: yup
+		.number()
+		.typeError("Invalid time!")
+		.required("Transfer time can't be empty!")
+		.positive("Transfer time can't be in past!"),
 	message: yup.string("Invalid message"),
 });
 

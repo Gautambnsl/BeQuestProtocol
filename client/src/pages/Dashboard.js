@@ -52,10 +52,10 @@ function Dashboard() {
 
 						<li>
 							<NavLink
-								to="/dashboard/edit-will"
+								to="/dashboard/view-will"
 								className={(navData) => (navData.isActive ? "active" : "")}
 							>
-								Edit
+								View
 							</NavLink>
 						</li>
 

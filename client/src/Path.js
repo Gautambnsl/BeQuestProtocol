@@ -5,7 +5,7 @@ import Wallet from "./pages/Wallet";
 import Dashboard from "./pages/Dashboard";
 
 import CreateWill from "./pages/CreateWill";
-import EditWill from "./pages/EditWill";
+import ViewWill from "./pages/ViewWill";
 import Beneficiary from "./pages/Beneficiary";
 
 import NotFound from "./pages/NotFound";
@@ -21,7 +21,7 @@ function Path() {
 					<Route index element={<Navigate to="create-will" />} />
 
 					<Route path="create-will" element={<CreateWill />} />
-					<Route path="edit-will" element={<EditWill />} />
+					<Route path="view-will" element={<ViewWill />} />
 					<Route path="beneficiary" element={<Beneficiary />} />
 				</Route>
 				<Route path="/*" element={<NotFound />} />
