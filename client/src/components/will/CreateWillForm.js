@@ -8,7 +8,7 @@ import {
 	signRequest,
 } from "../../backendConnectors/integration";
 
-function CreateWillForm({ tokenDetails }) {
+function CreateWillForm({ tokenDetails, setLoading }) {
 	const {
 		register,
 		handleSubmit,
@@ -30,6 +30,7 @@ function CreateWillForm({ tokenDetails }) {
 		event.preventDefault();
 		console.log(willInfo);
 
+		setLoading(true);
 		if (!enableSubmit) {
 			approve(willInfo);
 		} else {
@@ -43,6 +44,7 @@ function CreateWillForm({ tokenDetails }) {
 			willInfo.amount * 10 ** tokenDetails.decimal
 		);
 
+		setLoading(false);
 		if (status.status) {
 			setEnableSubmit(true);
 		} else {
@@ -61,6 +63,7 @@ function CreateWillForm({ tokenDetails }) {
 			willInfo.message
 		);
 
+		setLoading(false);
 		if (status.status) {
 			reset();
 			setEnableSubmit(false);

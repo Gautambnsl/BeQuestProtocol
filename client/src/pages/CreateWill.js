@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Token from "../components/will/Token";
 import CreateWillForm from "../components/will/CreateWillForm";
 import { getAddress } from "../backendConnectors/integration";
+import Loader from "../components/Loader";
 
 function CreateWill() {
 	const [userTokens, setUserTokens] = useState([]);
@@ -10,6 +11,7 @@ function CreateWill() {
 		address: "",
 		decimal: "",
 	});
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		getAddress()
@@ -55,6 +57,8 @@ function CreateWill() {
 
 	return (
 		<div className="create-will">
+			{loading && <Loader />}
+
 			<h3 className="create-will__toggle">My tokens</h3>
 
 			<div className="create-will__token">
@@ -80,7 +84,7 @@ function CreateWill() {
 				<div className="create-will__token-input">
 					<h3 className="pacifico">Create your BeQuest request</h3>
 
-					<CreateWillForm tokenDetails={tokenDetails} />
+					<CreateWillForm tokenDetails={tokenDetails} setLoading={setLoading} />
 				</div>
 			</div>
 		</div>

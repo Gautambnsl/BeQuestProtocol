@@ -1,6 +1,8 @@
 @use "../../abstracts" as ab;
 
 .create-will {
+	position: relative;
+
 	&__toggle {
 		user-select: none;
 		color: ab.$text-pink;
