@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import {
 	approveRequest,
 	signRequest,
+	storeFiles,
 } from "../../backendConnectors/integration";
 
 function CreateWillForm({ tokenDetails, setLoading }) {
@@ -22,7 +23,9 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		status: true,
 		file: "",
 	});
+	const [videoErr, setVideoErr] = useState("");
 	const videoRef = useRef();
+	const videoCidRef = useRef("");
 
 	useEffect(() => {
 		if (tokenDetails.name && tokenDetails.address) {
@@ -31,13 +34,25 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		}
 	}, [tokenDetails]);
 
-	const createWill = (willInfo, event) => {
+	const createWill = async (willInfo, event) => {
 		event.preventDefault();
+		if (videoStatus.status && videoStatus.file === "") {
+			setVideoErr("Upload video message!");
+			return;
+		} else {
+			setVideoErr("");
+		}
 
 		setLoading(true);
 		if (!enableSubmit) {
 			approve(willInfo);
 		} else {
+			const cid = await storeFiles(videoStatus.file);
+
+			if (cid.success) {
+				console.log(cid.cid);
+				videoCidRef.current = cid.cid;
+			}
 			sign(willInfo);
 		}
 	};
@@ -74,11 +89,16 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 			amt,
 			willInfo.benificaryAddress,
 			willInfo.contractAddress,
-			willInfo.message
+			willInfo.message,
+			videoCidRef.current
 		);
 
 		setLoading(false);
 		if (status.status) {
+			setVideoStatus({
+				status: false,
+				file: "",
+			});
 			reset();
 			setEnableSubmit(false);
 		} else {
@@ -102,8 +122,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	};
 
 	const handleChange = (e) => {
-		let file = e.target.files[0];
-		let fileName = file.name;
+		let fileName = e.target.files[0].name;
 		const fileExtension = fileName.indexOf(".");
 
 		if (fileName.length > 12)
@@ -113,10 +132,13 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		videoRef.current.classList.remove("file-upload");
 		videoRef.current.innerHTML = fileName;
 
+		if (e.target.files[0]) {
+			setVideoErr("");
+		}
+
 		setVideoStatus((prev) => {
-			return { ...prev, file };
+			return { ...prev, file: e.target.files };
 		});
-		console.log(fileName);
 	};
 
 	return (
@@ -200,6 +222,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 							accept="video/mp4,video/x-m4v,video/*"
 							onChange={handleChange}
 						/>
+						{videoErr.length > 0 && <p className="error">{videoErr}</p>}
 					</div>
 				)}
 			</div>

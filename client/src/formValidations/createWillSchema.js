@@ -21,7 +21,8 @@ const createWillSchema = yup.object().shape({
 		.number()
 		.typeError("Invalid token amount!")
 		.required("Token amount can't be empty!")
-		.positive("Token amount should be greater than 0!"),
+		.positive("Token amount should be greater than 0!")
+		.integer("Token amount should only be integer!"),
 	benificaryAddress: yup
 		.string("Invalid benificary address!")
 		.required("Benificary address can't be empty!")
@@ -31,7 +32,8 @@ const createWillSchema = yup.object().shape({
 		.number()
 		.typeError("Invalid time!")
 		.required("Transfer time can't be empty!")
-		.positive("Transfer time can't be in past!"),
+		.positive("Transfer time can't be in past!")
+		.integer("Transfer time should only be integer!"),
 	message: yup.string("Invalid message"),
 });
 

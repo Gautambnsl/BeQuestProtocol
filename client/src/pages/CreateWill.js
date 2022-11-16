@@ -38,7 +38,7 @@ function CreateWill() {
 	};
 
 	const Tokens = userTokens.map((item, index) => {
-		if (index !== 0)
+		if (item.contract_address !== "0x0000000000000000000000000000000000001010")
 			return (
 				<Token
 					key={item.contract_address}
