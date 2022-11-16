@@ -44,18 +44,12 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 
 	const approve = async (willInfo) => {
 		let amt = willInfo.amount;
-		amt  = amt.toString()
-		for(let x = 0;x < tokenDetails.decimal;x++){
-
-			amt = amt + "0"
-
+		amt = amt.toString();
+		for (let x = 0; x < tokenDetails.decimal; x++) {
+			amt = amt + "0";
 		}
 
-
-		const status = await approveRequest(
-			willInfo.contractAddress,
-			amt
-		);
+		const status = await approveRequest(willInfo.contractAddress, amt);
 
 		setLoading(false);
 		if (status.status) {
@@ -66,13 +60,10 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	};
 
 	const sign = async (willInfo) => {
-		
 		let amt = willInfo.amount;
-		amt  = amt.toString()
-		for(let x = 0;x < tokenDetails.decimal;x++){
-
-			amt = amt + "0"
-
+		amt = amt.toString();
+		for (let x = 0; x < tokenDetails.decimal; x++) {
+			amt = amt + "0";
 		}
 
 		const time = willInfo.timeUnit * willInfo.transferTime;
@@ -187,7 +178,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				<label htmlFor="message">Message</label>
 			</div>
 
-			<div className="input-form__item input-group">
+			<div className="input-form__item input-group video-message">
 				<div className="input-group__checkbox">
 					<input
 						type="checkbox"
@@ -201,7 +192,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				{videoStatus.status && (
 					<div className="input-group__file">
 						<label htmlFor="uploadVideo" ref={videoRef} className="file-upload">
-							Upload Video Message
+							Upload
 						</label>
 						<input
 							id="uploadVideo"

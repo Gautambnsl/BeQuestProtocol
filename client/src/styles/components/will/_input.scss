@@ -110,11 +110,17 @@
 
 	.input-group {
 		gap: 1.2em;
+		padding-inline: 0.2em;
+		padding-block: 0.2em;
 
 		@include ab.screen-40 {
 			flex-direction: row;
 			align-items: flex-end;
-			gap: 2em;
+			gap: 1.8em;
+		}
+
+		.input-form__item {
+			min-width: 0;
 		}
 
 		&__select {
@@ -174,6 +180,8 @@
 			label {
 				font-weight: 500;
 				color: ab.$text-pink;
+				font-size: 1rem;
+				text-align: center;
 
 				transition: color 0.3s ease-in;
 
@@ -181,7 +189,7 @@
 					background-color: rgba(ab.$background-dark3, 0.3);
 					border-radius: 0.8em;
 					padding-block: 0.4em;
-					padding-inline: 1em;
+					padding-inline: 1.2em;
 					color: ab.$text-golden;
 				}
 			}

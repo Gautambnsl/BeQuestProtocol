@@ -1,7 +1,6 @@
 @use "../../abstracts" as ab;
 
 .token {
-	// backdrop-filter: blur(0.2em);
 	background-color: rgba(ab.$background-dark3, 0.3);
 	border-radius: 0.6em;
 	padding-inline: 0.8em;
