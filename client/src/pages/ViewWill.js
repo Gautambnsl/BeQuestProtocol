@@ -1,38 +1,43 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import WillCard from "../components/will/WillCard";
+import { getView } from "../backendConnectors/integration";
 
 function ViewWill() {
+	useEffect(() => {
+		getView();
+	}, []);
+
 	const tempDataRef = useRef([
 		{
 			id: "dsfa112",
 			tokenName: "DygnifyXadafasdfasf",
-			amount: "3200",
+			amt: "3200",
 			to: "0x2b5d1C88d09fd2Fd45500b6ADB7870F08A5dECd2",
-			time: "3000",
+			timeRemaining: "3000",
 			status: "0",
 		},
 		{
 			id: "dsfa113",
 			tokenName: "DygnifyX",
-			amount: "3200",
+			amt: "3200",
 			to: "0x2b5d1C88d09fd2Fd45500b6ADB7870F08A5dECd2",
-			time: "3000",
+			timeRemaining: "3000",
 			status: "1",
 		},
 		{
 			id: "dsfa114",
 			tokenName: "DygnifyX",
-			amount: "3200",
+			amt: "3200",
 			to: "0x2b5d1C88d09fd2Fd45500b6ADB7870F08A5dECd2",
-			time: "3000",
+			timeRemaining: "3000",
 			status: "2",
 		},
 		{
 			id: "dsfa115",
 			tokenName: "DygnifyX",
-			amount: "3200",
+			amt: "3200",
 			to: "0x2b5d1C88d09fd2Fd45500b6ADB7870F08A5dECd2",
-			time: "3000",
+			timeRemaining: "3000",
 			status: "3",
 		},
 	]);
@@ -43,9 +48,9 @@ function ViewWill() {
 				key={card.id}
 				id={card.id}
 				tokenName={card.tokenName}
-				amount={card.amount}
+				amount={card.amt}
 				to={card.to}
-				time={card.time}
+				timeRemaining={card.timeRemaining}
 				status={card.status}
 			/>
 		);
