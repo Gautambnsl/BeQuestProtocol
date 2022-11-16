@@ -106,7 +106,7 @@
 
 				margin: 0;
 				padding-inline: 0;
-				padding-block: 3.5em;
+				padding-block: 3.1em;
 				border-radius: 0.8em;
 				box-shadow: ab.$box-shadow;
 
@@ -171,5 +171,6 @@
 		margin-inline: auto;
 		margin-block: 3em;
 		min-height: 75vh;
+		overflow: auto;
 	}
 }

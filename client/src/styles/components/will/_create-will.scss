@@ -1,7 +1,9 @@
 @use "../../abstracts" as ab;
 
 .create-will {
-	position: relative;
+	&.relative {
+		position: relative;
+	}
 
 	&__toggle {
 		user-select: none;
@@ -57,12 +59,10 @@
 			@include ab.screen-50 {
 				width: min(40%, 30rem);
 				flex-wrap: wrap;
-				// max-height: 75vh;
 				overflow-y: scroll;
 				overflow-x: hidden;
 
 				justify-content: center;
-				// padding-inline: 1.5em;
 			}
 
 			@include ab.screen-68 {

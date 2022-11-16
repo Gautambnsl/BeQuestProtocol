@@ -18,11 +18,9 @@ function CreateWill() {
 			.then((address) => {
 				const userTokenEndpoint = `https://api.covalenthq.com/v1/${process.env.REACT_APP_CHAINID}/address/${address}/balances_v2/?&key=${process.env.REACT_APP_API_KEY}`;
 
-				console.log(userTokenEndpoint);
 				fetch(userTokenEndpoint)
 					.then((res) => res.json())
 					.then((tokenList) => {
-						console.log(tokenList.data.items);
 						setUserTokens(tokenList.data.items);
 					});
 			})
@@ -56,7 +54,7 @@ function CreateWill() {
 	});
 
 	return (
-		<div className="create-will">
+		<div className={`create-will ${loading ? "relative" : ""}`}>
 			{loading && <Loader />}
 
 			<h3 className="create-will__toggle">My tokens</h3>

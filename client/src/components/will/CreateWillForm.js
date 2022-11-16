@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import createWillSchema from "../../formValidations/createWillSchema";
 import Input from "./Input";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
 	approveRequest,
 	signRequest,
@@ -18,6 +18,11 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	} = useForm({ resolver: yupResolver(createWillSchema) });
 
 	const [enableSubmit, setEnableSubmit] = useState(false);
+	const [videoStatus, setVideoStatus] = useState({
+		status: true,
+		file: "",
+	});
+	const videoRef = useRef();
 
 	useEffect(() => {
 		if (tokenDetails.name && tokenDetails.address) {
@@ -28,7 +33,6 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 
 	const createWill = (willInfo, event) => {
 		event.preventDefault();
-		console.log(willInfo);
 
 		setLoading(true);
 		if (!enableSubmit) {
@@ -72,6 +76,39 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		}
 	};
 
+	const handleVideoStatus = (e) => {
+		let falseStatus = {
+			status: false,
+			file: "",
+		};
+
+		if (e.target.checked) {
+			setVideoStatus((prev) => {
+				return { ...prev, status: e.target.checked };
+			});
+		} else {
+			setVideoStatus(falseStatus);
+		}
+	};
+
+	const handleChange = (e) => {
+		let file = e.target.files[0];
+		let fileName = file.name;
+		const fileExtension = fileName.indexOf(".");
+
+		if (fileName.length > 12)
+			fileName =
+				fileName.slice(0, 12) + " ... " + fileName.slice(fileExtension);
+
+		videoRef.current.classList.remove("file-upload");
+		videoRef.current.innerHTML = fileName;
+
+		setVideoStatus((prev) => {
+			return { ...prev, file };
+		});
+		console.log(fileName);
+	};
+
 	return (
 		<form onSubmit={handleSubmit(createWill)} className="input-form">
 			<Input
@@ -106,8 +143,8 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				name={"benificaryAddress"}
 			/>
 
-			<div className="input-form__item input-time">
-				<div className="input-time__select">
+			<div className="input-form__item input-group">
+				<div className="input-group__select">
 					<label htmlFor="timeUnit">Time Unit</label>
 					<select id="timeUnit" {...register("timeUnit")}>
 						<option value="1">Seconds</option>
@@ -131,12 +168,37 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				<label htmlFor="message">Message</label>
 			</div>
 
+			<div className="input-form__item input-group">
+				<div className="input-group__checkbox">
+					<input
+						type="checkbox"
+						id="videoMessage"
+						checked={videoStatus?.status}
+						onChange={handleVideoStatus}
+					/>
+					<label htmlFor="videoMessage">Select to upload Video Message</label>
+				</div>
+
+				{videoStatus.status && (
+					<div className="input-group__file">
+						<label htmlFor="uploadVideo" ref={videoRef} className="file-upload">
+							Upload Video Message
+						</label>
+						<input
+							id="uploadVideo"
+							type="file"
+							accept="video/mp4,video/x-m4v,video/*"
+							onChange={handleChange}
+						/>
+					</div>
+				)}
+			</div>
+
 			<div className="input-form__button">
 				<button
 					className={`${!enableSubmit ? "" : "disable"}`}
 					disabled={!enableSubmit ? false : true}
 				>
-					{" "}
 					Approve
 				</button>
 				<button

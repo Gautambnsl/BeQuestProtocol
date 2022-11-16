@@ -17,7 +17,7 @@
 		position: relative;
 		padding-block: 0.4em 0;
 
-		label {
+		> label {
 			position: absolute;
 			translate: 0.25em 0.3em;
 			color: rgba(ab.$text-primary, 0.7);
@@ -27,7 +27,7 @@
 			padding-block: 0.2em;
 		}
 
-		input {
+		> input {
 			background-color: transparent;
 			max-width: 100%;
 
@@ -108,7 +108,7 @@
 		}
 	}
 
-	.input-time {
+	.input-group {
 		gap: 1.2em;
 
 		@include ab.screen-40 {
@@ -147,6 +147,47 @@
 				option {
 					color: ab.$background-dark1;
 				}
+			}
+		}
+
+		&__checkbox {
+			input {
+				&:checked ~ label {
+					color: ab.$text-pink;
+				}
+
+				&:valid {
+					color: rgba(ab.$text-primary, 0.7);
+				}
+			}
+
+			label {
+				position: relative;
+				color: rgba(ab.$text-primary, 0.7);
+				transition: color 0.3s ease-in;
+			}
+		}
+
+		&__file {
+			padding-inline: 0.4em;
+
+			label {
+				font-weight: 500;
+				color: ab.$text-pink;
+
+				transition: color 0.3s ease-in;
+
+				&.file-upload {
+					background-color: rgba(ab.$background-dark3, 0.3);
+					border-radius: 0.8em;
+					padding-block: 0.4em;
+					padding-inline: 1em;
+					color: ab.$text-golden;
+				}
+			}
+
+			input[type="file"] {
+				display: none;
 			}
 		}
 	}

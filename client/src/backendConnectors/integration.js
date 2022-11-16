@@ -5,17 +5,14 @@ import { connectWallet } from "./connectWallet";
 
 export async function approveRequest(address, amt) {
 	try {
-		console.log(amt);
 		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 		await provider.send("eth_requestAccounts", []);
 		const signer = provider.getSigner();
 		const contract = new ethers.Contract(address, ERC20, signer);
 		let tx = await contract.approve(process.env.REACT_APP_BEQUEST_ADDRESS, amt);
 		await tx.wait();
-		console.log(tx);
 		return { status: true };
 	} catch (err) {
-		console.log(err, "aaa");
 		return { status: false, msg: err.msg };
 	}
 }
@@ -29,7 +26,6 @@ export async function signRequest(
 	videoLink = "google"
 ) {
 	try {
-		console.log(amount);
 		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 		await provider.send("eth_requestAccounts", []);
 		const signer = provider.getSigner();
@@ -48,10 +44,8 @@ export async function signRequest(
 			videoLink
 		);
 		await tx.wait();
-		console.log(tx);
 		return { status: true };
 	} catch (err) {
-		console.log(err);
 		return { status: false, msg: err.msg };
 	}
 }
@@ -62,6 +56,5 @@ export async function getAddress() {
 	const signer = provider.getSigner();
 
 	const address = await signer.getAddress();
-	console.log(address);
 	return address;
 }
