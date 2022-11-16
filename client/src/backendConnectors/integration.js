@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import abi from "./abi/bequesterc20abi.json";
 import ERC20 from "./abi/ERC20.json";
+import { Web3Storage } from "web3.storage";
 import { connectWallet } from "./connectWallet";
 
 export async function approveRequest(address, amt) {
@@ -119,4 +120,23 @@ export async function getBenificary() {
 		obj.push(will)
 	}	
 	console.log(obj)
+}
+
+
+export async function storeFiles(files) {
+	try {
+		const client = makeStorageClient();
+		const cid = await client.put(files);
+		console.log(cid);
+		return cid;
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+function makeStorageClient() {
+	return new Web3Storage({
+		token:
+			process.env.FILECOIN_API_KEY,
+	});
 }
