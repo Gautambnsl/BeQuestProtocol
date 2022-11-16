@@ -85,6 +85,14 @@ function CreateWill() {
 					<CreateWillForm tokenDetails={tokenDetails} setLoading={setLoading} />
 				</div>
 			</div>
+
+			<a
+				className="test-faucet"
+				href="https://ismaventuras.github.io/ERC20-Faucet/"
+				target="_blank"
+			>
+				Click here to get test faucet
+			</a>
 		</div>
 	);
 }

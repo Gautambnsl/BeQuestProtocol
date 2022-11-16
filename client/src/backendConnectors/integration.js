@@ -76,7 +76,7 @@ export async function getView() {
 	let data = await contract.getAllUsersId(address);
 
 	for (let i = 0; i < data.length; i++) {
-		let id = parseInt(data[i]._hex, 16);
+		let id = parseInt(data[i]._hex);
 		let will = await contract.idToWill(id);
 		obj.push(will);
 	}
@@ -102,7 +102,8 @@ export async function getBenificary() {
 		let will = await contract.idToWill(id);
 		obj.push(will);
 	}
-	console.log(obj);
+
+	return obj;
 }
 
 export async function storeFiles(files) {

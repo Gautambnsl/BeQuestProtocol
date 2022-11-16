@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as yup from "yup";
-import { getTime } from "../../backendConnectors/integration";
+import { changeTime } from "../../backendConnectors/integration";
 
 let schema = yup.object().shape({
 	time: yup
@@ -19,19 +19,19 @@ function WillCard({ id, tokenName, amount, timeRemaining, to, status }) {
 		let tempStatusText;
 		let tempButtonActive;
 
-		if (status === "0") {
+		if (status == "0") {
 			tempStatusText = "Active";
 
 			tempButtonActive = true;
-		} else if (status === "1") {
+		} else if (status == "1") {
 			tempStatusText = "Inactive";
 
 			tempButtonActive = false;
-		} else if (status === "2") {
+		} else if (status == "2") {
 			tempStatusText = "Success";
 
 			tempButtonActive = false;
-		} else if (status === "3") {
+		} else if (status == "3") {
 			tempStatusText = "Failed";
 
 			tempButtonActive = false;
@@ -44,11 +44,11 @@ function WillCard({ id, tokenName, amount, timeRemaining, to, status }) {
 	const handleChangeTime = () => {
 		const time = window.prompt("Enter time in days", "5");
 
-		schema.isValid({ time }).then((valid) => {
+		schema.isValid({ time }).then(async (valid) => {
 			if (valid) {
-				alert("correct value");
+				await changeTime(id, time);
 			} else {
-				alert("wrong value");
+				alert("Wrong time inputted");
 			}
 		});
 	};
@@ -56,7 +56,7 @@ function WillCard({ id, tokenName, amount, timeRemaining, to, status }) {
 	return (
 		<div className="card">
 			<div className="card-item">
-				<h2>{id}</h2>
+				<h2>{"BQ" + id}</h2>
 			</div>
 
 			<div className="card-item">
@@ -93,7 +93,7 @@ function WillCard({ id, tokenName, amount, timeRemaining, to, status }) {
 				<p className={`card-item__value ${statusText}`}>{statusText}</p>
 			</div>
 
-			<div className="card-item card-button">
+			{/* <div className="card-item card-button">
 				<button
 					className="card-button__change"
 					disabled={!buttonActive}
@@ -108,7 +108,9 @@ function WillCard({ id, tokenName, amount, timeRemaining, to, status }) {
 				>
 					{statusText === "Inactive" ? "Resume" : "Stop"}
 				</button>
-			</div>
+			</div> */}
+
+			<span>*Amount is in decimal</span>
 		</div>
 	);
 }

@@ -4,7 +4,6 @@ import { getView, getTime } from "../backendConnectors/integration";
 
 function ViewWill() {
 	const [willData, setWillData] = useState([]);
-	const [timeRemaining, setTimeRemaining] = useState(() => {});
 
 	useEffect(() => {
 		getView().then((res) => {
@@ -14,15 +13,17 @@ function ViewWill() {
 		});
 	}, []);
 
-	const willCard = willData.map(async (card) => {
-		const time = await getTime(parseInt(card.id._hex));
-		console.log(time);
+	const willCard = willData.map((card) => {
+		let id = parseInt(card.id._hex);
+		let amount = parseInt(card.amt._hex);
+
 		return (
 			<WillCard
-				key={card.id._hex.toString()}
-				id={card.id._hex.toString()}
+				key={id}
+				id={id}
 				tokenName={card.tokenName}
-				amount={card.amt._hex.toString()}
+				amount={amount}
+				// timeRemaining={card.timeRemaining}
 				to={card.to}
 				status={card.status}
 			/>

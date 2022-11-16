@@ -7,6 +7,13 @@
 	padding-block: 0.4em 0.8em;
 	overflow-x: hidden;
 
+	span {
+		display: block;
+		margin-top: 1em;
+		font-style: italic;
+		font-size: 0.8rem;
+	}
+
 	&-item {
 		display: flex;
 		gap: 0.6em;
