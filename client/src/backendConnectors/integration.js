@@ -8,6 +8,13 @@ export async function approveRequest(address, amt) {
 		console.log(amt);
 		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 		await provider.send("eth_requestAccounts", []);
+		// console.log(provider,"	this is chain id")
+		// console.log(provider._network.chainId,"	this is chain id")
+		// if(provider._network.chainId !== 80001)
+		// {
+		// 	alert("You Are Not On Polygon Mumbai Chain\n Please Switch Chain")
+		// 	return
+		// }
 		const signer = provider.getSigner();
 		const contract = new ethers.Contract(address, ERC20, signer);
 		let tx = await contract.approve(process.env.REACT_APP_BEQUEST_ADDRESS, amt);

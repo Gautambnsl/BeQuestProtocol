@@ -39,9 +39,18 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	};
 
 	const approve = async (willInfo) => {
+		let amt = willInfo.amount;
+		amt  = amt.toString()
+		for(let x = 0;x < tokenDetails.decimal;x++){
+
+			amt = amt + "0"
+
+		}
+
+
 		const status = await approveRequest(
 			willInfo.contractAddress,
-			willInfo.amount * 10 ** tokenDetails.decimal
+			amt
 		);
 
 		setLoading(false);
@@ -53,11 +62,21 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	};
 
 	const sign = async (willInfo) => {
+		
+		let amt = willInfo.amount;
+		amt  = amt.toString()
+		for(let x = 0;x < tokenDetails.decimal;x++){
+
+			amt = amt + "0"
+
+		}
+
 		const time = willInfo.timeUnit * willInfo.transferTime;
+
 		const status = await signRequest(
 			willInfo.tokenName,
 			time,
-			willInfo.amount * 10 ** tokenDetails.decimal,
+			amt,
 			willInfo.benificaryAddress,
 			willInfo.contractAddress,
 			willInfo.message
