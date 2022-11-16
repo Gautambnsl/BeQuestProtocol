@@ -7,7 +7,7 @@ export async function approveRequest(address, amt) {
 	try {
 		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 		await provider.send("eth_requestAccounts", []);
-	
+
 		const signer = provider.getSigner();
 		const contract = new ethers.Contract(address, ERC20, signer);
 		let tx = await contract.approve(process.env.REACT_APP_BEQUEST_ADDRESS, amt);
@@ -63,7 +63,7 @@ export async function getAddress() {
 }
 
 export async function getView() {
-	let obj = []
+	let obj = [];
 	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 	await provider.send("eth_requestAccounts", []);
 	const signer = provider.getSigner();
@@ -85,7 +85,7 @@ export async function getView() {
 }
 
 export async function getBenificary() {
-	let obj = []
+	let obj = [];
 	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 	await provider.send("eth_requestAccounts", []);
 	const signer = provider.getSigner();
@@ -124,45 +124,45 @@ function makeStorageClient() {
 	});
 }
 
-	export async function stop(id) {
-		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-		await provider.send("eth_requestAccounts", []);
-		const signer = provider.getSigner();
-		const address = await signer.getAddress();
-		const contract = new ethers.Contract(
-			process.env.REACT_APP_BEQUEST_ADDRESS,
-			abi,
-			signer
-		);
-		let tx = await contract.stopWill(id);
-		let txData = await tx.wait();
-		return txData;	
-	}
+export async function stop(id) {
+	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+	await provider.send("eth_requestAccounts", []);
+	const signer = provider.getSigner();
+	const address = await signer.getAddress();
+	const contract = new ethers.Contract(
+		process.env.REACT_APP_BEQUEST_ADDRESS,
+		abi,
+		signer
+	);
+	let tx = await contract.stopWill(id);
+	let txData = await tx.wait();
+	return txData;
+}
 
-	export async function changeTime(id,days) {
-		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-		await provider.send("eth_requestAccounts", []);
-		const signer = provider.getSigner();
-		const address = await signer.getAddress();
-		const contract = new ethers.Contract(
-			process.env.REACT_APP_BEQUEST_ADDRESS,
-			abi,
-			signer
-		);
-		let tx = await contract.extendtWill(id,days*24*60*60);
-		let txdata = tx.wait()
-		return txdata;	
-	}
-	export async function getTime(id,days) {
-		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-		await provider.send("eth_requestAccounts", []);
-		const signer = provider.getSigner();
-		const address = await signer.getAddress();
-		const contract = new ethers.Contract(
-			process.env.REACT_APP_BEQUEST_ADDRESS,
-			abi,
-			signer
-		);
-		let data = await contract.getTimeReamaing(id);
-		return data
-	}
+export async function changeTime(id, days) {
+	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+	await provider.send("eth_requestAccounts", []);
+	const signer = provider.getSigner();
+	const address = await signer.getAddress();
+	const contract = new ethers.Contract(
+		process.env.REACT_APP_BEQUEST_ADDRESS,
+		abi,
+		signer
+	);
+	let tx = await contract.extendtWill(id, days * 24 * 60 * 60);
+	let txdata = tx.wait();
+	return txdata;
+}
+export async function getTime(id) {
+	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+	await provider.send("eth_requestAccounts", []);
+	const signer = provider.getSigner();
+	const address = await signer.getAddress();
+	const contract = new ethers.Contract(
+		process.env.REACT_APP_BEQUEST_ADDRESS,
+		abi,
+		signer
+	);
+	let data = await contract.getTimeReamaing(id);
+	return data;
+}

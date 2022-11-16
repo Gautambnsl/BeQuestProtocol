@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as yup from "yup";
+import { getTime } from "../../backendConnectors/integration";
 
 let schema = yup.object().shape({
 	time: yup
@@ -10,7 +11,7 @@ let schema = yup.object().shape({
 		.integer("Transfer time should only be integer!"),
 });
 
-function WillCard({ id, tokenName, amount, to, timeRemaining, status }) {
+function WillCard({ id, tokenName, amount, timeRemaining, to, status }) {
 	const [statusText, setStatusText] = useState("");
 	const [buttonActive, setButtonActive] = useState(true);
 
@@ -78,11 +79,13 @@ function WillCard({ id, tokenName, amount, to, timeRemaining, status }) {
 				</p>
 			</div>
 
-			<div className="card-item">
-				<h3 className="card-item__head">Time Remaning</h3>
+			{timeRemaining && (
+				<div className="card-item">
+					<h3 className="card-item__head">Time Remaning</h3>
 
-				<p className="card-item__value">{timeRemaining}</p>
-			</div>
+					<p className="card-item__value">{timeRemaining}</p>
+				</div>
+			)}
 
 			<div className="card-item">
 				<h3 className="card-item__head">Status</h3>
