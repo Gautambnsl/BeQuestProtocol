@@ -33,11 +33,11 @@ function Plans() {
 								etc.
 							</li>
 							<li className="plans-card__item-info__ul-li">
-							Requests can be edited at any time by the user.							</li>
+								Free Faucet Option						</li>
 							<li className="plans-card__item-info__ul-li">
 							Polygon chain (testnet) support							</li>
 							<li className="plans-card__item-info__ul-li">
-								can attach video messages.
+								Can attach video messages using Filecoin Storage
 							</li>
 							<li className="plans-card__item-info__ul-li">
 							Oracle Chainlink is being used for automation.							</li>

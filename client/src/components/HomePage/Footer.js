@@ -20,15 +20,15 @@ const Footer = () => {
 						</p>
 					</div>
 
-					<div>
+					{/* <div>
 						<i class="fa fa-phone"></i>
 						<p>+91 8920304880</p>
-					</div>
+					</div> */}
 
 					<div>
 						<i class="fa fa-envelope"></i>
 						<p>
-							<a href="mailto:support@company.com">bansalgautam005@gmail.com</a>
+							<a href="mailto:support@company.com">protocolBequest@gmail.com</a>
 						</p>
 					</div>
 				</div>
