@@ -49,3 +49,7 @@ main {
 ::-webkit-scrollbar-thumb:hover {
 	background-color: lighten($color: #555, $amount: 10);
 }
+
+.test-faucet {
+	color: ab.$text-primary;
+}

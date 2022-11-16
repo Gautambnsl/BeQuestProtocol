@@ -42,7 +42,7 @@ function BeneficiaryCard({
 	return (
 		<div className="card">
 			<div className="card-item">
-				<h2>{id}</h2>
+				<h2>{"BQ" + id}</h2>
 			</div>
 
 			<div className="card-item">
@@ -83,13 +83,21 @@ function BeneficiaryCard({
 				<p className="card-item__value">{message}</p>
 			</div>
 
-			<div className="card-item">
-				<h3 className="card-item__head">Video Link</h3>
+			{video && (
+				<div className="card-item">
+					<h3 className="card-item__head">Video Link</h3>
 
-				<a className="card-item__value" href={video} target="_blank">
-					{video}
-				</a>
-			</div>
+					<a
+						className="card-item__value"
+						href={`https://w3s.link/ipfs/${video}`}
+						target="_blank"
+					>
+						Watch here
+					</a>
+				</div>
+			)}
+
+			<span>*Amount is in decimal</span>
 		</div>
 	);
 }
