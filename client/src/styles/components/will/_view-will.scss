@@ -1,0 +1,21 @@
+@use "../../abstracts" as ab;
+
+.view-will {
+	background-color: ab.$background-dark2;
+	border-radius: 0.8em;
+	min-height: 10em;
+	padding-inline: 0.8em;
+	padding-block: 1em;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+	gap: 1em;
+
+	&.center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.2rem;
+		text-align: center;
+	}
+}
