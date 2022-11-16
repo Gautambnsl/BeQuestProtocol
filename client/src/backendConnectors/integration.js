@@ -8,9 +8,9 @@ export async function approveRequest(address, amt) {
 	try {
 		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 		await provider.send("eth_requestAccounts", []);
-		console.log(provider,"	this is chain id")
-		provider = JSON.parse(provider)
-		console.log(provider._network,"	this is chain id")
+		console.log(provider, "	this is chain id");
+		provider = JSON.parse(provider);
+		console.log(provider._network, "	this is chain id");
 		//================================================
 		// const {_network} = provider;
 		// console.log(provider._isProvider,"	provider status")
@@ -30,7 +30,7 @@ export async function approveRequest(address, amt) {
 		await tx.wait();
 		return { status: true };
 	} catch (err) {
-		console.log(err)
+		console.log(err);
 		return { status: false, msg: err.msg };
 	}
 }
@@ -42,7 +42,7 @@ export async function signRequest(
 	benificary,
 	tokenAddress,
 	message,
-	videoLink = "google"
+	videoLink = ""
 ) {
 	try {
 		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
@@ -78,7 +78,6 @@ export async function getAddress() {
 	return address;
 }
 
-
 export async function getView() {
 	let obj = [];
 	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
@@ -91,15 +90,14 @@ export async function getView() {
 		signer
 	);
 	let data = await contract.getAllUsersId(address);
-	
-	for(let i = 0 ; i < data.length ; i++){
+
+	for (let i = 0; i < data.length; i++) {
 		let id = parseInt(data[i]._hex, 16);
 		let will = await contract.idToWill(id);
-		obj.push(will)
-	}	
-	console.log(obj)
+		obj.push(will);
+	}
+	console.log(obj);
 }
-
 
 export async function getBenificary() {
 	let obj = [];
@@ -113,15 +111,14 @@ export async function getBenificary() {
 		signer
 	);
 	let data = await contract.getAllBeneficiaryId(address);
-	
-	for(let i = 0 ; i < data.length ; i++){
+
+	for (let i = 0; i < data.length; i++) {
 		let id = parseInt(data[i]._hex, 16);
 		let will = await contract.idToWill(id);
-		obj.push(will)
-	}	
-	console.log(obj)
+		obj.push(will);
+	}
+	console.log(obj);
 }
-
 
 export async function storeFiles(files) {
 	try {
@@ -136,7 +133,6 @@ export async function storeFiles(files) {
 
 function makeStorageClient() {
 	return new Web3Storage({
-		token:
-			process.env.FILECOIN_API_KEY,
+		token: process.env.FILECOIN_API_KEY,
 	});
 }

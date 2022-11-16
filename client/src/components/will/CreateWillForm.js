@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import {
 	approveRequest,
 	signRequest,
+	storeFiles,
 } from "../../backendConnectors/integration";
 
 function CreateWillForm({ tokenDetails, setLoading }) {
@@ -23,6 +24,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		file: "",
 	});
 	const videoRef = useRef();
+	const videoCidRef = useRef("");
 
 	useEffect(() => {
 		if (tokenDetails.name && tokenDetails.address) {
@@ -31,13 +33,14 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		}
 	}, [tokenDetails]);
 
-	const createWill = (willInfo, event) => {
+	const createWill = async (willInfo, event) => {
 		event.preventDefault();
 
 		setLoading(true);
 		if (!enableSubmit) {
 			approve(willInfo);
 		} else {
+			const cid = await storeFiles(videoStatus.file);
 			sign(willInfo);
 		}
 	};
@@ -74,7 +77,8 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 			amt,
 			willInfo.benificaryAddress,
 			willInfo.contractAddress,
-			willInfo.message
+			willInfo.message,
+			videoCidRef.current
 		);
 
 		setLoading(false);
@@ -116,7 +120,6 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		setVideoStatus((prev) => {
 			return { ...prev, file };
 		});
-		console.log(fileName);
 	};
 
 	return (

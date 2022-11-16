@@ -1,4 +1,14 @@
 import { useEffect, useState } from "react";
+import * as yup from "yup";
+
+let schema = yup.object().shape({
+	time: yup
+		.number()
+		.typeError("Invalid time!")
+		.required("Transfer time can't be empty!")
+		.positive("Transfer time can't be in past!")
+		.integer("Transfer time should only be integer!"),
+});
 
 function WillCard({ id, tokenName, amount, to, time, status }) {
 	const [statusText, setStatusText] = useState("");
@@ -29,6 +39,18 @@ function WillCard({ id, tokenName, amount, to, time, status }) {
 		setStatusText(tempStatusText);
 		setButtonActive(tempButtonActive);
 	}, []);
+
+	const handleChangeTime = () => {
+		const time = window.prompt("Enter time in days", "5");
+
+		schema.isValid({ time }).then((valid) => {
+			if (valid) {
+				alert("correct value");
+			} else {
+				alert("wrong value");
+			}
+		});
+	};
 
 	return (
 		<div className="card">
@@ -69,7 +91,11 @@ function WillCard({ id, tokenName, amount, to, time, status }) {
 			</div>
 
 			<div className="card-item card-button">
-				<button className="card-button__change" disabled={!buttonActive}>
+				<button
+					className="card-button__change"
+					disabled={!buttonActive}
+					onClick={handleChangeTime}
+				>
 					Change Time
 				</button>
 
