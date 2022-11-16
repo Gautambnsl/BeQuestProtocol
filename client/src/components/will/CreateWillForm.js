@@ -75,7 +75,6 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	};
 
 	const sign = async (willInfo) => {
-		alert("sign");
 		let amt = willInfo.amount;
 		amt = amt.toString();
 		for (let x = 0; x < tokenDetails.decimal; x++) {
@@ -132,6 +131,10 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 
 		videoRef.current.classList.remove("file-upload");
 		videoRef.current.innerHTML = fileName;
+
+		if (e.target.files[0]) {
+			setVideoErr("");
+		}
 
 		setVideoStatus((prev) => {
 			return { ...prev, file: e.target.files };
