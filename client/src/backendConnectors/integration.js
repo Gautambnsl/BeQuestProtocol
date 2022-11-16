@@ -9,8 +9,7 @@ export async function approveRequest(address, amt) {
 		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 		await provider.send("eth_requestAccounts", []);
 		console.log(provider, "	this is chain id");
-		provider = JSON.parse(provider);
-		console.log(provider._network, "	this is chain id");
+		// console.log(provider._network, "	this is chain id");
 		//================================================
 		// const {_network} = provider;
 		// console.log(provider._isProvider,"	provider status")
@@ -122,12 +121,14 @@ export async function getBenificary() {
 
 export async function storeFiles(files) {
 	try {
+		console.log(files);
 		const client = makeStorageClient();
 		const cid = await client.put(files);
 		console.log(cid);
-		return cid;
+		return { success: true, cid };
 	} catch (error) {
 		console.log(error);
+		return { success: false, msg: error.msg };
 	}
 }
 

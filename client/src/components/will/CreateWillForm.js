@@ -23,6 +23,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		status: true,
 		file: "",
 	});
+	const [videoErr, setVideoErr] = useState("");
 	const videoRef = useRef();
 	const videoCidRef = useRef("");
 
@@ -35,12 +36,23 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 
 	const createWill = async (willInfo, event) => {
 		event.preventDefault();
+		if (videoStatus.status && videoStatus.file === "") {
+			setVideoErr("Upload video message!");
+			return;
+		} else {
+			setVideoErr("");
+		}
 
 		setLoading(true);
 		if (!enableSubmit) {
 			approve(willInfo);
 		} else {
 			const cid = await storeFiles(videoStatus.file);
+
+			if (cid.success) {
+				console.log(cid.cid);
+				videoCidRef.current = cid.cid;
+			}
 			sign(willInfo);
 		}
 	};
@@ -63,6 +75,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	};
 
 	const sign = async (willInfo) => {
+		alert("sign");
 		let amt = willInfo.amount;
 		amt = amt.toString();
 		for (let x = 0; x < tokenDetails.decimal; x++) {
@@ -83,6 +96,10 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 
 		setLoading(false);
 		if (status.status) {
+			setVideoStatus({
+				status: true,
+				file: "",
+			});
 			reset();
 			setEnableSubmit(false);
 		} else {
@@ -106,8 +123,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	};
 
 	const handleChange = (e) => {
-		let file = e.target.files[0];
-		let fileName = file.name;
+		let fileName = e.target.files[0].name;
 		const fileExtension = fileName.indexOf(".");
 
 		if (fileName.length > 12)
@@ -118,7 +134,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		videoRef.current.innerHTML = fileName;
 
 		setVideoStatus((prev) => {
-			return { ...prev, file };
+			return { ...prev, file: e.target.files };
 		});
 	};
 
@@ -203,6 +219,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 							accept="video/mp4,video/x-m4v,video/*"
 							onChange={handleChange}
 						/>
+						<p className="error">{videoErr}</p>
 					</div>
 				)}
 			</div>
