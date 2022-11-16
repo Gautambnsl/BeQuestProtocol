@@ -28,6 +28,12 @@
 			}
 		}
 
+		&.message {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 0.1em;
+		}
+
 		&__head {
 			cursor: context-menu;
 			color: ab.$text-pink;
@@ -51,6 +57,15 @@
 			&.Success {
 				color: ab.$success;
 				font-weight: 600;
+			}
+		}
+
+		a {
+			cursor: pointer;
+			transition: color 0.3s ease-in;
+
+			&:hover {
+				color: ab.$text-pink;
 			}
 		}
 	}

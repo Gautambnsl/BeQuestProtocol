@@ -80,7 +80,8 @@ export async function getView() {
 		let will = await contract.idToWill(id);
 		obj.push(will);
 	}
-	console.log(obj);
+
+	return obj;
 }
 
 export async function getBenificary() {

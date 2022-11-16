@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import * as yup from "yup";
 
-let schema = yup.object().shape({
-	time: yup
-		.number()
-		.typeError("Invalid time!")
-		.required("Transfer time can't be empty!")
-		.positive("Transfer time can't be in past!")
-		.integer("Transfer time should only be integer!"),
-});
-
-function WillCard({ id, tokenName, amount, to, timeRemaining, status }) {
+function BeneficiaryCard({
+	id,
+	tokenName,
+	amount,
+	from,
+	timeRemaining,
+	status,
+	message,
+	video,
+}) {
 	const [statusText, setStatusText] = useState("");
 	const [buttonActive, setButtonActive] = useState(true);
 
@@ -40,18 +39,6 @@ function WillCard({ id, tokenName, amount, to, timeRemaining, status }) {
 		setButtonActive(tempButtonActive);
 	}, []);
 
-	const handleChangeTime = () => {
-		const time = window.prompt("Enter time in days", "5");
-
-		schema.isValid({ time }).then((valid) => {
-			if (valid) {
-				alert("correct value");
-			} else {
-				alert("wrong value");
-			}
-		});
-	};
-
 	return (
 		<div className="card">
 			<div className="card-item">
@@ -71,10 +58,10 @@ function WillCard({ id, tokenName, amount, to, timeRemaining, status }) {
 			</div>
 
 			<div className="card-item">
-				<h3 className="card-item__head">To</h3>
+				<h3 className="card-item__head">From</h3>
 
-				<p className="card-item__value" title={to}>
-					{to.slice(0, 25) + "..."}
+				<p className="card-item__value" title={from}>
+					{from.slice(0, 25) + "..."}
 				</p>
 			</div>
 
@@ -90,24 +77,21 @@ function WillCard({ id, tokenName, amount, to, timeRemaining, status }) {
 				<p className={`card-item__value ${statusText}`}>{statusText}</p>
 			</div>
 
-			<div className="card-item card-button">
-				<button
-					className="card-button__change"
-					disabled={!buttonActive}
-					onClick={handleChangeTime}
-				>
-					Change Time
-				</button>
+			<div className="card-item message">
+				<h3 className="card-item__head">Message</h3>
 
-				<button
-					className={`card-button__stop ${statusText}`}
-					disabled={statusText === "Inactive" ? false : !buttonActive}
-				>
-					{statusText === "Inactive" ? "Resume" : "Stop"}
-				</button>
+				<p className="card-item__value">{message}</p>
+			</div>
+
+			<div className="card-item">
+				<h3 className="card-item__head">Video Link</h3>
+
+				<a className="card-item__value" href={video} target="_blank">
+					{video}
+				</a>
 			</div>
 		</div>
 	);
 }
 
-export default WillCard;
+export default BeneficiaryCard;
