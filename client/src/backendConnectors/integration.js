@@ -63,6 +63,7 @@ export async function getAddress() {
 }
 
 export async function getView() {
+	let obj = []
 	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 	await provider.send("eth_requestAccounts", []);
 	const signer = provider.getSigner();
@@ -83,6 +84,7 @@ export async function getView() {
 }
 
 export async function getBenificary() {
+	let obj = []
 	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 	await provider.send("eth_requestAccounts", []);
 	const signer = provider.getSigner();
