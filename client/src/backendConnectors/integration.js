@@ -134,6 +134,6 @@ export async function storeFiles(files) {
 
 function makeStorageClient() {
 	return new Web3Storage({
-		token: process.env.FILECOIN_API_KEY,
+		token: process.env.REACT_APP_FILECOIN_API_KEY,
 	});
 }

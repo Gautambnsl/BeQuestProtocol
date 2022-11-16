@@ -97,7 +97,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		setLoading(false);
 		if (status.status) {
 			setVideoStatus({
-				status: true,
+				status: false,
 				file: "",
 			});
 			reset();
@@ -219,7 +219,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 							accept="video/mp4,video/x-m4v,video/*"
 							onChange={handleChange}
 						/>
-						<p className="error">{videoErr}</p>
+						{videoErr.length > 0 && <p className="error">{videoErr}</p>}
 					</div>
 				)}
 			</div>
