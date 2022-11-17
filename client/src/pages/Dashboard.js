@@ -69,7 +69,7 @@ function Dashboard() {
 						</li>
 
 						<li>
-							<a href="">Docs</a>
+							<a target="_blank" href="https://drive.google.com/file/d/1k7oVW-qV1vxp7pPidyastOgYSmrfKHFx/view?usp=sharing">Docs</a>
 						</li>
 					</ul>
 				</div>
