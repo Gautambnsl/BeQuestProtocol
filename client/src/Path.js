@@ -16,10 +16,8 @@ function Path() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/wallet" element={<Wallet />} />
-
 				<Route path="/dashboard" element={<Dashboard />}>
 					<Route index element={<Navigate to="create-will" />} />
-
 					<Route path="create-will" element={<CreateWill />} />
 					<Route path="view-will" element={<ViewWill />} />
 					<Route path="beneficiary" element={<Beneficiary />} />
