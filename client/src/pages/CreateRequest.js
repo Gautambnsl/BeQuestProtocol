@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import Token from "../components/will/Token";
-import CreateWillForm from "../components/will/CreateWillForm";
+import Token from "../components/request/Token";
+import CreateRequestForm from "../components/request/CreateRequestForm";
 import { getAddress } from "../backendConnectors/integration";
 import Loader from "../components/Loader";
+import FetchingLoader from "../components/FetchingLoader";
 
-function CreateWill() {
+function CreateRequest() {
 	const [userTokens, setUserTokens] = useState([]);
 	const [tokenDetails, setTokenDetails] = useState({
 		name: "",
@@ -12,6 +13,7 @@ function CreateWill() {
 		decimal: "",
 	});
 	const [loading, setLoading] = useState(false);
+	const [fetchLoading, setFetchingLoading] = useState(true);
 
 	useEffect(() => {
 		getAddress()
@@ -21,6 +23,8 @@ function CreateWill() {
 				fetch(userTokenEndpoint)
 					.then((res) => res.json())
 					.then((tokenList) => {
+						setFetchingLoading(false);
+						console.log(tokenList.data.items);
 						setUserTokens(tokenList.data.items);
 					});
 			})
@@ -64,15 +68,18 @@ function CreateWill() {
 					<div
 						className={`create-will__token-list ${
 							userTokens.length === 0 ? "flex" : ""
-						}`}
+						} ${fetchLoading ? "column" : ""}`}
 					>
 						<h3
 							title="Click on any token to get its details"
-							className={`${userTokens.length === 0 ? "none" : ""}`}
+							// className={`${userTokens.length === 1 ? "none" : ""}`}
 						>
 							Select your token
 						</h3>
-						{userTokens.length === 0 ? (
+
+						{fetchLoading ? (
+							<FetchingLoader />
+						) : userTokens.length === 1 ? (
 							<p>You don't have any tokens.</p>
 						) : (
 							Tokens
@@ -82,7 +89,10 @@ function CreateWill() {
 				<div className="create-will__token-input">
 					<h3 className="pacifico">Create your BeQuest request</h3>
 
-					<CreateWillForm tokenDetails={tokenDetails} setLoading={setLoading} />
+					<CreateRequestForm
+						tokenDetails={tokenDetails}
+						setLoading={setLoading}
+					/>
 				</div>
 			</div>
 
@@ -97,4 +107,4 @@ function CreateWill() {
 	);
 }
 
-export default CreateWill;
+export default CreateRequest;

@@ -36,6 +36,19 @@
 			padding-block: 1.4em;
 			padding-inline: 1em;
 
+			&.column {
+				flex-direction: column;
+
+				h3 {
+					margin-bottom: auto;
+					margin-inline: auto;
+				}
+
+				.loader {
+					margin-bottom: auto;
+				}
+			}
+
 			&.flex {
 				align-items: center;
 				justify-content: center;

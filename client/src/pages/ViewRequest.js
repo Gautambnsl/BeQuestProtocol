@@ -1,14 +1,15 @@
 import { useRef, useEffect, useState } from "react";
-import WillCard from "../components/will/WillCard";
+import RequestCard from "../components/request/RequestCard";
 import { getView, getTime } from "../backendConnectors/integration";
+import FetchingLoader from "../components/FetchingLoader";
 
-function ViewWill() {
+function ViewRequest() {
 	const [willData, setWillData] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		getView().then((res) => {
-			console.log(res);
-
+			setLoading(false);
 			setWillData(res);
 		});
 	}, []);
@@ -18,7 +19,7 @@ function ViewWill() {
 		let amount = parseInt(card.amt._hex);
 
 		return (
-			<WillCard
+			<RequestCard
 				key={id}
 				id={id}
 				tokenName={card.tokenName}
@@ -32,9 +33,15 @@ function ViewWill() {
 
 	return (
 		<div className={`view-will ${willCard.length > 0 ? "" : "center"}`}>
-			{willCard.length > 0 ? willCard : "No BeQuest request created till now!"}
+			{loading ? (
+				<FetchingLoader />
+			) : willCard.length > 0 ? (
+				willCard
+			) : (
+				"No BeQuest request created till now!"
+			)}
 		</div>
 	);
 }
 
-export default ViewWill;
+export default ViewRequest;

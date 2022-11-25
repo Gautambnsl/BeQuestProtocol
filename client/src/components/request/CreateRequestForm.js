@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import createWillSchema from "../../formValidations/createWillSchema";
+import createWillSchema from "../../formValidations/createRequestSchema";
 import Input from "./Input";
 import { useEffect, useState, useRef } from "react";
 import {
@@ -8,6 +8,7 @@ import {
 	signRequest,
 	storeFiles,
 } from "../../backendConnectors/integration";
+import { ethers } from "ethers";
 
 function CreateWillForm({ tokenDetails, setLoading }) {
 	const {
@@ -58,11 +59,14 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	};
 
 	const approve = async (willInfo) => {
-		let amt = willInfo.amount;
-		amt = amt.toString();
-		for (let x = 0; x < tokenDetails.decimal; x++) {
-			amt = amt + "0";
-		}
+		let amt = ethers.utils.parseUnits(
+			willInfo.amount.toString(),
+			tokenDetails.decimal
+		);
+		// amt = amt.toString();
+		// for (let x = 0; x < tokenDetails.decimal; x++) {
+		// 	amt = amt + "0";
+		// }
 
 		const status = await approveRequest(willInfo.contractAddress, amt);
 
@@ -75,11 +79,14 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	};
 
 	const sign = async (willInfo) => {
-		let amt = willInfo.amount;
-		amt = amt.toString();
-		for (let x = 0; x < tokenDetails.decimal; x++) {
-			amt = amt + "0";
-		}
+		let amt = ethers.utils.parseUnits(
+			willInfo.amount.toString(),
+			tokenDetails.decimal
+		);
+		// amt = amt.toString();
+		// for (let x = 0; x < tokenDetails.decimal; x++) {
+		// 	amt = amt + "0";
+		// }
 
 		const time = willInfo.timeUnit * willInfo.transferTime;
 

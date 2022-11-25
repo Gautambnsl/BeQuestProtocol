@@ -11,7 +11,7 @@ let schema = yup.object().shape({
 		.integer("Transfer time should only be integer!"),
 });
 
-function WillCard({ id, tokenName, amount, timeRemaining, to, status }) {
+function RequestCard({ id, tokenName, amount, timeRemaining, to, status }) {
 	const [statusText, setStatusText] = useState("");
 	const [buttonActive, setButtonActive] = useState(true);
 
@@ -115,4 +115,4 @@ function WillCard({ id, tokenName, amount, timeRemaining, to, status }) {
 	);
 }
 
-export default WillCard;
+export default RequestCard;

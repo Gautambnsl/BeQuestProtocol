@@ -18,6 +18,10 @@ function Dashboard() {
 		setNavState(e.target.checked);
 	};
 
+	const hideNav = () => {
+		setNavState(false);
+	};
+
 	return (
 		<div className="dashboard">
 			<div className="dashboard-nav">
@@ -43,8 +47,9 @@ function Dashboard() {
 					<ul className="dashboard-nav__links-ul" ref={navRef}>
 						<li>
 							<NavLink
-								to="/dashboard/create-will"
+								to="/dashboard/create-request"
 								className={(navData) => (navData.isActive ? "active" : "")}
+								onClick={hideNav}
 							>
 								Create
 							</NavLink>
@@ -52,8 +57,9 @@ function Dashboard() {
 
 						<li>
 							<NavLink
-								to="/dashboard/view-will"
+								to="/dashboard/view-request"
 								className={(navData) => (navData.isActive ? "active" : "")}
+								onClick={hideNav}
 							>
 								View
 							</NavLink>
@@ -63,13 +69,19 @@ function Dashboard() {
 							<NavLink
 								to="/dashboard/beneficiary"
 								className={(navData) => (navData.isActive ? "active" : "")}
+								onClick={hideNav}
 							>
 								Beneficiary
 							</NavLink>
 						</li>
 
 						<li>
-							<a target="_blank" href="https://drive.google.com/file/d/1k7oVW-qV1vxp7pPidyastOgYSmrfKHFx/view?usp=sharing">Docs</a>
+							<a
+								target="_blank"
+								href="https://drive.google.com/file/d/1k7oVW-qV1vxp7pPidyastOgYSmrfKHFx/view?usp=sharing"
+							>
+								Docs
+							</a>
 						</li>
 					</ul>
 				</div>
