@@ -21,8 +21,7 @@ const createWillSchema = yup.object().shape({
 		.number()
 		.typeError("Invalid token amount!")
 		.required("Token amount can't be empty!")
-		.positive("Token amount should be greater than 0!")
-		.integer("Token amount should only be integer!"),
+		.positive("Token amount should be greater than 0!"),
 	benificaryAddress: yup
 		.string("Invalid benificary address!")
 		.required("Benificary address can't be empty!")

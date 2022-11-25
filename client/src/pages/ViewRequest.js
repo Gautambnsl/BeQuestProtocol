@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState } from "react";
-import WillCard from "../components/will/WillCard";
+import RequestCard from "../components/request/RequestCard";
 import { getView, getTime } from "../backendConnectors/integration";
 
-function ViewWill() {
+function ViewRequest() {
 	const [willData, setWillData] = useState([]);
 
 	useEffect(() => {
@@ -18,7 +18,7 @@ function ViewWill() {
 		let amount = parseInt(card.amt._hex);
 
 		return (
-			<WillCard
+			<RequestCard
 				key={id}
 				id={id}
 				tokenName={card.tokenName}
@@ -37,4 +37,4 @@ function ViewWill() {
 	);
 }
 
-export default ViewWill;
+export default ViewRequest;

@@ -1,8 +1,5 @@
 import { ethers } from "ethers";
 
-
-
-
 const data = (num, decimal) => {
 	// if (num == "0") return "0";
 	// if (decimal == 0) return num;
@@ -34,7 +31,7 @@ const data = (num, decimal) => {
 	// 	num = (num / 1000).toFixed(2).toString() + " K";
 	// }
 	// return num;
-	let x = ethers.utils.formatUnits(num,decimal)
+	let x = ethers.utils.formatUnits(num, decimal);
 	return x;
 };
 

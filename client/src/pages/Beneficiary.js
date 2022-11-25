@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import BeneficiaryCard from "../components/will/BeneficiaryCard";
+import BeneficiaryCard from "../components/request/BeneficiaryCard";
 import { getBenificary } from "../backendConnectors/integration";
 
 function Beneficiary() {

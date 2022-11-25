@@ -43,7 +43,7 @@ function Dashboard() {
 					<ul className="dashboard-nav__links-ul" ref={navRef}>
 						<li>
 							<NavLink
-								to="/dashboard/create-will"
+								to="/dashboard/create-request"
 								className={(navData) => (navData.isActive ? "active" : "")}
 							>
 								Create
@@ -52,7 +52,7 @@ function Dashboard() {
 
 						<li>
 							<NavLink
-								to="/dashboard/view-will"
+								to="/dashboard/view-request"
 								className={(navData) => (navData.isActive ? "active" : "")}
 							>
 								View
@@ -69,7 +69,12 @@ function Dashboard() {
 						</li>
 
 						<li>
-							<a target="_blank" href="https://drive.google.com/file/d/1k7oVW-qV1vxp7pPidyastOgYSmrfKHFx/view?usp=sharing">Docs</a>
+							<a
+								target="_blank"
+								href="https://drive.google.com/file/d/1k7oVW-qV1vxp7pPidyastOgYSmrfKHFx/view?usp=sharing"
+							>
+								Docs
+							</a>
 						</li>
 					</ul>
 				</div>
