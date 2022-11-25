@@ -1,14 +1,15 @@
 import { useRef, useEffect, useState } from "react";
 import BeneficiaryCard from "../components/request/BeneficiaryCard";
 import { getBenificary } from "../backendConnectors/integration";
+import FetchingLoader from "../components/FetchingLoader";
 
 function Beneficiary() {
 	const [beneficiaryData, setBeneficiaryData] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		getBenificary().then((res) => {
-			console.log(res);
-
+			setLoading(false);
 			setBeneficiaryData(res);
 		});
 	}, []);
@@ -35,9 +36,13 @@ function Beneficiary() {
 		<div
 			className={`beneficiary ${beneficiaryCard.length > 0 ? "" : "center"}`}
 		>
-			{beneficiaryCard.length > 0
-				? beneficiaryCard
-				: "No BeQuest request created till now!"}
+			{loading ? (
+				<FetchingLoader />
+			) : beneficiaryCard.length > 0 ? (
+				beneficiaryCard
+			) : (
+				"No one added you as a Beneficiary yet :("
+			)}
 		</div>
 	);
 }

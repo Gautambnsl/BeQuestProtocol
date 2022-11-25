@@ -10,6 +10,12 @@
 	}
 }
 
+@mixin screen-62 {
+	@media (min-width: 62.5em) {
+		@content;
+	}
+}
+
 @mixin screen-68 {
 	@media (min-width: 68em) {
 		@content;

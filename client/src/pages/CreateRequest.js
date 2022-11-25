@@ -3,6 +3,7 @@ import Token from "../components/request/Token";
 import CreateRequestForm from "../components/request/CreateRequestForm";
 import { getAddress } from "../backendConnectors/integration";
 import Loader from "../components/Loader";
+import FetchingLoader from "../components/FetchingLoader";
 
 function CreateRequest() {
 	const [userTokens, setUserTokens] = useState([]);
@@ -12,6 +13,7 @@ function CreateRequest() {
 		decimal: "",
 	});
 	const [loading, setLoading] = useState(false);
+	const [fetchLoading, setFetchingLoading] = useState(true);
 
 	useEffect(() => {
 		getAddress()
@@ -21,6 +23,8 @@ function CreateRequest() {
 				fetch(userTokenEndpoint)
 					.then((res) => res.json())
 					.then((tokenList) => {
+						setFetchingLoading(false);
+						console.log(tokenList.data.items);
 						setUserTokens(tokenList.data.items);
 					});
 			})
@@ -64,15 +68,18 @@ function CreateRequest() {
 					<div
 						className={`create-will__token-list ${
 							userTokens.length === 0 ? "flex" : ""
-						}`}
+						} ${fetchLoading ? "column" : ""}`}
 					>
 						<h3
 							title="Click on any token to get its details"
-							className={`${userTokens.length === 0 ? "none" : ""}`}
+							// className={`${userTokens.length === 1 ? "none" : ""}`}
 						>
 							Select your token
 						</h3>
-						{userTokens.length === 0 ? (
+
+						{fetchLoading ? (
+							<FetchingLoader />
+						) : userTokens.length === 1 ? (
 							<p>You don't have any tokens.</p>
 						) : (
 							Tokens

@@ -1,14 +1,15 @@
 import { useRef, useEffect, useState } from "react";
 import RequestCard from "../components/request/RequestCard";
 import { getView, getTime } from "../backendConnectors/integration";
+import FetchingLoader from "../components/FetchingLoader";
 
 function ViewRequest() {
 	const [willData, setWillData] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		getView().then((res) => {
-			console.log(res);
-
+			setLoading(false);
 			setWillData(res);
 		});
 	}, []);
@@ -32,7 +33,13 @@ function ViewRequest() {
 
 	return (
 		<div className={`view-will ${willCard.length > 0 ? "" : "center"}`}>
-			{willCard.length > 0 ? willCard : "No BeQuest request created till now!"}
+			{loading ? (
+				<FetchingLoader />
+			) : willCard.length > 0 ? (
+				willCard
+			) : (
+				"No BeQuest request created till now!"
+			)}
 		</div>
 	);
 }

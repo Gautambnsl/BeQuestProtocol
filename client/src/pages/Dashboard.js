@@ -18,6 +18,10 @@ function Dashboard() {
 		setNavState(e.target.checked);
 	};
 
+	const hideNav = () => {
+		setNavState(false);
+	};
+
 	return (
 		<div className="dashboard">
 			<div className="dashboard-nav">
@@ -45,6 +49,7 @@ function Dashboard() {
 							<NavLink
 								to="/dashboard/create-request"
 								className={(navData) => (navData.isActive ? "active" : "")}
+								onClick={hideNav}
 							>
 								Create
 							</NavLink>
@@ -54,6 +59,7 @@ function Dashboard() {
 							<NavLink
 								to="/dashboard/view-request"
 								className={(navData) => (navData.isActive ? "active" : "")}
+								onClick={hideNav}
 							>
 								View
 							</NavLink>
@@ -63,6 +69,7 @@ function Dashboard() {
 							<NavLink
 								to="/dashboard/beneficiary"
 								className={(navData) => (navData.isActive ? "active" : "")}
+								onClick={hideNav}
 							>
 								Beneficiary
 							</NavLink>
