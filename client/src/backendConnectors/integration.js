@@ -144,13 +144,13 @@ export async function resume(id) {
 	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 	await provider.send("eth_requestAccounts", []);
 	const signer = provider.getSigner();
-	const address = await signer.execution()();
+	// const address = await signer.execution();
 	const contract = new ethers.Contract(
 		process.env.REACT_APP_BEQUEST_ADDRESS,
 		abi,
 		signer
 	);
-	let tx = await contract.stopWill(id);
+	let tx = await contract.resumeWill(id);
 	let txData = await tx.wait();
 	return txData;
 }

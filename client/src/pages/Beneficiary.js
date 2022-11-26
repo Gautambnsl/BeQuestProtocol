@@ -17,6 +17,10 @@ function Beneficiary() {
 	const beneficiaryCard = beneficiaryData.map((card) => {
 		let id = parseInt(card.id._hex);
 		let amount = parseInt(card.amt._hex);
+
+		let deadLine = parseInt(card.dedline._hex);
+		deadLine = new Date(deadLine * 1000);
+
 		return (
 			<BeneficiaryCard
 				key={id}
@@ -24,7 +28,8 @@ function Beneficiary() {
 				tokenName={card.tokenName}
 				amount={amount}
 				from={card.from}
-				// timeRemaining={card.timeRemaining}
+				timeOfExecution={deadLine.toString()}
+				time={deadLine}
 				status={card.status}
 				message={card.message}
 				video={card.video}

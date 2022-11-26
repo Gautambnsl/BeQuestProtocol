@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as yup from "yup";
 import { changeTime } from "../../backendConnectors/integration";
+import { stop, resume } from "../../backendConnectors/integration";
 
 let schema = yup.object().shape({
 	time: yup
@@ -11,46 +12,77 @@ let schema = yup.object().shape({
 		.integer("Transfer time should only be integer!"),
 });
 
-function RequestCard({ id, tokenName, amount, timeRemaining, to, status }) {
+function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 	const [statusText, setStatusText] = useState("");
 	const [buttonActive, setButtonActive] = useState(true);
+	const [executionTime, setExecutionTime] = useState();
 
 	useEffect(() => {
 		let tempStatusText;
 		let tempButtonActive;
 
+		let tempExecutionTime = timeOfExecution.split(" ");
+		let displayDate = "";
+
+		for (let i = 1; i < 5; i++) {
+			displayDate += tempExecutionTime[i] + " ";
+		}
+
 		if (status == "0") {
 			tempStatusText = "Active";
 
 			tempButtonActive = true;
+
+			tempExecutionTime = displayDate;
 		} else if (status == "1") {
 			tempStatusText = "Inactive";
 
 			tempButtonActive = false;
+
+			tempExecutionTime = "Paused";
 		} else if (status == "2") {
 			tempStatusText = "Success";
 
 			tempButtonActive = false;
+
+			tempExecutionTime = "Executed (" + displayDate + ")";
 		} else if (status == "3") {
 			tempStatusText = "Failed";
 
 			tempButtonActive = false;
+
+			tempExecutionTime = "Failed";
 		}
 
 		setStatusText(tempStatusText);
 		setButtonActive(tempButtonActive);
+		setExecutionTime(tempExecutionTime);
 	}, []);
 
 	const handleChangeTime = () => {
-		const time = window.prompt("Enter time in days", "5");
+		const time = window.prompt("Change time from current time", "5");
 
-		schema.isValid({ time }).then(async (valid) => {
-			if (valid) {
+		schema
+			.validate({ time }, { abortEarly: false })
+			.then(async (time) => {
 				await changeTime(id, time);
-			} else {
-				alert("Wrong time inputted");
-			}
-		});
+				window.location.reload();
+			})
+			.catch((err) => {
+				alert(err.errors[0]);
+			});
+	};
+
+	const handleRequestState = async () => {
+		if (status == "0") {
+			await stop(id);
+		}
+
+		if (status == "1") {
+			await resume(id);
+		}
+
+		window.location.reload();
 	};
 
 	return (
@@ -79,11 +111,11 @@ function RequestCard({ id, tokenName, amount, timeRemaining, to, status }) {
 				</p>
 			</div>
 
-			{timeRemaining && (
+			{timeOfExecution && (
 				<div className="card-item">
-					<h3 className="card-item__head">Time Remaning</h3>
+					<h3 className="card-item__head">Execution time</h3>
 
-					<p className="card-item__value">{timeRemaining}</p>
+					<p className="card-item__value bold">{executionTime}</p>
 				</div>
 			)}
 
@@ -105,6 +137,7 @@ function RequestCard({ id, tokenName, amount, timeRemaining, to, status }) {
 				<button
 					className={`card-button__stop ${statusText}`}
 					disabled={statusText === "Inactive" ? false : !buttonActive}
+					onClick={handleRequestState}
 				>
 					{statusText === "Inactive" ? "Resume" : "Stop"}
 				</button>

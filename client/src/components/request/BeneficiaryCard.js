@@ -5,38 +5,63 @@ function BeneficiaryCard({
 	tokenName,
 	amount,
 	from,
-	timeRemaining,
+	timeOfExecution,
+	time: willTime,
 	status,
 	message,
 	video,
 }) {
 	const [statusText, setStatusText] = useState("");
-	const [buttonActive, setButtonActive] = useState(true);
+	const [isExecutable, setIsExecutable] = useState(false);
+	const [executionTime, setExecutionTime] = useState();
 
 	useEffect(() => {
 		let tempStatusText;
-		let tempButtonActive;
+		let tempIsExecutable;
 
-		if (status === "0") {
+		let tempExecutionTime = timeOfExecution.split(" ");
+		let displayDate = "";
+
+		console.log(willTime);
+		let currTime = new Date();
+
+		for (let i = 1; i < 5; i++) {
+			displayDate += tempExecutionTime[i] + " ";
+		}
+
+		if (status == "0") {
 			tempStatusText = "Active";
 
-			tempButtonActive = true;
-		} else if (status === "1") {
+			tempExecutionTime = displayDate;
+
+			if (currTime > willTime) {
+				tempIsExecutable = true;
+			} else {
+				tempIsExecutable = false;
+			}
+		} else if (status == "1") {
 			tempStatusText = "Inactive";
 
-			tempButtonActive = false;
-		} else if (status === "2") {
+			tempExecutionTime = "Paused";
+
+			tempIsExecutable = false;
+		} else if (status == "2") {
 			tempStatusText = "Success";
 
-			tempButtonActive = false;
-		} else if (status === "3") {
+			tempExecutionTime = "Executed (" + displayDate + ")";
+
+			tempIsExecutable = false;
+		} else if (status == "3") {
 			tempStatusText = "Failed";
 
-			tempButtonActive = false;
+			tempExecutionTime = "Failed";
+
+			tempIsExecutable = false;
 		}
 
 		setStatusText(tempStatusText);
-		setButtonActive(tempButtonActive);
+		setExecutionTime(tempExecutionTime);
+		setIsExecutable(tempIsExecutable);
 	}, []);
 
 	return (
@@ -66,9 +91,9 @@ function BeneficiaryCard({
 			</div>
 
 			<div className="card-item">
-				<h3 className="card-item__head">Time Remaning</h3>
+				<h3 className="card-item__head">Execution Time</h3>
 
-				<p className="card-item__value">{timeRemaining}</p>
+				<p className="card-item__value">{executionTime}</p>
 			</div>
 
 			<div className="card-item">
@@ -78,7 +103,7 @@ function BeneficiaryCard({
 			</div>
 
 			<div className="card-item message">
-				<h3 className="card-item__head">Message</h3>
+				<h3 className="card-item__head">Message:</h3>
 
 				<p className="card-item__value">{message}</p>
 			</div>
@@ -92,10 +117,16 @@ function BeneficiaryCard({
 						href={`https://w3s.link/ipfs/${video}`}
 						target="_blank"
 					>
-						Watch here
+						Click here to watch!
 					</a>
 				</div>
 			)}
+
+			<div className="card-item card-button">
+				<button className="card-button__change" disabled={!isExecutable}>
+					Click to execute
+				</button>
+			</div>
 
 			<span>*Amount is in decimal</span>
 		</div>

@@ -14,6 +14,10 @@
 		font-size: 0.8rem;
 	}
 
+	display: flex;
+	flex-direction: column;
+	gap: 0.4em;
+
 	&-item {
 		display: flex;
 		gap: 0.6em;
@@ -37,13 +41,20 @@
 
 		&.message {
 			align-items: flex-start;
-			flex-direction: column;
-			gap: 0.1em;
+			// flex-direction: column;
+			gap: 0.5em;
+			margin-bottom: 0.3em;
+
+			p {
+				max-height: 8rem;
+				overflow-y: scroll;
+			}
 		}
 
 		&__head {
 			cursor: context-menu;
 			color: ab.$text-pink;
+			text-decoration: underline;
 		}
 
 		&__value {
@@ -52,6 +63,10 @@
 
 			&.Active {
 				color: ab.$active;
+				font-weight: 600;
+			}
+
+			&.bold {
 				font-weight: 600;
 			}
 

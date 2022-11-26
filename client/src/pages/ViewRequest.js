@@ -18,13 +18,16 @@ function ViewRequest() {
 		let id = parseInt(card.id._hex);
 		let amount = parseInt(card.amt._hex);
 
+		let deadLine = parseInt(card.dedline._hex);
+		deadLine = new Date(deadLine * 1000);
+
 		return (
 			<RequestCard
 				key={id}
 				id={id}
 				tokenName={card.tokenName}
 				amount={amount}
-				// timeRemaining={card.timeRemaining}
+				timeOfExecution={deadLine.toString()}
 				to={card.to}
 				status={card.status}
 			/>
