@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { execute } from "../../backendConnectors/integration";
 
 function BeneficiaryCard({
 	id,
@@ -22,7 +23,6 @@ function BeneficiaryCard({
 		let tempExecutionTime = timeOfExecution.split(" ");
 		let displayDate = "";
 
-		console.log(willTime);
 		let currTime = new Date();
 
 		for (let i = 1; i < 5; i++) {
@@ -63,6 +63,11 @@ function BeneficiaryCard({
 		setExecutionTime(tempExecutionTime);
 		setIsExecutable(tempIsExecutable);
 	}, []);
+
+	const handleExecute = async () => {
+		await execute(id);
+		window.location.reload();
+	};
 
 	return (
 		<div className="card">
@@ -123,7 +128,11 @@ function BeneficiaryCard({
 			)}
 
 			<div className="card-item card-button">
-				<button className="card-button__change" disabled={!isExecutable}>
+				<button
+					className="card-button__change"
+					disabled={!isExecutable}
+					onClick={handleExecute}
+				>
 					Click to execute
 				</button>
 			</div>

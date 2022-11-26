@@ -16,6 +16,7 @@ function Path() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/wallet" element={<Wallet />} />
+
 				<Route path="/dashboard" element={<Dashboard />}>
 					<Route index element={<Navigate to="create-request" />} />
 					<Route path="create-request" element={<CreateRequest />} />

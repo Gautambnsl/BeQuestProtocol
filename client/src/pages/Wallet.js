@@ -23,7 +23,10 @@ function Wallet() {
 			<div className="wallet-collection">
 				<h2 className="wallet-collection__head">Connect a Wallet</h2>
 
-				<button onClick={redirctAfterConnect} className="wallet-collection__item">
+				<button
+					onClick={redirctAfterConnect}
+					className="wallet-collection__item"
+				>
 					<img src={Metamask} alt="" />
 
 					<span>Metamask</span>

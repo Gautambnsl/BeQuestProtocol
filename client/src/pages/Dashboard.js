@@ -1,10 +1,23 @@
-import { Outlet, NavLink, Link } from "react-router-dom";
+import { Outlet, NavLink, Link, useNavigate } from "react-router-dom";
 import BequestLogo from "../assests/logo-name.png";
 import { useState, useEffect, useRef } from "react";
 
 function Dashboard() {
 	const [navState, setNavState] = useState(false);
 	const navRef = useRef();
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		const walletCheck = async () => {
+			if (window.ethereum && window.ethereum.selectedAddress !== null) {
+				// do nothing
+			} else {
+				navigate("/wallet");
+			}
+		};
+
+		walletCheck();
+	}, []);
 
 	useEffect(() => {
 		if (navState) {
