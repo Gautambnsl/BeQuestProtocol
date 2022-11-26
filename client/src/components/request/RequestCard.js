@@ -93,7 +93,7 @@ function RequestCard({ id, tokenName, amount, timeRemaining, to, status }) {
 				<p className={`card-item__value ${statusText}`}>{statusText}</p>
 			</div>
 
-			{/* <div className="card-item card-button">
+			<div className="card-item card-button">
 				<button
 					className="card-button__change"
 					disabled={!buttonActive}
@@ -108,7 +108,7 @@ function RequestCard({ id, tokenName, amount, timeRemaining, to, status }) {
 				>
 					{statusText === "Inactive" ? "Resume" : "Stop"}
 				</button>
-			</div> */}
+			</div>
 
 			<span>*Amount is in decimal</span>
 		</div>
