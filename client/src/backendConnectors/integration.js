@@ -169,6 +169,20 @@ export async function changeTime(id, days) {
 	let txdata = tx.wait();
 	return txdata;
 }
+export async function execute(id) {
+	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+	await provider.send("eth_requestAccounts", []);
+	const signer = provider.getSigner();
+	const address = await signer.getAddress();
+	const contract = new ethers.Contract(
+		process.env.REACT_APP_BEQUEST_ADDRESS,
+		abi,
+		signer
+	);
+	let tx = await contract.executeWill(id);
+	let txdata = tx.wait();
+	return txdata;
+}
 export async function getTime(id) {
 	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 	await provider.send("eth_requestAccounts", []);
