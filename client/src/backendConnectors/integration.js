@@ -77,7 +77,7 @@ export async function getView() {
 
 	for (let i = 0; i < data.length; i++) {
 		let id = parseInt(data[i]._hex);
-		let will = await contract.idToWill(id);
+		let will = await contract.willList(id);
 		obj.push(will);
 	}
 
@@ -99,7 +99,7 @@ export async function getBenificary() {
 
 	for (let i = 0; i < data.length; i++) {
 		let id = parseInt(data[i]._hex, 16);
-		let will = await contract.idToWill(id);
+		let will = await contract.willList(id);
 		obj.push(will);
 	}
 
@@ -135,7 +135,7 @@ export async function stop(id) {
 		abi,
 		signer
 	);
-	let tx = await contract.willList(id);
+	let tx = await contract.stopWill(id);
 	let txData = await tx.wait();
 	return txData;
 }
