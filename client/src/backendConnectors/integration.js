@@ -3,6 +3,8 @@ import abi from "./abi/bequesterc20abi.json";
 import ERC20 from "./abi/ERC20.json";
 import { Web3Storage } from "web3.storage";
 import { connectWallet } from "./connectWallet";
+import detectEthereumProvider from '@metamask/detect-provider'
+
 export async function approveRequest(address, amt) {
 	try {
 		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
@@ -54,12 +56,14 @@ export async function signRequest(
 }
 
 export async function getAddress() {
-	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-	await provider.send("eth_requestAccounts", []);
-	const signer = provider.getSigner();
-
-	const address = await signer.getAddress();
-	return address;
+	const provider = await detectEthereumProvider()
+	const delay = ms => new Promise(res => setTimeout(res, ms));
+		await delay(100);
+	if(provider && provider.selectedAddress){
+	return provider.selectedAddress;
+	}else{
+		return 
+	}
 }
 
 export async function getView() {
