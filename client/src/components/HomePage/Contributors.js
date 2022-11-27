@@ -23,11 +23,11 @@ const Contributors = () => {
 
 						<h3 className="contributors-list__profile-name">Rohan Verma</h3>
 					</div>
-					<div className="contributors-list__profile">
+					{/* <div className="contributors-list__profile">
 						<img src={Krishan} alt="krishan" />
 
 						<h3 className="contributors-list__profile-name">Krishan Kant</h3>
-					</div>
+					</div> */}
 
 					<div className="contributors-list__profile">
 						<img src={Anshul} alt="anshul" />

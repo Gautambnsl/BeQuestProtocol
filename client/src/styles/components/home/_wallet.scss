@@ -71,7 +71,7 @@
 				max-width: 3rem;
 			}
 
-			span {
+			&-name {
 				font-size: clamp(1.2rem, 3vw, 1.4rem);
 				font-weight: 500;
 				color: ab.$text-golden;

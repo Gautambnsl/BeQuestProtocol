@@ -63,11 +63,6 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 			willInfo.amount.toString(),
 			tokenDetails.decimal
 		);
-		// amt = amt.toString();
-		// for (let x = 0; x < tokenDetails.decimal; x++) {
-		// 	amt = amt + "0";
-		// }
-
 		const status = await approveRequest(willInfo.contractAddress, amt);
 
 		setLoading(false);
@@ -83,11 +78,6 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 			willInfo.amount.toString(),
 			tokenDetails.decimal
 		);
-		// amt = amt.toString();
-		// for (let x = 0; x < tokenDetails.decimal; x++) {
-		// 	amt = amt + "0";
-		// }
-
 		const time = willInfo.timeUnit * willInfo.transferTime;
 
 		const status = await signRequest(
@@ -175,7 +165,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 			/>
 
 			<Input
-				label={"Benificary Address"}
+				label={"Benificary Address or ENS"}
 				type="text"
 				error={errors.benificaryAddress}
 				register={register}
@@ -194,7 +184,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				</div>
 
 				<Input
-					label={"Transfer Time"}
+					label={"Execute After"}
 					type="text"
 					error={errors.transferTime}
 					register={register}
