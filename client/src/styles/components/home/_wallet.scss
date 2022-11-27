@@ -62,7 +62,7 @@
 			&:hover {
 				background-color: rgba(ab.$background-dark2, 0.6);
 
-				span {
+				.wallet-name {
 					text-decoration-color: ab.$text-golden;
 				}
 			}
@@ -71,13 +71,19 @@
 				max-width: 3rem;
 			}
 
-			&-name {
+			.wallet-name {
 				font-size: clamp(1.2rem, 3vw, 1.4rem);
 				font-weight: 500;
 				color: ab.$text-golden;
 				text-decoration: underline transparent;
 
 				transition: text-decoration-color 0.3s ease-in;
+			}
+
+			.coming-soon {
+				font-size: 0.9rem;
+				color: ab.$text-pink;
+				margin-left: 0.2em;
 			}
 		}
 	}

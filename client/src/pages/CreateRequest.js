@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import Token from "../components/request/Token";
 import CreateRequestForm from "../components/request/CreateRequestForm";
-import { getAddress } from "../backendConnectors/integration";
+import { getAddress, getChainId } from "../backendConnectors/integration";
 import Loader from "../components/Loader";
 import FetchingLoader from "../components/FetchingLoader";
+import { set } from "react-hook-form";
 
 function CreateRequest() {
 	const [userTokens, setUserTokens] = useState([]);
@@ -14,19 +15,29 @@ function CreateRequest() {
 	});
 	const [loading, setLoading] = useState(false);
 	const [fetchLoading, setFetchingLoading] = useState(true);
+	const [metamaskDetails, setMetamaskDetails] = useState({
+		chainId: "",
+		address: "",
+	});
 
 	useEffect(() => {
 		getAddress()
 			.then((address) => {
-				const userTokenEndpoint = `https://api.covalenthq.com/v1/${process.env.REACT_APP_CHAINID}/address/${address}/balances_v2/?&key=${process.env.REACT_APP_API_KEY}`;
-
-				fetch(userTokenEndpoint)
-					.then((res) => res.json())
-					.then((tokenList) => {
-						setFetchingLoading(false);
-						console.log(tokenList.data.items);
-						setUserTokens(tokenList.data.items);
+				getChainId().then((chainId) => {
+					const userTokenEndpoint = `https://api.covalenthq.com/v1/${chainId}/address/${address}/balances_v2/?&key=${process.env.REACT_APP_API_KEY}`;
+					setMetamaskDetails({
+						chainId,
+						address,
 					});
+
+					fetch(userTokenEndpoint)
+						.then((res) => res.json())
+						.then((tokenList) => {
+							setFetchingLoading(false);
+							console.log(tokenList.data.items);
+							setUserTokens(tokenList.data.items);
+						});
+				});
 			})
 			.catch((err) => {
 				console.log(err);
@@ -61,7 +72,11 @@ function CreateRequest() {
 		<div className={`create-will ${loading ? "relative" : ""}`}>
 			{loading && <Loader />}
 
-			<h3 className="create-will__toggle">My tokens</h3>
+			<div className="">
+				<h3 className="create-will__toggle">My tokens</h3>
+
+				<h3 className="create-will__toggle">My tokens</h3>
+			</div>
 
 			<div className="create-will__token">
 				{
