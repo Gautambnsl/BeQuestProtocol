@@ -9,10 +9,16 @@ function Beneficiary() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		getBenificary().then((res) => {
-			setLoading(false);
-			setBeneficiaryData(res);
-		});
+		getBenificary()
+			.then((res) => {
+				setBeneficiaryData(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
 	}, []);
 
 	const beneficiaryCard = beneficiaryData.map((card) => {

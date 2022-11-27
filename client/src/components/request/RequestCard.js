@@ -64,8 +64,8 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 
 		schema
 			.validate({ time }, { abortEarly: false })
-			.then(async (time) => {
-				changeTime(id, time).then((res) => {
+			.then((time) => {
+				changeTime(id, time.time).then((res) => {
 					if (res.success) {
 						window.location.reload();
 					} else {

@@ -6,7 +6,6 @@
 	}
 
 	&__details {
-		outline: 2px solid coral;
 		display: flex;
 
 		&-name {
@@ -65,7 +64,7 @@
 				}
 
 				&.flex {
-					align-items: center;
+					align-items: flex-start;
 					justify-content: center;
 				}
 

@@ -1,29 +1,28 @@
 import { Outlet, NavLink, Link, useNavigate } from "react-router-dom";
 import BequestLogo from "../assests/logo-name.png";
 import { useState, useEffect, useRef } from "react";
-import detectEthereumProvider from '@metamask/detect-provider'
+import detectEthereumProvider from "@metamask/detect-provider";
 
 function Dashboard() {
 	const [navState, setNavState] = useState(false);
 	const navRef = useRef();
 	const navigate = useNavigate();
-	
+
 	const walletCheck = async () => {
-		const provider = await detectEthereumProvider()
-		const delay = ms => new Promise(res => setTimeout(res, ms));
+		const provider = await detectEthereumProvider();
+		const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 		await delay(500);
 		if (provider && provider.selectedAddress) {
-
 			//connect
-			provider.on('connect',(ConnectInfo) => window.location.reload());
+			provider.on("connect", (ConnectInfo) => window.location.reload());
 			//disconect
-			provider.on('disconnect',(ProviderRpcError) => window.location.reload());
+			provider.on("disconnect", (ProviderRpcError) => window.location.reload());
 			//change address
-			provider.on('accountsChanged',(accounts) => window.location.reload());
+			provider.on("accountsChanged", (accounts) => window.location.reload());
 			//chain change
-			provider.on('chainChanged', (_chainId) => window.location.reload());
+			provider.on("chainChanged", (_chainId) => window.location.reload());
 
-
+			// chain error handling
 		} else {
 			navigate("/wallet");
 		}

@@ -16,7 +16,11 @@ export async function approveRequest(address, amt) {
 		await tx.wait();
 		return { status: true };
 	} catch (err) {
-		let msg = err.message.split("(")[0];
+		let msg;
+		if (err.code === -32603) {
+			msg = "User rejected transaction!";
+		} else msg = err.message.split("(")[0];
+
 		return { status: false, msg };
 	}
 }
@@ -53,7 +57,11 @@ export async function signRequest(
 		await tx.wait();
 		return { status: true };
 	} catch (err) {
-		let msg = err.message.split("(")[0];
+		let msg;
+		if (err.code === -32603) {
+			msg = "User rejected transaction!";
+		} else msg = err.message.split("(")[0];
+
 		return { status: false, msg };
 	}
 }
@@ -125,13 +133,10 @@ export async function getBenificary() {
 
 export async function storeFiles(files) {
 	try {
-		console.log(files);
 		const client = makeStorageClient();
 		const cid = await client.put(files);
-		console.log(cid);
 		return { success: true, cid };
 	} catch (error) {
-		console.log(error);
 		return { success: false, msg: error.msg };
 	}
 }
@@ -157,7 +162,11 @@ export async function stop(id) {
 		await tx.wait();
 		return { success: true };
 	} catch (err) {
-		let msg = err.message.split("(")[0];
+		let msg;
+		if (err.code === -32603) {
+			msg = "User rejected transaction!";
+		} else msg = err.message.split("(")[0];
+
 		return { status: false, msg };
 	}
 }
@@ -177,7 +186,11 @@ export async function resume(id) {
 		await tx.wait();
 		return { success: true };
 	} catch (err) {
-		let msg = err.message.split("(")[0];
+		let msg;
+		if (err.code === -32603) {
+			msg = "User rejected transaction!";
+		} else msg = err.message.split("(")[0];
+
 		return { status: false, msg };
 	}
 }
@@ -193,11 +206,17 @@ export async function changeTime(id, days) {
 			abi,
 			signer
 		);
-		let tx = await contract.extendtWill(id, days * 24 * 60 * 60);
+
+		let seconds = days * 24 * 60 * 60;
+		let tx = await contract.extendtWill(id, seconds);
 		tx.wait();
 		return { success: true };
 	} catch (err) {
-		let msg = err.message.split("(")[0];
+		let msg;
+		if (err.code === -32603) {
+			msg = "User rejected transaction!";
+		} else msg = err.message.split("(")[0];
+
 		return { status: false, msg };
 	}
 }
@@ -216,7 +235,11 @@ export async function execute(id) {
 		tx.wait();
 		return { success: true };
 	} catch (err) {
-		let msg = err.message.split("(")[0];
+		let msg;
+		if (err.code === -32603) {
+			msg = "User rejected transaction!";
+		} else msg = err.message.split("(")[0];
+
 		return { status: false, msg };
 	}
 }

@@ -9,10 +9,16 @@ function ViewRequest() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		getView().then((res) => {
-			setLoading(false);
-			setWillData(res);
-		});
+		getView()
+			.then((res) => {
+				setWillData(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
 	}, []);
 
 	const willCard = willData.map((card) => {

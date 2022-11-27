@@ -33,13 +33,15 @@ function CreateRequest() {
 					fetch(userTokenEndpoint)
 						.then((res) => res.json())
 						.then((tokenList) => {
-							setFetchingLoading(false);
-							setUserTokens(tokenList.data.items);
+							if (tokenList.data) setUserTokens(tokenList.data.items);
 						});
 				});
 			})
 			.catch((err) => {
 				console.log(err);
+			})
+			.finally(() => {
+				setFetchingLoading(false);
 			});
 	}, []);
 
@@ -81,7 +83,7 @@ function CreateRequest() {
 				<div className="create-will__token-list">
 					<div
 						className={`create-will__token-list__items ${
-							userTokens.length === 0 ? "flex" : ""
+							userTokens.length <= 0 ? "flex" : ""
 						} ${fetchLoading ? "column" : ""}`}
 					>
 						<h3
@@ -93,7 +95,7 @@ function CreateRequest() {
 
 						{fetchLoading ? (
 							<FetchingLoader />
-						) : userTokens.length === 1 ? (
+						) : userTokens.length <= 0 ? (
 							<p>You don't have any tokens.</p>
 						) : (
 							Tokens

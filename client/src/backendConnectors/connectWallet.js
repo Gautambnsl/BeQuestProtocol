@@ -8,7 +8,6 @@ export async function connectWallet() {
 			const provider = new ethers.providers.Web3Provider(Provider, "any");
 			await provider.send("eth_requestAccounts", []);
 			const signer = provider.getSigner();
-			console.log("Account:", await signer.getAddress());
 			return { success: true, provider };
 		} else {
 			return { success: false, msg: "Please install Metamask wallet!" };

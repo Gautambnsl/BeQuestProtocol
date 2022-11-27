@@ -52,7 +52,6 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 			const cid = await storeFiles(videoStatus.file);
 
 			if (cid.success) {
-				console.log(cid.cid);
 				videoCidRef.current = cid.cid;
 			}
 			sign(willInfo);
@@ -71,10 +70,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				setEnableSubmit(true);
 			} else {
 				// error handling
-				console.log(status);
-				let msg = status.msg.split("(");
-
-				alert(msg[0]);
+				alert(status.msg);
 			}
 		} catch (err) {
 			alert("Token amount exceded the limit!");
@@ -114,7 +110,6 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				alert(status.msg);
 			}
 		} catch (err) {
-			console.log(err);
 			alert(err);
 		} finally {
 			setLoading(false);
