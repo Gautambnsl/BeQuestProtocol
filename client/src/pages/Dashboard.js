@@ -11,7 +11,7 @@ function Dashboard() {
 	const walletCheck = async () => {
 		const provider = await detectEthereumProvider()
 		const delay = ms => new Promise(res => setTimeout(res, ms));
-		await delay(100);
+		await delay(500);
 		if (provider && provider.selectedAddress) {
 
 			//connect
