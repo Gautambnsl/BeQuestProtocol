@@ -21,7 +21,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 
 	const [enableSubmit, setEnableSubmit] = useState(false);
 	const [videoStatus, setVideoStatus] = useState({
-		status: true,
+		status: false,
 		file: "",
 	});
 	const [videoErr, setVideoErr] = useState("");
@@ -32,6 +32,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		if (tokenDetails.name && tokenDetails.address) {
 			setValue("tokenName", tokenDetails.name);
 			setValue("contractAddress", tokenDetails.address);
+			setValue("decimal", tokenDetails.decimal);
 		}
 	}, [tokenDetails]);
 
@@ -59,48 +60,64 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	};
 
 	const approve = async (willInfo) => {
-		let amt = ethers.utils.parseUnits(
-			willInfo.amount.toString(),
-			tokenDetails.decimal
-		);
-		const status = await approveRequest(willInfo.contractAddress, amt);
+		try {
+			let amt = ethers.utils.parseUnits(
+				willInfo.amount.toString(),
+				willInfo.decimal
+			);
+			const status = await approveRequest(willInfo.contractAddress, amt);
 
-		setLoading(false);
-		if (status.status) {
-			setEnableSubmit(true);
-		} else {
-			// error handling
+			if (status.status) {
+				setEnableSubmit(true);
+			} else {
+				// error handling
+				console.log(status);
+				let msg = status.msg.split("(");
+
+				alert(msg[0]);
+			}
+		} catch (err) {
+			alert("Token amount exceded the limit!");
+		} finally {
+			setLoading(false);
 		}
 	};
 
 	const sign = async (willInfo) => {
-		let amt = ethers.utils.parseUnits(
-			willInfo.amount.toString(),
-			tokenDetails.decimal
-		);
-		const time = willInfo.timeUnit * willInfo.transferTime;
+		try {
+			let amt = ethers.utils.parseUnits(
+				willInfo.amount.toString(),
+				willInfo.decimal
+			);
+			const time = willInfo.timeUnit * willInfo.transferTime;
 
-		const status = await signRequest(
-			willInfo.tokenName,
-			time,
-			amt,
-			tokenDetails.decimal,
-			willInfo.benificaryAddress,
-			willInfo.contractAddress,
-			willInfo.message,
-			videoCidRef.current
-		);
+			const status = await signRequest(
+				willInfo.tokenName,
+				time,
+				amt,
+				willInfo.decimal,
+				willInfo.benificaryAddress,
+				willInfo.contractAddress,
+				willInfo.message,
+				videoCidRef.current
+			);
 
-		setLoading(false);
-		if (status.status) {
-			setVideoStatus({
-				status: false,
-				file: "",
-			});
-			reset();
-			setEnableSubmit(false);
-		} else {
-			// error handling
+			if (status.status) {
+				setVideoStatus({
+					status: false,
+					file: "",
+				});
+				reset();
+				setEnableSubmit(false);
+			} else {
+				// error handling
+				alert(status.msg);
+			}
+		} catch (err) {
+			console.log(err);
+			alert(err);
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -155,6 +172,14 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				error={errors.contractAddress}
 				register={register}
 				name={"contractAddress"}
+			/>
+
+			<Input
+				label={"Token Decimal"}
+				type="text"
+				error={errors.decimal}
+				register={register}
+				name={"decimal"}
 			/>
 
 			<Input

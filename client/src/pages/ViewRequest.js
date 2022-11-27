@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import RequestCard from "../components/request/RequestCard";
 import { getView, getTime } from "../backendConnectors/integration";
 import FetchingLoader from "../components/FetchingLoader";
+import { ethers } from "ethers";
 
 function ViewRequest() {
 	const [willData, setWillData] = useState([]);
@@ -16,10 +17,14 @@ function ViewRequest() {
 
 	const willCard = willData.map((card) => {
 		let id = parseInt(card.id._hex);
-		let amount = parseInt(card.amt._hex);
+		let amount = card.amt._hex.toString();
 
 		let deadLine = parseInt(card.dedline._hex);
 		deadLine = new Date(deadLine * 1000);
+
+		let decimal = parseInt(card.decimal._hex);
+
+		amount = ethers.utils.formatUnits(amount, decimal);
 
 		return (
 			<RequestCard

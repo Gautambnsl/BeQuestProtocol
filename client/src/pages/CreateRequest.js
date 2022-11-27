@@ -34,7 +34,6 @@ function CreateRequest() {
 						.then((res) => res.json())
 						.then((tokenList) => {
 							setFetchingLoading(false);
-							console.log(tokenList.data.items);
 							setUserTokens(tokenList.data.items);
 						});
 				});
@@ -72,16 +71,16 @@ function CreateRequest() {
 		<div className={`create-will ${loading ? "relative" : ""}`}>
 			{loading && <Loader />}
 
-			<div className="">
-				<h3 className="create-will__toggle">My tokens</h3>
+			{/* <div className="create-will__details">
+				<h3 className="create-will__details-name">My tokens</h3>
 
-				<h3 className="create-will__toggle">My tokens</h3>
-			</div>
+				<h3 className="create-will__details-name">My tokens</h3>
+			</div> */}
 
 			<div className="create-will__token">
-				{
+				<div className="create-will__token-list">
 					<div
-						className={`create-will__token-list ${
+						className={`create-will__token-list__items ${
 							userTokens.length === 0 ? "flex" : ""
 						} ${fetchLoading ? "column" : ""}`}
 					>
@@ -100,14 +99,17 @@ function CreateRequest() {
 							Tokens
 						)}
 					</div>
-				}
-				<div className="create-will__token-input">
-					<h3 className="pacifico">Create your BeQuest request</h3>
+				</div>
 
-					<CreateRequestForm
-						tokenDetails={tokenDetails}
-						setLoading={setLoading}
-					/>
+				<div className="create-will__token-form">
+					<div className="create-will__token-form__input">
+						<h3 className="pacifico">Create your BeQuest request</h3>
+
+						<CreateRequestForm
+							tokenDetails={tokenDetails}
+							setLoading={setLoading}
+						/>
+					</div>
 				</div>
 			</div>
 

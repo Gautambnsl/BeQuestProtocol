@@ -9,9 +9,15 @@ function Wallet() {
 	const navigate = useNavigate();
 
 	async function redirctAfterConnect() {
-		if (await connectWallet()) {
-			navigate("/dashboard");
-		}
+		connectWallet().then((res) => {
+			if (res.success) {
+				navigate("/dashboard");
+			} else {
+				// error
+
+				alert(res.msg);
+			}
+		});
 	}
 
 	return (

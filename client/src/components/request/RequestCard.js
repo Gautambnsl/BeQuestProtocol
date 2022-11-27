@@ -65,24 +65,39 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 		schema
 			.validate({ time }, { abortEarly: false })
 			.then(async (time) => {
-				await changeTime(id, time);
-				window.location.reload();
+				changeTime(id, time).then((res) => {
+					if (res.success) {
+						window.location.reload();
+					} else {
+						alert(res.msg);
+					}
+				});
 			})
 			.catch((err) => {
 				alert(err.errors[0]);
 			});
 	};
 
-	const handleRequestState = async () => {
+	const handleRequestState = () => {
 		if (status == "0") {
-			await stop(id);
+			stop(id).then((res) => {
+				if (res.success) {
+					window.location.reload();
+				} else {
+					alert(res.msg);
+				}
+			});
 		}
 
 		if (status == "1") {
-			await resume(id);
+			resume(id).then((res) => {
+				if (res.success) {
+					window.location.reload();
+				} else {
+					alert(res.msg);
+				}
+			});
 		}
-
-		window.location.reload();
 	};
 
 	return (
@@ -142,8 +157,6 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 					{statusText === "Inactive" ? "Resume" : "Stop"}
 				</button>
 			</div>
-
-			<span>*Amount is in decimal</span>
 		</div>
 	);
 }

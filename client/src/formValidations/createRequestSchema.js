@@ -17,6 +17,13 @@ const createWillSchema = yup.object().shape({
 		.string("Invalid contract address!")
 		.required("Contract address can't be empty!")
 		.test("address-test", "Invalid contract address!", addressValidation),
+	decimal: yup
+		.number()
+		.typeError("Invalid token Decimal!")
+		.min(0, "Token Decimal can't be negative!")
+		.max(18, "Token Decimal can't be greater than 18!")
+		.required("Token Decimal can't be empty!")
+		.integer("Token Decimal should only be integer!"),
 	amount: yup
 		.number()
 		.typeError("Invalid token amount!")

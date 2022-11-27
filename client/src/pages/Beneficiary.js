@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import BeneficiaryCard from "../components/request/BeneficiaryCard";
 import { getBenificary } from "../backendConnectors/integration";
 import FetchingLoader from "../components/FetchingLoader";
+import { ethers } from "ethers";
 
 function Beneficiary() {
 	const [beneficiaryData, setBeneficiaryData] = useState([]);
@@ -16,10 +17,14 @@ function Beneficiary() {
 
 	const beneficiaryCard = beneficiaryData.map((card) => {
 		let id = parseInt(card.id._hex);
-		let amount = parseInt(card.amt._hex);
+		let amount = card.amt._hex.toString();
 
 		let deadLine = parseInt(card.dedline._hex);
 		deadLine = new Date(deadLine * 1000);
+
+		let decimal = parseInt(card.decimal._hex);
+
+		amount = ethers.utils.formatUnits(amount, decimal);
 
 		return (
 			<BeneficiaryCard

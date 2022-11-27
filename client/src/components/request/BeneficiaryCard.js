@@ -64,9 +64,14 @@ function BeneficiaryCard({
 		setIsExecutable(tempIsExecutable);
 	}, []);
 
-	const handleExecute = async () => {
-		await execute(id);
-		window.location.reload();
+	const handleExecute = () => {
+		execute(id).then((res) => {
+			if (res.success) {
+				window.location.reload();
+			} else {
+				alert(res.msg);
+			}
+		});
 	};
 
 	return (
@@ -136,8 +141,6 @@ function BeneficiaryCard({
 					Click to execute
 				</button>
 			</div>
-
-			<span>*Amount is in decimal</span>
 		</div>
 	);
 }

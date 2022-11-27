@@ -16,8 +16,8 @@ export async function approveRequest(address, amt) {
 		await tx.wait();
 		return { status: true };
 	} catch (err) {
-		console.log(err);
-		return { status: false, msg: err.msg };
+		let msg = err.message.split("(")[0];
+		return { status: false, msg };
 	}
 }
 
@@ -53,7 +53,8 @@ export async function signRequest(
 		await tx.wait();
 		return { status: true };
 	} catch (err) {
-		return { status: false, msg: err.msg };
+		let msg = err.message.split("(")[0];
+		return { status: false, msg };
 	}
 }
 
@@ -142,62 +143,82 @@ function makeStorageClient() {
 }
 
 export async function stop(id) {
-	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-	await provider.send("eth_requestAccounts", []);
-	const signer = provider.getSigner();
-	const address = await signer.getAddress();
-	const contract = new ethers.Contract(
-		process.env.REACT_APP_BEQUEST_ADDRESS,
-		abi,
-		signer
-	);
-	let tx = await contract.stopWill(id);
-	let txData = await tx.wait();
-	return txData;
+	try {
+		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+		await provider.send("eth_requestAccounts", []);
+		const signer = provider.getSigner();
+		const address = await signer.getAddress();
+		const contract = new ethers.Contract(
+			process.env.REACT_APP_BEQUEST_ADDRESS,
+			abi,
+			signer
+		);
+		let tx = await contract.stopWill(id);
+		await tx.wait();
+		return { success: true };
+	} catch (err) {
+		let msg = err.message.split("(")[0];
+		return { status: false, msg };
+	}
 }
 
 export async function resume(id) {
-	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-	await provider.send("eth_requestAccounts", []);
-	const signer = provider.getSigner();
-	// const address = await signer.execution();
-	const contract = new ethers.Contract(
-		process.env.REACT_APP_BEQUEST_ADDRESS,
-		abi,
-		signer
-	);
-	let tx = await contract.resumeWill(id);
-	let txData = await tx.wait();
-	return txData;
+	try {
+		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+		await provider.send("eth_requestAccounts", []);
+		const signer = provider.getSigner();
+		// const address = await signer.execution();
+		const contract = new ethers.Contract(
+			process.env.REACT_APP_BEQUEST_ADDRESS,
+			abi,
+			signer
+		);
+		let tx = await contract.resumeWill(id);
+		await tx.wait();
+		return { success: true };
+	} catch (err) {
+		let msg = err.message.split("(")[0];
+		return { status: false, msg };
+	}
 }
 
 export async function changeTime(id, days) {
-	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-	await provider.send("eth_requestAccounts", []);
-	const signer = provider.getSigner();
-	const address = await signer.getAddress();
-	const contract = new ethers.Contract(
-		process.env.REACT_APP_BEQUEST_ADDRESS,
-		abi,
-		signer
-	);
-	let tx = await contract.extendtWill(id, days * 24 * 60 * 60);
-	let txdata = tx.wait();
-	return txdata;
+	try {
+		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+		await provider.send("eth_requestAccounts", []);
+		const signer = provider.getSigner();
+		const address = await signer.getAddress();
+		const contract = new ethers.Contract(
+			process.env.REACT_APP_BEQUEST_ADDRESS,
+			abi,
+			signer
+		);
+		let tx = await contract.extendtWill(id, days * 24 * 60 * 60);
+		tx.wait();
+		return { success: true };
+	} catch (err) {
+		let msg = err.message.split("(")[0];
+		return { status: false, msg };
+	}
 }
 export async function execute(id) {
-	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-	await provider.send("eth_requestAccounts", []);
-	const signer = provider.getSigner();
-	const address = await signer.getAddress();
-	const contract = new ethers.Contract(
-		process.env.REACT_APP_BEQUEST_ADDRESS,
-		abi,
-		signer
-	);
-	let tx = await contract.executeWill(id);
-	let txdata = tx.wait();
-	return txdata;
+	try {
+		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+		await provider.send("eth_requestAccounts", []);
+		const signer = provider.getSigner();
+		const address = await signer.getAddress();
+		const contract = new ethers.Contract(
+			process.env.REACT_APP_BEQUEST_ADDRESS,
+			abi,
+			signer
+		);
+		let tx = await contract.executeWill(id);
+		tx.wait();
+		return { success: true };
+	} catch (err) {
+		let msg = err.message.split("(")[0];
+		return { status: false, msg };
+	}
 }
 export async function getTime(id) {
 	const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
