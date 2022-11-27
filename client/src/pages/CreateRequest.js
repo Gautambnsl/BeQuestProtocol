@@ -34,13 +34,12 @@ function CreateRequest() {
 						.then((res) => res.json())
 						.then((tokenList) => {
 							if (tokenList.data) setUserTokens(tokenList.data.items);
+							setFetchingLoading(false);
 						});
 				});
 			})
 			.catch((err) => {
 				console.log(err);
-			})
-			.finally(() => {
 				setFetchingLoading(false);
 			});
 	}, []);
