@@ -65,6 +65,16 @@ export async function getAddress() {
 		return 
 	}
 }
+export async function chainId() {
+	const provider = await detectEthereumProvider()
+	const delay = ms => new Promise(res => setTimeout(res, ms));
+		await delay(100);
+	if(provider && provider.selectedAddress){
+	return provider.chainId;
+	}else{
+		return false 
+	}
+}
 
 export async function getView() {
 	let obj = [];
