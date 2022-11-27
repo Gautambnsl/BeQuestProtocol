@@ -1,5 +1,5 @@
 import React from "react";
-import logoName from "../../assests/logo-name.png"
+import logoName from "../../assests/logo-name.png";
 const Footer = () => {
 	return (
 		<div className="footer-main">
@@ -16,7 +16,7 @@ const Footer = () => {
 					<div>
 						<i class="fa fa-map-marker"></i>
 						<p>
-							<span> Devpost💖 Hackathon</span>Chainlinkfall2022👨‍💻
+							<span> Devfolio💖 Hackathon</span>EthIndia2022👨‍💻
 						</p>
 					</div>
 
@@ -36,7 +36,9 @@ const Footer = () => {
 				<div class="footer-right">
 					<p class="footer-company-about">
 						<span>About the company</span>
-						BeQuest came into existence with the purpose of protecting digital assets. BeQuest helps the users secure their digital assets like cryptocurrencies, NFTs, etc. from loss of private keys or death.
+						BeQuest came into existence with the purpose of protecting digital
+						assets. BeQuest helps the users secure their digital assets like
+						cryptocurrencies, NFTs, etc. from loss of private keys or death.
 					</p>
 
 					<div class="footer-icons">
