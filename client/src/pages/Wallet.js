@@ -29,19 +29,27 @@ function Wallet() {
 				>
 					<img src={Metamask} alt="" />
 
-					<span className="wallet-collection__item-name">Metamask</span>
+					<span className="wallet-collection__item-name wallet-name">
+						Metamask
+					</span>
 				</button>
 
 				<button className="wallet-collection__item">
 					<img src={WalletConnect} alt="" />
 
-					<span className="wallet-collection__item-name">Wallet Connect</span>
+					<span className="wallet-collection__item-name">
+						<span className="wallet-name">Wallet Connect</span>
+						<span className="coming-soon pacifico">{" (Coming Soon)"}</span>
+					</span>
 				</button>
 
 				<button className="wallet-collection__item">
 					<img src={Ledger} alt="" />
 
-					<span className="wallet-collection__item-name">Ledger</span>
+					<span className="wallet-collection__item-name">
+						<span className="wallet-name">Ledger</span>
+						<span className="coming-soon pacifico">{" (Coming Soon)"}</span>
+					</span>
 				</button>
 			</div>
 		</div>

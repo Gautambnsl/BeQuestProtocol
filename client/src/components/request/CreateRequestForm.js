@@ -84,6 +84,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 			willInfo.tokenName,
 			time,
 			amt,
+			tokenDetails.decimal,
 			willInfo.benificaryAddress,
 			willInfo.contractAddress,
 			willInfo.message,
