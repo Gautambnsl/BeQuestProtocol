@@ -15,7 +15,7 @@
 	background-size: 400% 400%;
 
 	@include ab.screen-40 {
-		padding-block: 5em;
+		padding-block: 2em 5em;
 	}
 
 	&-flex {
@@ -31,7 +31,7 @@
 	}
 
 	&-logo {
-		margin-bottom: -2em;
+		margin-bottom: -3em;
 
 		img {
 			max-width: 22rem;
@@ -103,7 +103,7 @@
 	}
 
 	&-chains {
-		margin-block: 3em 1em;
+		margin-block: 0 1em;
 		width: min(90%, 70rem);
 		margin-inline: auto;
 
@@ -115,7 +115,7 @@
 		}
 
 		&__list {
-			margin-block: 2em 0;
+			margin-block: 0.6em 0;
 			display: flex;
 			flex-wrap: wrap;
 			gap: 1.5em;

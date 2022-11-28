@@ -48,6 +48,20 @@ function Wallet() {
 				<img src={BeQuestLogo} alt="" />
 			</div>
 
+			<div className="wallet-chains">
+				<h2 className="wallet-chains__head">Supported Chains</h2>
+
+				<div className="wallet-chains__list">
+					<img src={Polygon} alt="Polygon" />
+
+					<img src={Moonbeam} alt="Moonbeam" />
+
+					<img src={Gnosis} alt="Gnosis" />
+
+					<img src={Cronos} alt="Cronos" />
+				</div>
+			</div>
+
 			<div className="wallet-collection">
 				<h2 className="wallet-collection__head">Connect a Wallet</h2>
 
@@ -79,20 +93,6 @@ function Wallet() {
 						<span className="coming-soon pacifico">{" (Coming Soon)"}</span>
 					</span>
 				</button>
-			</div>
-
-			<div className="wallet-chains">
-				<h2 className="wallet-chains__head">Supported Chains</h2>
-
-				<div className="wallet-chains__list">
-					<img src={Polygon} alt="Polygon" />
-
-					<img src={Moonbeam} alt="Moonbeam" />
-
-					<img src={Gnosis} alt="Gnosis" />
-
-					<img src={Cronos} alt="Cronos" />
-				</div>
 			</div>
 		</div>
 	);
