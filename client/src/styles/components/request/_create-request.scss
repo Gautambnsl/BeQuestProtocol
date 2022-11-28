@@ -15,7 +15,7 @@
 	.metamask-details {
 		display: flex;
 		flex-direction: column;
-		gap: 0.2em;
+		gap: 0.4em;
 
 		div {
 			display: flex;
@@ -27,6 +27,10 @@
 				color: ab.$text-golden;
 				user-select: none;
 				font-size: 1.1rem;
+			}
+
+			img {
+				width: 8rem;
 			}
 		}
 

@@ -6,6 +6,11 @@ import Loader from "../components/Loader";
 import FetchingLoader from "../components/FetchingLoader";
 import Error from "../components/Error";
 
+import Polygon from "../assests/polygon.png";
+import Moonbeam from "../assests/moonbeam.png";
+import Gnosis from "../assests/gnosis.png";
+import Cronos from "../assests/cronos.svg";
+
 function CreateRequest() {
 	const [userTokens, setUserTokens] = useState([]);
 	const [tokenDetails, setTokenDetails] = useState({
@@ -18,6 +23,7 @@ function CreateRequest() {
 	const [metamaskDetails, setMetamaskDetails] = useState({
 		chainId: "",
 		address: "",
+		img: "",
 	});
 
 	const [err, setErr] = useState({
@@ -30,10 +36,23 @@ function CreateRequest() {
 			.then((address) => {
 				getChainId()
 					.then((chainId) => {
+						let tempImg;
 						const userTokenEndpoint = `https://api.covalenthq.com/v1/${chainId}/address/${address}/balances_v2/?&key=${process.env.REACT_APP_API_KEY}`;
+
+						if (chainId == 80001) {
+							tempImg = Polygon;
+						} else if (chainId == 1287) {
+							tempImg = Moonbeam;
+						} else if (chainId == 10200) {
+							tempImg = Gnosis;
+						} else if (chainId == 338) {
+							tempImg = Cronos;
+						}
+
 						setMetamaskDetails({
 							chainId,
 							address,
+							img: tempImg,
 						});
 
 						fetch(userTokenEndpoint)
@@ -137,9 +156,10 @@ function CreateRequest() {
 				<div className="create-will__token-form">
 					<div className="metamask-details">
 						<div>
-							<h3 className="create-will__head">Chain Id:</h3>
+							<h3 className="create-will__head">Network:</h3>
 
-							{metamaskDetails.chainId && <p>{metamaskDetails.chainId}</p>}
+							{/* {metamaskDetails.chainId && <p>{metamaskDetails.chainId}</p>} */}
+							<img src={metamaskDetails.img} alt="" />
 						</div>
 
 						<div>
@@ -148,7 +168,7 @@ function CreateRequest() {
 							{metamaskDetails.address && (
 								<p title={metamaskDetails.address}>
 									{metamaskDetails.address.slice(0, 5) +
-										"........" +
+										"....." +
 										metamaskDetails.address.slice(-5)}
 								</p>
 							)}
