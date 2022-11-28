@@ -3,7 +3,7 @@
 #error-modal {
 	border-radius: 0.6em;
 	padding-inline: 1.8em;
-	padding-block: 1em 0;
+	padding-block: 1em;
 	backdrop-filter: blur(0.2em);
 	background-color: rgba(255, 255, 255, 0.658);
 	display: flex;
@@ -36,7 +36,7 @@
 			font-size: 1rem;
 		}
 
-		.error-close {
+		#error-close {
 			outline: none;
 			border: none;
 			background-color: #1677ff;

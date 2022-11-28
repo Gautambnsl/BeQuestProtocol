@@ -17,9 +17,9 @@ function Error({ message }) {
 
 				<p id="error-modal__div-message">{message}</p>
 
-				{/* <button id="error-close" onClick={handleClose}>
+				<button id="error-close" onClick={handleClose}>
 					OK
-				</button> */}
+				</button>
 			</div>
 		</div>
 	);
