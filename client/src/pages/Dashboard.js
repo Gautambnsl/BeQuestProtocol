@@ -121,6 +121,7 @@ function Dashboard() {
 							<a
 								target="_blank"
 								href="https://drive.google.com/file/d/1k7oVW-qV1vxp7pPidyastOgYSmrfKHFx/view?usp=sharing"
+								onClick={hideNav}
 							>
 								Docs
 							</a>

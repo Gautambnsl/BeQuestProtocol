@@ -72,14 +72,10 @@ function CreateRequest() {
 		<div className={`create-will ${loading ? "relative" : ""}`}>
 			{loading && <Loader />}
 
-			{/* <div className="create-will__details">
-				<h3 className="create-will__details-name">My tokens</h3>
-
-				<h3 className="create-will__details-name">My tokens</h3>
-			</div> */}
-
 			<div className="create-will__token">
 				<div className="create-will__token-list">
+					<h3 className="create-will__head">My tokens</h3>
+
 					<div
 						className={`create-will__token-list__items ${
 							userTokens.length <= 0 ? "flex" : ""
@@ -103,6 +99,26 @@ function CreateRequest() {
 				</div>
 
 				<div className="create-will__token-form">
+					<div className="metamask-details">
+						<div>
+							<h3 className="create-will__head">Chain Id:</h3>
+
+							{metamaskDetails.chainId && <p>{metamaskDetails.chainId}</p>}
+						</div>
+
+						<div>
+							<h3 className="create-will__head">Address:</h3>
+
+							{metamaskDetails.address && (
+								<p title={metamaskDetails.address}>
+									{metamaskDetails.address.slice(0, 5) +
+										"........" +
+										metamaskDetails.address.slice(-5)}
+								</p>
+							)}
+						</div>
+					</div>
+
 					<div className="create-will__token-form__input">
 						<h3 className="pacifico">Create your BeQuest request</h3>
 
