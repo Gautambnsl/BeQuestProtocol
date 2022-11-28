@@ -4,7 +4,7 @@ import CreateRequestForm from "../components/request/CreateRequestForm";
 import { getAddress, getChainId } from "../backendConnectors/integration";
 import Loader from "../components/Loader";
 import FetchingLoader from "../components/FetchingLoader";
-import { set } from "react-hook-form";
+import Error from "../components/Error";
 
 function CreateRequest() {
 	const [userTokens, setUserTokens] = useState([]);
@@ -20,26 +20,60 @@ function CreateRequest() {
 		address: "",
 	});
 
+	const [err, setErr] = useState({
+		state: false,
+		message: "",
+	});
+
 	useEffect(() => {
 		getAddress()
 			.then((address) => {
-				getChainId().then((chainId) => {
-					const userTokenEndpoint = `https://api.covalenthq.com/v1/${chainId}/address/${address}/balances_v2/?&key=${process.env.REACT_APP_API_KEY}`;
-					setMetamaskDetails({
-						chainId,
-						address,
-					});
-
-					fetch(userTokenEndpoint)
-						.then((res) => res.json())
-						.then((tokenList) => {
-							if (tokenList.data) setUserTokens(tokenList.data.items);
-							setFetchingLoading(false);
+				getChainId()
+					.then((chainId) => {
+						const userTokenEndpoint = `https://api.covalenthq.com/v1/${chainId}/address/${address}/balances_v2/?&key=${process.env.REACT_APP_API_KEY}`;
+						setMetamaskDetails({
+							chainId,
+							address,
 						});
-				});
+
+						fetch(userTokenEndpoint)
+							.then((res) => res.json())
+							.then((tokenList) => {
+								if (tokenList.data) setUserTokens(tokenList.data.items);
+								setFetchingLoading(false);
+							});
+					})
+					.catch((err) => {
+						console.log(err);
+						setErr({
+							state: true,
+							message: "Can't fetch user token!",
+						});
+
+						setTimeout(() => {
+							setErr({
+								state: false,
+								message: "",
+							});
+						}, 2000);
+
+						setFetchingLoading(false);
+					});
 			})
 			.catch((err) => {
 				console.log(err);
+				setErr({
+					state: true,
+					message: "Can't fetch user address!",
+				});
+
+				setTimeout(() => {
+					setErr({
+						state: false,
+						message: "",
+					});
+				}, 2000);
+
 				setFetchingLoading(false);
 			});
 	}, []);
@@ -70,6 +104,8 @@ function CreateRequest() {
 
 	return (
 		<div className={`create-will ${loading ? "relative" : ""}`}>
+			{err.state && <Error message={err.message} />}
+
 			{loading && <Loader />}
 
 			<div className="create-will__token">

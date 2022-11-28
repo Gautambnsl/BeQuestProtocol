@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import * as yup from "yup";
 import { changeTime } from "../../backendConnectors/integration";
 import { stop, resume } from "../../backendConnectors/integration";
+import Error from "../Error";
 
 let schema = yup.object().shape({
 	time: yup
@@ -16,6 +17,10 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 	const [statusText, setStatusText] = useState("");
 	const [buttonActive, setButtonActive] = useState(true);
 	const [executionTime, setExecutionTime] = useState();
+	const [err, setErr] = useState({
+		state: false,
+		message: "",
+	});
 
 	useEffect(() => {
 		let tempStatusText;
@@ -69,12 +74,36 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 					if (res.success) {
 						window.location.reload();
 					} else {
-						alert(res.msg);
+						// alert(res.msg);
+
+						setErr({
+							state: true,
+							message: res.msg,
+						});
+
+						setTimeout(() => {
+							setErr({
+								state: false,
+								message: "",
+							});
+						}, 2000);
 					}
 				});
 			})
 			.catch((err) => {
-				alert(err.errors[0]);
+				// alert(err.errors[0]);
+
+				setErr({
+					state: true,
+					message: err.errors[0],
+				});
+
+				setTimeout(() => {
+					setErr({
+						state: false,
+						message: "",
+					});
+				}, 2000);
 			});
 	};
 
@@ -84,7 +113,19 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 				if (res.success) {
 					window.location.reload();
 				} else {
-					alert(res.msg);
+					// alert(res.msg);
+
+					setErr({
+						state: true,
+						message: res.msg,
+					});
+
+					setTimeout(() => {
+						setErr({
+							state: false,
+							message: "",
+						});
+					}, 3000);
 				}
 			});
 		}
@@ -94,7 +135,19 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 				if (res.success) {
 					window.location.reload();
 				} else {
-					alert(res.msg);
+					// alert(res.msg);
+
+					setErr({
+						state: true,
+						message: res.msg,
+					});
+
+					setTimeout(() => {
+						setErr({
+							state: false,
+							message: "",
+						});
+					}, 3000);
 				}
 			});
 		}
@@ -102,6 +155,8 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 
 	return (
 		<div className="card">
+			{err.state && <Error message={err.message} />}
+
 			<div className="card-item">
 				<h2>{"BQ" + id}</h2>
 			</div>

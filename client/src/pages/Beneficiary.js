@@ -3,10 +3,15 @@ import BeneficiaryCard from "../components/request/BeneficiaryCard";
 import { getBenificary } from "../backendConnectors/integration";
 import FetchingLoader from "../components/FetchingLoader";
 import { ethers } from "ethers";
+import Error from "../components/Error";
 
 function Beneficiary() {
 	const [beneficiaryData, setBeneficiaryData] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [err, setErr] = useState({
+		state: false,
+		message: "",
+	});
 
 	useEffect(() => {
 		getBenificary()
@@ -15,6 +20,18 @@ function Beneficiary() {
 			})
 			.catch((err) => {
 				console.log(err);
+
+				setErr({
+					state: true,
+					message: "Can't fetch benificary card!",
+				});
+
+				setTimeout(() => {
+					setErr({
+						state: false,
+						message: "",
+					});
+				}, 2000);
 			})
 			.finally(() => {
 				setLoading(false);
@@ -52,6 +69,8 @@ function Beneficiary() {
 		<div
 			className={`beneficiary ${beneficiaryCard.length > 0 ? "" : "center"}`}
 		>
+			{err.state && <Error message={err.message} />}
+
 			{loading ? (
 				<FetchingLoader />
 			) : beneficiaryCard.length > 0 ? (

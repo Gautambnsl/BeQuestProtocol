@@ -9,6 +9,7 @@ import {
 	storeFiles,
 } from "../../backendConnectors/integration";
 import { ethers } from "ethers";
+import Error from "../Error";
 
 function CreateWillForm({ tokenDetails, setLoading }) {
 	const {
@@ -27,6 +28,11 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 	const [videoErr, setVideoErr] = useState("");
 	const videoRef = useRef();
 	const videoCidRef = useRef("");
+
+	const [err, setErr] = useState({
+		state: false,
+		message: "",
+	});
 
 	useEffect(() => {
 		if (tokenDetails.name && tokenDetails.address) {
@@ -70,10 +76,33 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				setEnableSubmit(true);
 			} else {
 				// error handling
-				alert(status.msg);
+				// alert(status.msg);
+				setErr({
+					state: true,
+					message: status.msg,
+				});
+
+				setTimeout(() => {
+					setErr({
+						state: false,
+						message: "",
+					});
+				}, 2000);
 			}
 		} catch (err) {
-			alert("Token amount exceded the limit!");
+			// alert("Token amount exceded the limit!");
+
+			setErr({
+				state: true,
+				message: "Token amount exceded the limit!",
+			});
+
+			setTimeout(() => {
+				setErr({
+					state: false,
+					message: "",
+				});
+			}, 3000);
 		} finally {
 			setLoading(false);
 		}
@@ -107,10 +136,34 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				setEnableSubmit(false);
 			} else {
 				// error handling
-				alert(status.msg);
+				// alert(status.msg);
+
+				setErr({
+					state: true,
+					message: status.msg,
+				});
+
+				setTimeout(() => {
+					setErr({
+						state: false,
+						message: "",
+					});
+				}, 2000);
 			}
 		} catch (err) {
-			alert(err);
+			// alert(err);
+
+			setErr({
+				state: true,
+				message: err,
+			});
+
+			setTimeout(() => {
+				setErr({
+					state: false,
+					message: "",
+				});
+			}, 3000);
 		} finally {
 			setLoading(false);
 		}
@@ -153,6 +206,8 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 
 	return (
 		<form onSubmit={handleSubmit(createWill)} className="input-form">
+			{err.state && <Error message={err.message} />}
+
 			<Input
 				label={"Token Name"}
 				type="text"

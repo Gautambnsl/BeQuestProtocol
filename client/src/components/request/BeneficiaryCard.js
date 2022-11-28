@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { execute } from "../../backendConnectors/integration";
+import Error from "../Error";
 
 function BeneficiaryCard({
 	id,
@@ -15,6 +16,10 @@ function BeneficiaryCard({
 	const [statusText, setStatusText] = useState("");
 	const [isExecutable, setIsExecutable] = useState(false);
 	const [executionTime, setExecutionTime] = useState();
+	const [err, setErr] = useState({
+		state: false,
+		message: "",
+	});
 
 	useEffect(() => {
 		let tempStatusText;
@@ -69,13 +74,26 @@ function BeneficiaryCard({
 			if (res.success) {
 				window.location.reload();
 			} else {
-				alert(res.msg);
+				// alert(res.msg);
+				setErr({
+					state: true,
+					message: res.msg,
+				});
+
+				setTimeout(() => {
+					setErr({
+						state: false,
+						message: "",
+					});
+				}, 2000);
 			}
 		});
 	};
 
 	return (
 		<div className="card">
+			{err.state && <Error message={err.message} />}
+
 			<div className="card-item">
 				<h2>{"BQ" + id}</h2>
 			</div>

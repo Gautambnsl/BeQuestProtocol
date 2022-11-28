@@ -51,7 +51,6 @@
 
 			@include ab.screen-50 {
 				width: min(40%, 30rem);
-				// overflow-y: scroll;
 			}
 
 			@include ab.screen-68 {
@@ -136,6 +135,7 @@
 				padding-inline: clamp(0.6em, 2vw, 1.2em);
 
 				@include ab.screen-50 {
+					// max-height: 45rem;
 					max-height: 45rem;
 				}
 

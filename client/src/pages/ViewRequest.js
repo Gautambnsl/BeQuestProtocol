@@ -3,10 +3,16 @@ import RequestCard from "../components/request/RequestCard";
 import { getView, getTime } from "../backendConnectors/integration";
 import FetchingLoader from "../components/FetchingLoader";
 import { ethers } from "ethers";
+import Error from "../components/Error";
 
 function ViewRequest() {
 	const [willData, setWillData] = useState([]);
 	const [loading, setLoading] = useState(true);
+
+	const [err, setErr] = useState({
+		state: false,
+		message: "",
+	});
 
 	useEffect(() => {
 		getView()
@@ -15,6 +21,18 @@ function ViewRequest() {
 			})
 			.catch((err) => {
 				console.log(err);
+
+				setErr({
+					state: true,
+					message: "Can't fetch request card!",
+				});
+
+				setTimeout(() => {
+					setErr({
+						state: false,
+						message: "",
+					});
+				}, 2000);
 			})
 			.finally(() => {
 				setLoading(false);
@@ -47,12 +65,14 @@ function ViewRequest() {
 
 	return (
 		<div className={`view-will ${willCard.length > 0 ? "" : "center"}`}>
+			{err.state && <Error message={err.message} />}
+
 			{loading ? (
 				<FetchingLoader />
 			) : willCard.length > 0 ? (
 				willCard
 			) : (
-				"No BeQuest request created till now!"
+				<p>No BeQuest request created till now!</p>
 			)}
 		</div>
 	);

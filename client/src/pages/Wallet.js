@@ -4,6 +4,8 @@ import WalletConnect from "../assests/walletconnect.svg";
 import Ledger from "../assests/ledger.svg";
 import { connectWallet } from "../backendConnectors/connectWallet";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Error from "../components/Error";
 
 import Polygon from "../assests/polygon.png";
 import Moonbeam from "../assests/moonbeam.png";
@@ -12,6 +14,10 @@ import Cronos from "../assests/cronos.svg";
 
 function Wallet() {
 	const navigate = useNavigate();
+	const [err, setErr] = useState({
+		state: false,
+		message: "",
+	});
 
 	async function redirctAfterConnect() {
 		connectWallet().then((res) => {
@@ -19,14 +25,25 @@ function Wallet() {
 				navigate("/dashboard");
 			} else {
 				// error
+				setErr({
+					state: true,
+					message: res.msg,
+				});
 
-				alert(res.msg);
+				setTimeout(() => {
+					setErr({
+						state: false,
+						message: "",
+					});
+				}, 2000);
 			}
 		});
 	}
 
 	return (
 		<div className="wallet">
+			{err.state && <Error message={err.message} />}
+
 			<div className="wallet-logo">
 				<img src={BeQuestLogo} alt="" />
 			</div>
