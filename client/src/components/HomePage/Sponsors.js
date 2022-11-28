@@ -1,5 +1,5 @@
-import PolygonLogo from "../../assests/polygon-logo-inverted.png";
-import ChainlinkLogo from "../../assests/chainlinklogo2.png";
+import PolygonLogo from "../../assests/polygon.png";
+import ChainlinkLogo from "../../assests/chainlink.png";
 
 function Sponsors() {
 	return (
@@ -21,7 +21,8 @@ function Sponsors() {
 					* chainlink automation : asset transfering using chainlink keeper
 				</p>
 				<p className="sponsors-text__p">
-					* polygon chain's digital assets supported : ERC20 Tokens Like USDT, etc.
+					* polygon chain's digital assets supported : ERC20 Tokens Like USDT,
+					etc.
 				</p>
 			</div>
 		</div>

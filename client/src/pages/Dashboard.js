@@ -2,6 +2,7 @@ import { Outlet, NavLink, Link, useNavigate } from "react-router-dom";
 import BequestLogo from "../assests/logo-name.png";
 import { useState, useEffect, useRef } from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
+import { getChainId } from "../backendConnectors/integration";
 
 function Dashboard() {
 	const [navState, setNavState] = useState(false);
@@ -23,6 +24,21 @@ function Dashboard() {
 			provider.on("chainChanged", (_chainId) => window.location.reload());
 
 			// chain error handling
+
+			getChainId().then((chainId) => {
+				if (chainId) {
+					if (
+						chainId != 80001 &&
+						chainId != 1287 &&
+						chainId != 10200 &&
+						chainId != 338
+					) {
+						navigate("/wallet");
+					}
+				} else {
+					console.log("Error loading chain details");
+				}
+			});
 		} else {
 			navigate("/wallet");
 		}
