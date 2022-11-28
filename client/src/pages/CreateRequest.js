@@ -106,7 +106,7 @@ function CreateRequest() {
 	};
 
 	const Tokens = userTokens.map((item, index) => {
-		if (item.contract_address !== "0x0000000000000000000000000000000000001010")
+		if (item.contract_address !== "0x0000000000000000000000000000000000001010"  && item.contract_address !== "0x0000000000006d6f6f6e626173652d616c706861" && item.contract_address !== "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
 			return (
 				<Token
 					key={item.contract_address}

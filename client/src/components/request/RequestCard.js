@@ -65,7 +65,7 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 	}, []);
 
 	const handleChangeTime = () => {
-		const time = window.prompt("Change time from current time", "5");
+		const time = window.prompt("Change time from current time in days", "5");
 
 		schema
 			.validate({ time }, { abortEarly: false })

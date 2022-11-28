@@ -256,3 +256,68 @@ export async function getTime(id) {
 	let data = await contract.getTimeReamaing(id);
 	return data;
 }
+
+export async function changeChain(id){
+	try {
+	 let provider = await detectEthereumProvider()
+	 if(provider)
+		await provider.request({
+		  method: 'wallet_switchEthereumChain',
+		  params: [{ chainId: id}],
+		});
+	  console.log("You have succefully switched to Binance Test network")
+	  } catch (switchError) {
+		// This error code indicates that the chain has not been added to MetaMask.
+		if (switchError.code === 4902) {
+			let provider = await detectEthereumProvider()
+	 		if(provider){
+			let obj;
+			if(id == "0x13881"){  //polygon
+				obj = {
+					chainId: '0x13881', 
+          			chainName:'Polygon Mumbai',
+         			rpcUrls:['https://rpc-mumbai.maticvigil.com/'],                   blockExplorerUrls:['https://mumbai.polygonscan.com/'],  
+      				nativeCurrency: { 
+         			symbol:'Matic',   
+          			decimals: 18}
+				}
+			}
+			if(id == "0x507"){	//moonbeam
+				 obj = {
+					chainId: '0x507', 
+          			chainName:'moonbase-alphanet',
+         			rpcUrls:['https://rpc.api.moonbase.moonbeam.network'],                   blockExplorerUrls:['https://moonbase.moonscan.io'],  
+      				nativeCurrency: { 
+         			symbol:'DEV',   
+          			decimals: 18}
+				}
+			}
+			if(id == "0x27d8"){	//gnosis
+				obj = {
+					chainId: '0x27d8', 
+          			chainName:'Chiado (Gnosis)',
+         			rpcUrls:['https://rpc.eu-central-2.gateway.fm/v3/gnosis/archival/chiado'],                   blockExplorerUrls:['https://blockscout.chiadochain.net'],  
+      				nativeCurrency: { 
+         			symbol:'xDAI',   
+          			decimals: 18}
+				}
+			}
+			if(id == "0x152"){	//cronos
+				obj = {
+					chainId: '0x152', 
+          			chainName:'Cronos Testnet',
+         			rpcUrls:['https://evm-t3.cronos.org'],                   blockExplorerUrls:['https://testnet.cronoscan.com'],  
+      				nativeCurrency: { 
+         			symbol:'tCRO',   
+          			decimals: 18}
+				}
+			}
+			await provider.request({
+				method: 'wallet_addEthereumChain',
+				params: [obj],
+			  });
+			}
+		}
+		console.log("Failed to switch to the network")
+	  }
+}

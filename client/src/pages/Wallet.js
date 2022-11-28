@@ -6,6 +6,7 @@ import { connectWallet } from "../backendConnectors/connectWallet";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Error from "../components/Error";
+import { changeChain } from "../backendConnectors/integration";
 
 import Polygon from "../assests/polygon.png";
 import Moonbeam from "../assests/moonbeam.png";
@@ -49,16 +50,16 @@ function Wallet() {
 			</div>
 
 			<div className="wallet-chains">
-				<h2 className="wallet-chains__head">Supported Chains</h2>
+				<h2 className="wallet-chains__head">Supported Chains (Click To Switch or Add Chain)</h2>
 
 				<div className="wallet-chains__list">
-					<img src={Polygon} alt="Polygon" />
+					<img src={Polygon} onClick={()=>{changeChain("0x13881")}}  alt="Polygon" />
 
-					<img src={Moonbeam} alt="Moonbeam" />
+					<img src={Moonbeam} onClick={()=>{changeChain("0x507")}} alt="Moonbeam" />
 
-					<img src={Gnosis} alt="Gnosis" />
+					<img src={Gnosis} onClick={()=>{changeChain("0x27d8")}}  alt="Gnosis" />
 
-					<img src={Cronos} alt="Cronos" />
+					<img src={Cronos} onClick={()=>{changeChain("0x152")}}  alt="Cronos" />
 				</div>
 			</div>
 
