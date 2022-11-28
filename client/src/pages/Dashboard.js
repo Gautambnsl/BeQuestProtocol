@@ -3,11 +3,16 @@ import BequestLogo from "../assests/logo-name.png";
 import { useState, useEffect, useRef } from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { getChainId } from "../backendConnectors/integration";
+import Error from "../components/Error";
 
 function Dashboard() {
 	const [navState, setNavState] = useState(false);
 	const navRef = useRef();
 	const navigate = useNavigate();
+	const [err, setErr] = useState({
+		state: false,
+		message: "",
+	});
 
 	const walletCheck = async () => {
 		const provider = await detectEthereumProvider();
@@ -33,10 +38,34 @@ function Dashboard() {
 						chainId != 10200 &&
 						chainId != 338
 					) {
-						navigate("/wallet");
+						setErr({
+							state: true,
+							message: "Unsupported chain. Redirecting you to wallet page.",
+						});
+
+						setTimeout(() => {
+							setErr({
+								state: false,
+								message: "",
+							});
+
+							navigate("/wallet");
+						}, 2000);
 					}
 				} else {
 					console.log("Error loading chain details");
+
+					setErr({
+						state: true,
+						message: "Error loading chain details!",
+					});
+
+					setTimeout(() => {
+						setErr({
+							state: false,
+							message: "",
+						});
+					}, 2000);
 				}
 			});
 		} else {
@@ -66,6 +95,8 @@ function Dashboard() {
 
 	return (
 		<div className="dashboard">
+			{err.state && <Error message={err.message} />}
+
 			<div className="dashboard-nav">
 				<Link to="/">
 					<img src={BequestLogo} alt="" />
