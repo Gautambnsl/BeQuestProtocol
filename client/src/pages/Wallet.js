@@ -50,16 +50,40 @@ function Wallet() {
 			</div>
 
 			<div className="wallet-chains">
-				<h2 className="wallet-chains__head">Supported Chains (Click To Switch or Add Chain)</h2>
+				<h2 className="wallet-chains__head">Click To Add supported chain</h2>
 
 				<div className="wallet-chains__list">
-					<img src={Polygon} onClick={()=>{changeChain("0x13881")}}  alt="Polygon" />
+					<img
+						src={Polygon}
+						onClick={() => {
+							changeChain("0x13881");
+						}}
+						alt="Polygon"
+					/>
 
-					<img src={Moonbeam} onClick={()=>{changeChain("0x507")}} alt="Moonbeam" />
+					<img
+						src={Moonbeam}
+						onClick={() => {
+							changeChain("0x507");
+						}}
+						alt="Moonbeam"
+					/>
 
-					<img src={Gnosis} onClick={()=>{changeChain("0x27d8")}}  alt="Gnosis" />
+					<img
+						src={Gnosis}
+						onClick={() => {
+							changeChain("0x27d8");
+						}}
+						alt="Gnosis"
+					/>
 
-					<img src={Cronos} onClick={()=>{changeChain("0x152")}}  alt="Cronos" />
+					<img
+						src={Cronos}
+						onClick={() => {
+							changeChain("0x152");
+						}}
+						alt="Cronos"
+					/>
 				</div>
 			</div>
 

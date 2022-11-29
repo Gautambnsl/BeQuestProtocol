@@ -123,6 +123,18 @@
 
 			img {
 				width: clamp(9rem, 25vw, 15rem);
+				cursor: pointer;
+
+				border: 0.2em solid ab.$text-golden;
+				padding-inline: 1em;
+				padding-block: 0.3em;
+				border-radius: 0.8em;
+
+				transition: border-color 0.3s ease-in-out;
+
+				&:hover {
+					border-color: ab.$text-pink;
+				}
 			}
 		}
 	}

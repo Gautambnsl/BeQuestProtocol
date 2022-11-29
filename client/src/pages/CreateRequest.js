@@ -106,7 +106,11 @@ function CreateRequest() {
 	};
 
 	const Tokens = userTokens.map((item, index) => {
-		if (item.contract_address !== "0x0000000000000000000000000000000000001010"  && item.contract_address !== "0x0000000000006d6f6f6e626173652d616c706861" && item.contract_address !== "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+		if (
+			item.contract_address !== "0x0000000000000000000000000000000000001010" &&
+			item.contract_address !== "0x0000000000006d6f6f6e626173652d616c706861" &&
+			item.contract_address !== "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+		)
 			return (
 				<Token
 					key={item.contract_address}
@@ -133,7 +137,7 @@ function CreateRequest() {
 
 					<div
 						className={`create-will__token-list__items ${
-							userTokens.length <= 0 ? "flex" : ""
+							userTokens.length <= 1 ? "flex" : ""
 						} ${fetchLoading ? "column" : ""}`}
 					>
 						<h3
@@ -145,8 +149,10 @@ function CreateRequest() {
 
 						{fetchLoading ? (
 							<FetchingLoader />
-						) : userTokens.length <= 0 ? (
-							<p>You don't have any tokens.</p>
+						) : userTokens.length <= 1 ? (
+							<p>
+								You don't have any tokens. Get some ERC20 token to try our Dapp
+							</p>
 						) : (
 							Tokens
 						)}
@@ -186,13 +192,13 @@ function CreateRequest() {
 				</div>
 			</div>
 
-			<a
+			{/* <a
 				className="test-faucet"
 				href="https://ismaventuras.github.io/ERC20-Faucet/"
 				target="_blank"
 			>
 				Click here to get test faucet
-			</a>
+			</a> */}
 		</div>
 	);
 }
