@@ -36,7 +36,8 @@ function Dashboard() {
 						chainId != 80001 &&
 						chainId != 1287 &&
 						chainId != 10200 &&
-						chainId != 338
+						chainId != 338 &&
+						chainId != 5
 					) {
 						setErr({
 							state: true,

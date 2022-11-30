@@ -10,6 +10,7 @@ import Polygon from "../assests/polygon.png";
 import Moonbeam from "../assests/moonbeam.png";
 import Gnosis from "../assests/gnosis.png";
 import Cronos from "../assests/cronos.svg";
+import Goerli from "..//assests/goerli.svg";
 
 function CreateRequest() {
 	const [userTokens, setUserTokens] = useState([]);
@@ -47,6 +48,8 @@ function CreateRequest() {
 							tempImg = Gnosis;
 						} else if (chainId == 338) {
 							tempImg = Cronos;
+						} else if (chainId == 5) {
+							tempImg = Goerli;
 						}
 
 						setMetamaskDetails({
@@ -165,7 +168,11 @@ function CreateRequest() {
 							<h3 className="create-will__head">Network:</h3>
 
 							{/* {metamaskDetails.chainId && <p>{metamaskDetails.chainId}</p>} */}
-							<img src={metamaskDetails.img} alt="" />
+							<img
+								src={metamaskDetails.img}
+								className={`${metamaskDetails.chainId == 5 ? "goerli" : ""}`}
+								alt=""
+							/>
 						</div>
 
 						<div>

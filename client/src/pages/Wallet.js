@@ -12,6 +12,7 @@ import Polygon from "../assests/polygon.png";
 import Moonbeam from "../assests/moonbeam.png";
 import Gnosis from "../assests/gnosis.png";
 import Cronos from "../assests/cronos.svg";
+import Goerli from "../assests/goerli.svg";
 
 function Wallet() {
 	const navigate = useNavigate();
@@ -67,6 +68,17 @@ function Wallet() {
 							changeChain("0x507");
 						}}
 						alt="Moonbeam"
+					/>
+
+					<img
+						style={{
+							width: "clamp(4rem, 18vw, 7.5rem)",
+						}}
+						src={Goerli}
+						onClick={() => {
+							changeChain("0x5");
+						}}
+						alt="Goerli"
 					/>
 
 					<img
