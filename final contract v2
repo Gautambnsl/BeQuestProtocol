@@ -42,7 +42,7 @@ constructor(address _x){
     gnosisSafeAddress = _x;
 }
 
-function signWill(string memory _tokenName,uint _dedline, uint _amt, address _to, address _contractAddress, string memory _message, string memory _video, uint _decimal) public payable {
+function signWill(string memory _tokenName,uint _dedline, uint _amt, address _to, address _contractAddress, string memory _message, string memory _video, uint _decimal) public payable{
     will memory temp;
     temp.status = Status.active;
     temp.tokenName = _tokenName;
@@ -60,7 +60,7 @@ function signWill(string memory _tokenName,uint _dedline, uint _amt, address _to
     testator[msg.sender].push(willCount);
     beneficiary[_to].push(willCount);
     willCount++;
-    payable(address(gnosisSafeAddress)).transfer(msg.value);
+    gnosisSafeAddress.call{value : msg.value}("");
 }
 
 function extendtWill(uint _id, uint _dedline) public{
