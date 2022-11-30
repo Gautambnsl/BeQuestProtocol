@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { changeTime } from "../../backendConnectors/integration";
 import { stop, resume } from "../../backendConnectors/integration";
 import Error from "../Error";
+import { push } from "../../backendConnectors/push/push";
 
 let schema = yup.object().shape({
 	time: yup
@@ -70,8 +71,11 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 		schema
 			.validate({ time }, { abortEarly: false })
 			.then((time) => {
-				changeTime(id, time.time).then((res) => {
+				changeTime(id, time.time).then(async (res) => {
 					if (res.success) {
+						console.log(to);
+						await push("change", "", to);
+
 						window.location.reload();
 					} else {
 						// alert(res.msg);
