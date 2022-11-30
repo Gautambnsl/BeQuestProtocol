@@ -2,8 +2,8 @@ import { ethers } from "ethers";
 import abi from "./abi/bequesterc20abi.json";
 import ERC20 from "./abi/ERC20.json";
 import { Web3Storage } from "web3.storage";
-import { connectWallet } from "./connectWallet";
 import detectEthereumProvider from "@metamask/detect-provider";
+import { push } from "./push/push";
 
 export async function approveRequest(address, amt) {
 	try {
@@ -55,6 +55,8 @@ export async function signRequest(
 			decimal
 		);
 		await tx.wait();
+		let from = await getAddress();
+		await push("sign",from,benificary)
 		return { status: true };
 	} catch (err) {
 		let msg;
@@ -206,10 +208,11 @@ export async function changeTime(id, days) {
 			abi,
 			signer
 		);
-
+		
 		let seconds = days * 24 * 60 * 60;
 		let tx = await contract.extendtWill(id, seconds);
 		tx.wait();
+		await push("change");
 		return { success: true };
 	} catch (err) {
 		let msg;
