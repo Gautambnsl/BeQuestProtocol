@@ -3,6 +3,17 @@
 		"inputs": [
 			{
 				"internalType": "address",
+				"name": "_x",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
 				"name": "",
 				"type": "address"
 			},
@@ -268,7 +279,7 @@
 		],
 		"name": "signWill",
 		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{

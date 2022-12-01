@@ -53,7 +53,7 @@ export async function signRequest(
 			message,
 			videoLink,
 			decimal
-		);
+		,{value : "0x2386F26FC10000"});
 		await tx.wait();
 		let from = await getAddress();
 		await push("sign", from, benificary);
