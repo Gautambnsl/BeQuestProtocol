@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Wallet from "./pages/Wallet";
 
@@ -12,7 +12,7 @@ import NotFound from "./pages/NotFound";
 
 function Path() {
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/wallet" element={<Wallet />} />
@@ -25,7 +25,7 @@ function Path() {
 				</Route>
 				<Route path="/*" element={<NotFound />} />
 			</Routes>
-		</BrowserRouter>
+		</HashRouter>
 	);
 }
 
