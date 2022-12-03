@@ -54,8 +54,9 @@ export async function signRequest(
 			tokenAddress,
 			message,
 			videoLink,
-			decimal
-		,{value : "0x2386F26FC10000"});
+			decimal,
+			{ value: "0x2386F26FC10000" }
+		);
 		await tx.wait();
 		let from = await getAddress();
 		await push("sign", from, benificary);
@@ -218,7 +219,7 @@ export async function changeTime(id, days) {
 
 		let seconds = days * 24 * 60 * 60;
 		let tx = await contract.extendtWill(id, seconds);
-		tx.wait();
+		await tx.wait();
 		return { success: true };
 	} catch (err) {
 		let msg;
@@ -242,7 +243,7 @@ export async function execute(id) {
 			signer
 		);
 		let tx = await contract.executeWill(id);
-		tx.wait();
+		await tx.wait();
 		return { success: true };
 	} catch (err) {
 		let msg;

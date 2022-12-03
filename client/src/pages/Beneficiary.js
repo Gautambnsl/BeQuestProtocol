@@ -4,6 +4,7 @@ import { getBenificary } from "../backendConnectors/integration";
 import FetchingLoader from "../components/FetchingLoader";
 import { ethers } from "ethers";
 import Error from "../components/Error";
+import Loader from "../components/Loader";
 
 function Beneficiary() {
 	const [beneficiaryData, setBeneficiaryData] = useState([]);
@@ -12,6 +13,8 @@ function Beneficiary() {
 		state: false,
 		message: "",
 	});
+
+	const [cardLoading, setCardLoading] = useState(false);
 
 	useEffect(() => {
 		getBenificary()
@@ -61,6 +64,7 @@ function Beneficiary() {
 				status={card.status}
 				message={card.message}
 				video={card.video}
+				setCardLoading={setCardLoading}
 			/>
 		);
 	});
@@ -70,6 +74,8 @@ function Beneficiary() {
 			className={`beneficiary ${beneficiaryCard.length > 0 ? "" : "center"}`}
 		>
 			{err.state && <Error message={err.message} />}
+
+			{cardLoading && <Loader />}
 
 			{loading ? (
 				<FetchingLoader />
