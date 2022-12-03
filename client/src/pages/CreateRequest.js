@@ -199,12 +199,17 @@ function CreateRequest() {
 						<br />
 						<WorldIDWidget
 							actionId="wid_staging_9f3a190dcfd6bcd9a27f6f88bc31793e" // obtain this from developer.worldcoin.org
-							signal="Bequest Protocol"
-							enableTelemetry
+							signal={metamaskDetails.address}
+							enableTelemetry={true}
+							theme={"dark"}
 							onSuccess={(verificationResponse) =>
-								console.log(verificationResponse)
+								console.log("rohan bhai chal gya pencho")
 							} // you'll actually want to pass the proof to the API or your smart contract
 							onError={(error) => console.error(error)}
+							onInitSuccess={() => console.log("Init successful")}
+							onInitError={(error) =>
+								console.log("Error while initialization World ID", error)
+							}
 						/>
 					</div>
 				</div>
