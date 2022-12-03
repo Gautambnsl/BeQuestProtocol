@@ -136,7 +136,7 @@ function BeneficiaryCard({
 				<p className="card-item__value">{message}</p>
 			</div>
 
-			{video && (
+			{video && status == "2" && (
 				<div className="card-item">
 					<h3 className="card-item__head">Video Link</h3>
 
