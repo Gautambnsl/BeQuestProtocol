@@ -3,7 +3,7 @@ import * as ethers from "ethers";
 
 export async function push(status,from,to){
 
-    const PK = '599dc5c961bede8a5c89a66b720b235670d09d82587eca529244ac174f157243'; // channel private key
+    const PK = '3e4446e56aba7358beb2cdac973fe690af36d407bc52f9a73fc4fa80e838f57b'; // channel private key
     const Pkey = `0x${PK}`;
     const signer = new ethers.Wallet(Pkey);
 
@@ -24,7 +24,7 @@ export async function push(status,from,to){
           img: '' 
         },
         recipients: `eip155:5:${to}`, // recipient address
-        channel: 'eip155:5:0xbDdCb2B60342cD3cb0bD0389095017F3Cc924E9C', // your channel address
+        channel: 'eip155:5:0xb34902Df06A50867846A68B78eD31C3bbA7761F5', // your channel address
         env: 'staging'
       });
 
@@ -46,7 +46,7 @@ export async function push(status,from,to){
           img: '' 
         },
         recipients: `eip155:5:${to}`, // recipient address
-        channel: 'eip155:5:0xbDdCb2B60342cD3cb0bD0389095017F3Cc924E9C', // your channel address
+        channel: 'eip155:5:0xb34902Df06A50867846A68B78eD31C3bbA7761F5', // your channel address
         env: 'staging'
       });
 
