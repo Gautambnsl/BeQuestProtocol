@@ -4,10 +4,12 @@ import { getView, getTime } from "../backendConnectors/integration";
 import FetchingLoader from "../components/FetchingLoader";
 import { ethers } from "ethers";
 import Error from "../components/Error";
+import Loader from "../components/Loader";
 
 function ViewRequest() {
 	const [willData, setWillData] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [cardLoading, setCardLoading] = useState(false);
 
 	const [err, setErr] = useState({
 		state: false,
@@ -59,6 +61,7 @@ function ViewRequest() {
 				timeOfExecution={deadLine.toString()}
 				to={card.to}
 				status={card.status}
+				setCardLoading={setCardLoading}
 			/>
 		);
 	});
@@ -66,6 +69,8 @@ function ViewRequest() {
 	return (
 		<div className={`view-will ${willCard.length > 0 ? "" : "center"}`}>
 			{err.state && <Error message={err.message} />}
+
+			{cardLoading && <Loader />}
 
 			{loading ? (
 				<FetchingLoader />

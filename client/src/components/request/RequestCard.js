@@ -14,7 +14,15 @@ let schema = yup.object().shape({
 		.integer("Transfer time should only be integer!"),
 });
 
-function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
+function RequestCard({
+	id,
+	tokenName,
+	amount,
+	timeOfExecution,
+	to,
+	status,
+	setCardLoading,
+}) {
 	const [statusText, setStatusText] = useState("");
 	const [buttonActive, setButtonActive] = useState(true);
 	const [executionTime, setExecutionTime] = useState();
@@ -71,7 +79,9 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 		schema
 			.validate({ time }, { abortEarly: false })
 			.then((time) => {
+				setCardLoading(true);
 				changeTime(id, time.time).then(async (res) => {
+					setCardLoading(false);
 					if (res.success) {
 						console.log(to);
 						await push("change", "", to);
@@ -96,6 +106,7 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 			})
 			.catch((err) => {
 				// alert(err.errors[0]);
+				setCardLoading(false);
 
 				setErr({
 					state: true,
@@ -112,8 +123,10 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 	};
 
 	const handleRequestState = () => {
+		setCardLoading(true);
 		if (status == "0") {
 			stop(id).then((res) => {
+				setCardLoading(false);
 				if (res.success) {
 					window.location.reload();
 				} else {
@@ -136,6 +149,7 @@ function RequestCard({ id, tokenName, amount, timeOfExecution, to, status }) {
 
 		if (status == "1") {
 			resume(id).then((res) => {
+				setCardLoading(false);
 				if (res.success) {
 					window.location.reload();
 				} else {

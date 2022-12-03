@@ -12,6 +12,7 @@ function BeneficiaryCard({
 	status,
 	message,
 	video,
+	setCardLoading,
 }) {
 	const [statusText, setStatusText] = useState("");
 	const [isExecutable, setIsExecutable] = useState(false);
@@ -70,7 +71,9 @@ function BeneficiaryCard({
 	}, []);
 
 	const handleExecute = () => {
+		setCardLoading(true);
 		execute(id).then((res) => {
+			setCardLoading(false);
 			if (res.success) {
 				window.location.reload();
 			} else {
