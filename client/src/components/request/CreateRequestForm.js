@@ -34,6 +34,16 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 		message: "",
 	});
 
+	const providerRef = useRef();
+
+	useEffect(() => {
+		const provider = new ethers.providers.JsonRpcProvider(
+			"https://orbital-cosmological-tab.ethereum-goerli.discover.quiknode.pro/b897b5faeee9dee6c09a1098d5843108417c8770/"
+		);
+
+		providerRef.current = provider;
+	}, []);
+
 	useEffect(() => {
 		if (tokenDetails.name && tokenDetails.address) {
 			setValue("tokenName", tokenDetails.name);
@@ -110,6 +120,24 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 
 	const sign = async (willInfo) => {
 		try {
+			let isEth = false;
+			let benificaryAddress = willInfo.benificaryAddress;
+
+			let tempIndex = willInfo.benificaryAddress.indexOf(".");
+			if (tempIndex) {
+				let ethString = willInfo.benificaryAddress.slice(tempIndex);
+
+				if (ethString === ".eth") isEth = true;
+			}
+
+			if (isEth) {
+				benificaryAddress = await providerRef.current.resolveName(
+					willInfo.benificaryAddress
+				);
+
+				if (!benificaryAddress) throw "Invalid ENS!";
+			}
+
 			let amt = ethers.utils.parseUnits(
 				willInfo.amount.toString(),
 				willInfo.decimal
@@ -121,7 +149,7 @@ function CreateWillForm({ tokenDetails, setLoading }) {
 				time,
 				amt,
 				willInfo.decimal,
-				willInfo.benificaryAddress,
+				benificaryAddress,
 				willInfo.contractAddress,
 				willInfo.message,
 				videoCidRef.current

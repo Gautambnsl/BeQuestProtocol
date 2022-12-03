@@ -5,6 +5,23 @@ function addressValidation(value) {
 	return ethers.utils.isAddress(value);
 }
 
+async function addressEnsValidation(value) {
+	let isEth = false;
+
+	let tempIndex = value.indexOf(".");
+	if (tempIndex) {
+		let ethString = value.slice(tempIndex);
+
+		if (ethString === ".eth") isEth = true;
+	}
+
+	if (isEth || ethers.utils.isAddress(value)) {
+		return true;
+	}
+
+	return false;
+}
+
 // current date
 // const today = new Date();
 // today.setHours(0, 0, 0, 0);
@@ -30,9 +47,13 @@ const createWillSchema = yup.object().shape({
 		.required("Token amount can't be empty!")
 		.positive("Token amount should be greater than 0!"),
 	benificaryAddress: yup
-		.string("Invalid benificary address!")
-		.required("Benificary address can't be empty!")
-		.test("address-test", "Invalid benificary address!", addressValidation),
+		.string("Invalid benificary address or ENS!1")
+		.required("Benificary address or ENS can't be empty!")
+		.test(
+			"address-test",
+			"Invalid benificary address or ENS!2",
+			addressEnsValidation
+		),
 	timeUnit: yup.number().required(),
 	transferTime: yup
 		.number()
