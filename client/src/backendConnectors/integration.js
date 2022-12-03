@@ -12,7 +12,8 @@ export async function approveRequest(address, amt) {
 
 		const signer = provider.getSigner();
 		const contract = new ethers.Contract(address, ERC20, signer);
-		let tx = await contract.approve(process.env.REACT_APP_BEQUEST_ADDRESS, amt);
+		let chainAddress = await getChainAddress();
+		let tx = await contract.approve(chainAddress, amt);
 		await tx.wait();
 		return { status: true };
 	} catch (err) {
@@ -39,8 +40,9 @@ export async function signRequest(
 		const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 		await provider.send("eth_requestAccounts", []);
 		const signer = provider.getSigner();
+		let chainAddress = await getChainAddress()
 		const contract = new ethers.Contract(
-			process.env.REACT_APP_BEQUEST_ADDRESS,
+			chainAddress,
 			abi,
 			signer
 		);
@@ -95,8 +97,9 @@ export async function getView() {
 	await provider.send("eth_requestAccounts", []);
 	const signer = provider.getSigner();
 	const address = await signer.getAddress();
+	let chainAddress = await getChainAddress()
 	const contract = new ethers.Contract(
-		process.env.REACT_APP_BEQUEST_ADDRESS,
+		chainAddress,
 		abi,
 		signer
 	);
@@ -117,8 +120,9 @@ export async function getBenificary() {
 	await provider.send("eth_requestAccounts", []);
 	const signer = provider.getSigner();
 	const address = await signer.getAddress();
+	let chainAddress = await getChainAddress();
 	const contract = new ethers.Contract(
-		process.env.REACT_APP_BEQUEST_ADDRESS,
+		chainAddress,
 		abi,
 		signer
 	);
@@ -155,6 +159,7 @@ export async function stop(id) {
 		await provider.send("eth_requestAccounts", []);
 		const signer = provider.getSigner();
 		const address = await signer.getAddress();
+		let chainAddress = await getChainAddress();
 		const contract = new ethers.Contract(
 			process.env.REACT_APP_BEQUEST_ADDRESS,
 			abi,
@@ -179,8 +184,9 @@ export async function resume(id) {
 		await provider.send("eth_requestAccounts", []);
 		const signer = provider.getSigner();
 		// const address = await signer.execution();
+		let chainAddress = await getChainAddress();
 		const contract = new ethers.Contract(
-			process.env.REACT_APP_BEQUEST_ADDRESS,
+			chainAddress,
 			abi,
 			signer
 		);
@@ -203,8 +209,9 @@ export async function changeTime(id, days) {
 		await provider.send("eth_requestAccounts", []);
 		const signer = provider.getSigner();
 		const address = await signer.getAddress();
+		let chainAddress = await getChainAddress();
 		const contract = new ethers.Contract(
-			process.env.REACT_APP_BEQUEST_ADDRESS,
+			chainAddress,
 			abi,
 			signer
 		);
@@ -228,8 +235,9 @@ export async function execute(id) {
 		await provider.send("eth_requestAccounts", []);
 		const signer = provider.getSigner();
 		const address = await signer.getAddress();
+		let chainAddress = await getChainAddress();
 		const contract = new ethers.Contract(
-			process.env.REACT_APP_BEQUEST_ADDRESS,
+			chainAddress,
 			abi,
 			signer
 		);
@@ -250,8 +258,9 @@ export async function getTime(id) {
 	await provider.send("eth_requestAccounts", []);
 	const signer = provider.getSigner();
 	const address = await signer.getAddress();
+	let chainAddress = await getChainAddress();
 	const contract = new ethers.Contract(
-		process.env.REACT_APP_BEQUEST_ADDRESS,
+		chainAddress,
 		abi,
 		signer
 	);
@@ -337,3 +346,34 @@ export async function changeChain(id) {
 		console.log("Failed to switch to the network");
 	}
 }
+
+
+
+
+export async function getChainAddress(){
+
+	let provider = await detectEthereumProvider()
+	if(provider){
+
+		const id = await provider.networkVersion
+
+		if(id == 80001){
+			return "0xf97eee8955437C3d89977599e1B76D9f07D6b114"
+		}
+		if(id == 5){
+			return "0xEcDCa539396fC1EFd3828c7b0D4f6dEDBcBbBbB1"
+		}
+		if(id == 338){
+			//genosis
+		}
+		if(id == 1287){
+			//moonbeam
+		}
+		if(id == 1338){
+		//cronos
+		}
+
+	}
+
+}
+
