@@ -365,7 +365,7 @@ export async function getChainAddress(){
 			return "0xEcDCa539396fC1EFd3828c7b0D4f6dEDBcBbBbB1"
 		}
 		if(id == 10200){
-			//genosis 
+			return "0x6453520192572aA93931d25F3E66680F75B53ce4"
 		}
 		if(id == 1287){
 			return "0x1Dd6D563ae2A42f186ed30D2135B2B743875561E"
