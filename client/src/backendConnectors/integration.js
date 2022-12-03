@@ -327,7 +327,7 @@ export async function getChainAddress() {
 		const id = await provider.networkVersion;
 
 		if (id == 80001) {
-			return "0xf97eee8955437C3d89977599e1B76D9f07D6b114";
+			return "0x7Aa954CA42f2262d5c1934A1B96550b03c41dCa4";
 		}
 		if (id == 5) {
 			return "0xEcDCa539396fC1EFd3828c7b0D4f6dEDBcBbBbB1";
